@@ -5,12 +5,7 @@ body {
     font-family: monospace;
 }
 
-.flex {
-    display: flex;
-    padding: 10px;
-    flex-flow: row;
-    justify-content: center;
-}
+
 
 .ingress {
     color: rgb(0, 0, 0);
@@ -24,9 +19,18 @@ body {
     -webkit-text-stroke-color: black;
 }
 
+.flex {
+    display: flex;
+    padding: 10px;
+    flex-flow: row;
+    justify-content: center;
+}
+
 .card {
+    display: inline-block;
     background-color: rgb(157, 188, 216);
     padding: 30px;
     margin: 10px;
     border-radius: 30px;
+    flex-grow: 1;
 }
