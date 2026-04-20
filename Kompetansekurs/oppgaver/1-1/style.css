@@ -1,10 +1,14 @@
 body {
     background-color: rgb(146, 168, 190);
-    background-position: center;
     overflow-x: hidden;
     font-family: monospace;
-}
 
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    justify-content: space-evenly;
+
+}
 
 
 .ingress {
@@ -21,16 +25,13 @@ body {
 
 .flex {
     display: flex;
-    padding: 10px;
-    flex-flow: row;
-    justify-content: center;
-}
+    flex-wrap: wrap;
+    flex-direction:column;
+    flex: 1 0 33%;
 
-.card {
-    display: inline-block;
     background-color: rgb(157, 188, 216);
     padding: 30px;
     margin: 10px;
     border-radius: 30px;
-    flex-grow: 1;
 }
+
