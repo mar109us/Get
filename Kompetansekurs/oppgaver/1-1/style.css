@@ -4,9 +4,15 @@ body {
     background-color: rgb(146, 168, 190);
     background-position: center;
     overflow-x: hidden;
-    width: 60%;
-    margin: auto;
     font-family: monospace;
+}
+
+.flex {
+    display: flex;
+    background-color: rgb(169, 195, 221);
+    padding: 10px;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 .ingress {
@@ -15,7 +21,7 @@ body {
 }
 
 .title {
-    font-size: 60px;
+    font-size: 40px;
     color: rgb(32, 98, 113);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
