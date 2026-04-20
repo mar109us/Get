@@ -8,6 +8,7 @@ body {
     flex-direction:row;
     justify-content: space-evenly;
 
+
 }
 
 
@@ -17,21 +18,28 @@ body {
 }
 
 .title {
-    font-size: 50px;
+    font-size: 60px;
     color: rgb(20, 113, 134);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
 
 .flex {
+    background-color: rgb(157, 188, 216);
+    padding: 30px;
+    margin: 20px;
+    border-radius: 30px;
+    
+    align-items: center;
+
+
     display: flex;
     flex-wrap: wrap;
     flex-direction:column;
-    flex: 1 0 33%;
+    flex: 1 1 25%;
 
-    background-color: rgb(157, 188, 216);
-    padding: 30px;
-    margin: 10px;
-    border-radius: 30px;
+    
+    max-height: max-content;
+    /* max-width: max-content; */
+
 }
-
