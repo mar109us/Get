@@ -7,54 +7,124 @@
 </head>
 <body>
 
-<div id="ute">
-    <p>Du er ute</p>
+<style>
 
-    <button>Gå inn</button>
+
+
+</style>
+
+<div id="ute">
+    <h1>Du er ute</h1>
+
+    <button onclick="gang()">Gå inn</button>
 </div>
 
 <div id="gang">
-    <p>Du er i gangen</p>
+    <h1>Du er i gangen</h1>
 
-    <button>Gå ut</button>
-    <button>Gå til soverommet</button>
-    <button>Gå til badet</button>
-    <button>Gå til Stua</button>
-    <button>Gå til kjøkkenet</button>
+    <button onclick="ute()">Gå ut</button>
+    <button onclick="soverom()">Gå til soverommet</button>
+    <button onclick="bad()">Gå til badet</button>
+    <button onclick="stue()">Gå til Stua</button>
+    <button onclick="kjøkken()">Gå til kjøkkenet</button>
 </div>
 
 
 <div id="soverom">
-    <p>Du er på soverommet</p>
+    <h1>Du er på soverommet</h1>
 
-    <button>Gå til gangen</button>
+    <button onclick="gang()">Gå til gangen</button>
 </div>
 
 
 <div id="bad">
-    <p>Du er på badet</p>
+    <h1>Du er på badet</h1>
 
-    <button>Gå til gangen</button>
+    <button onclick="gang()">Gå til gangen</button>
 </div>
 
 
 <div id="stue">
-    <p>Du er i stua</p>
+    <h1>Du er i stua</h1>
 
-    <button>Gå til gangen</button>
-    <button>Gå til kjøkkenet</button>
+    <button onclick="gang()">Gå til gangen</button>
+    <button onclick="kjøkken()">Gå til kjøkkenet</button>
 </div>
 
 
 <div id="kjøkken">
-    <p>Du er på kjøkkenet</p>
+    <h1>Du er på kjøkkenet</h1>
 
-    <button>Gå til gangen</button>
-    <button>Gå til Stua</button>
+    <button onclick="gang()">Gå til gangen</button>
+    <button onclick="stue()">Gå til Stua</button>
 </div>
 
 
+<script>
 
+    function ute() {
+        document.getElementById("ute").style.display = "block"
+
+        document.getElementById("gang").style.display = "none"
+        document.getElementById("soverom").style.display = "none"
+        document.getElementById("bad").style.display = "none"
+        document.getElementById("stue").style.display = "none"
+        document.getElementById("kjøkken").style.display = "none"
+    }
+    ute()
+
+    function gang() {
+        document.getElementById("gang").style.display = "block"
+
+        document.getElementById("ute").style.display = "none"
+        document.getElementById("soverom").style.display = "none"
+        document.getElementById("bad").style.display = "none"
+        document.getElementById("stue").style.display = "none"
+        document.getElementById("kjøkken").style.display = "none"
+
+    }
+
+    function soverom() {
+        document.getElementById("soverom").style.display = "block"
+
+        document.getElementById("ute").style.display = "none"
+        document.getElementById("gang").style.display = "none"
+        document.getElementById("bad").style.display = "none"
+        document.getElementById("stue").style.display = "none"
+        document.getElementById("kjøkken").style.display = "none"
+    }
+
+    function bad() {
+        document.getElementById("bad").style.display = "block"
+
+        document.getElementById("ute").style.display = "none"
+        document.getElementById("gang").style.display = "none"
+        document.getElementById("soverom").style.display = "none"
+        document.getElementById("stue").style.display = "none"
+        document.getElementById("kjøkken").style.display = "none"
+    }
+
+    function stue() {
+        document.getElementById("stue").style.display = "block"
+
+        document.getElementById("ute").style.display = "none"
+        document.getElementById("gang").style.display = "none"
+        document.getElementById("soverom").style.display = "none"
+        document.getElementById("bad").style.display = "none"
+        document.getElementById("kjøkken").style.display = "none"
+    }
+
+    function kjøkken() {
+        document.getElementById("kjøkken").style.display = "block"
+
+        document.getElementById("ute").style.display = "none"
+        document.getElementById("gang").style.display = "none"
+        document.getElementById("soverom").style.display = "none"
+        document.getElementById("bad").style.display = "none"
+        document.getElementById("stue").style.display = "none"
+    }
+
+</script>
     
 </body>
 </html>
