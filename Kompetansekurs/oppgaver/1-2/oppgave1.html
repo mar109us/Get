@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+
+<style>
+
+    body {
+        background-color: rgb(174, 212, 174);
+        font-family: monospace;
+        font-weight: bold;
+        padding: 32px;
+    }
+
+    .celle {
+        background-color: rgb(37, 166, 184);
+        padding: 24px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .rutenett_1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+    }
+
+    .rutenett_2 {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        gap: 16px;
+    }
+
+    .rutenett_knapper {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr;
+        gap: 16px;
+    }
+
+    .buttons {
+        font-size: 24px;
+        border-radius: 20px;
+        height: 60px;
+    }
+
+    .rutenett_skrive {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
+    }
+
+    .font {
+        font-size: 24px;
+    }
+
+</style>
+
+</head>
+<body>
+
+    <h1>Skriv</h1>
+
+    <div class="rutenett_skrive">  
+
+        <input id="text_field" class="font">
+
+        <button onclick="change_text()" class="buttons">Submit</button>
+
+        
+        <div class="celle">
+            <p id="recieve_text" class="font"></p>
+        </div>
+
+    </div>
+
+    <script>
+
+        function change_text() {
+            document.getElementById("recieve_text").innerText = document.getElementById("text_field").value
+        }
+
+
+    </script>
+
+
+
+    <h1>Trykk på en knapp</h1>
+
+    <div class="rutenett_knapper">  
+
+        <button onclick="si_hei()" class="buttons">Hei</button>
+        <button onclick="si_praise()" class="buttons">Praise</button>
+        <button onclick="remove_text()" class="buttons">Clear</button>
+
+    </div>
+
+    <p id="output"></p>
+
+    <script>
+        
+        function si_hei() {
+            document.getElementById("output").innerText = "Hei fra js"
+        }
+
+        function si_praise() {
+            document.getElementById("output").innerText = "Flink"
+        }
+
+        function remove_text() {
+            document.getElementById("output").innerText = ""
+        }
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <h1>grid 1</h1>
+
+    <div class="rutenett_1">
+
+        <div class="celle">1</div>
+        <div class="celle">2</div>
+        <div class="celle">3</div>
+        <div class="celle">4</div>
+        <div class="celle">5</div>
+        <div class="celle">6</div>
+
+    </div>
+
+    <h1>grid 2</h1>
+
+    <div class="rutenett_2">
+
+        <div class="celle">1</div>
+        <div class="celle">2</div>
+        <div class="celle">3</div>
+        <div class="celle">4</div>
+        <div class="celle">5</div>
+        <div class="celle">6</div>
+
+    </div>
+
+
+
+
+
+</body>
+</html>
