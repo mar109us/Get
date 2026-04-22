@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tall</title>
+
 </head>
 <body>
+
+
     
+<h1 id="tall"></h1>
+
+<script>
+
+    function show1() {
+        document.getElementById("tall").innerHTML = `
+        <h1>1</h1>
+        <button onclick="show2()">øk med en</button>
+        <button onclick="show2()">doble</button>
+        `
+    }
+    show1()
+
+    function show2() {
+        document.getElementById("tall").innerHTML = `
+        <h1>2</h1>
+        <button onclick="show1()">reset</button>
+        `
+    }
+
+</script>
+
+
 </body>
 </html>
