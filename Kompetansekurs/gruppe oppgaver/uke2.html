@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 
-
 	<style>
 		.card {
 			display: flex;
@@ -28,6 +27,7 @@
 
 		.Html {
 			background-color: #4885ed;
+
 		}
 
 		.Css {
@@ -43,15 +43,13 @@
 		}
 
 		.kort {
+			display: flex;
+			width: 50%;
 			background: white;
 			border-radius: 8px;
 			padding: 16px;
 			margin: 8px 0;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		}
-
-		.paragraph {
-			background-color: bisque;
 		}
 	</style>
 
@@ -71,26 +69,12 @@
 		<h3>Verktøy</h3>
 	</div>
 
-	<div class="paragraph">
-		<pre>
-De to viktigste verktøyene vi skal bruke er disse:
-
-<ul>
-Koderedigeringsprogrammet Visual Studio Code
-Vi skal bruke noen extensions:
-
-JavaScript-booster
-es6-string-html
-live-server
-live-share</li>
-Nettleseren Google Chrome
-</ul>
-</pre>
-	</div>
-
-	<div class="Html card">
+	<div onclick="changeParagrapghHTML()" class="Html card">
 		<h3>HTML</h3>
 	</div>
+
+	<div id="change-content-html" class="kort"></div>
+
 
 	<div class="Css card">
 		<h3>CSS</h3>
@@ -139,32 +123,59 @@ onclick som viser spill
 
 	<script>
 
-		function output() {
-
-		}
-
 		function Verktøy() {
 			document.getElementById("Verktøy").innerHTML =
-				`<p> test </p>`
-			document.getElementById("Verktøy").style.display = "none"
+				`<p> De to viktigste verktøyene vi skal bruke er disse:
+
+    Koderedigeringsprogrammet Visual Studio Code
+    Vi skal bruke noen extensions:
+        JavaScript-booster
+        es6-string-html
+        live-server
+        live-share
+    Nettleseren Google Chrome
+ </p>`
 		}
 
-		function HTML() {
-			document.getElementById("HTML").innerHTML =
-				`<p> Hallo </p>`
-			document.getElementById("Verktøy").style.display = "block"
+		function changeParagrapghHTML() {
+			document.getElementById("change-content-html").innerHTML =
+				`<p> Vi bruker HTML til å definere et dokument. 
+
+     Tagger for grunnleggende oppsett av en HTML-fil
+    Tagger for grunnleggende formatering av tekst
+    <div>
+    <input type="text">
+    <button>
+    W3Schools HTML Tutorial
+    W3Schools HTML Reference 
+ </p>`
 		}
 		function CSS() {
 			document.getElementById("CSS").innerHTML =
-				`<p> Skjera bagera </p>`
+				`<p> Vi bruker CSS til å style et dokument, altså farger, fonter, utseende og lignende.
+
+    background-color
+    color
+    padding
+    margin
+    border
+    text-align
+    font-size
+    Flexbox
+    Grid
+    W3Schools CSS Tutorial
+    W3Schools CSS Reference
+ </p>`
 		}
 
 		function JavaScripct() {
 			document.getElementById("JavaScripct").innerHTML =
-				`<p> Hallo 123 </p>`
+				`<p> Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.
+
+    Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
+    W3Schools JavaScript Reference
+ </p>`
 		}
-
-
 
 	</script>
 
@@ -172,6 +183,8 @@ onclick som viser spill
 	<button onclick="HTML()">HTML</button>
 	<button onclick="CSS()">CSS</button>
 	<button onclick="JavaScripct()">JavaScripct</button>
+
+
 
 
 
