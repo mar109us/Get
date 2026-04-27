@@ -5,27 +5,107 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+
+
+	<style>
+		.card {
+			display: flex;
+			color: white;
+			border: 2px solid gray;
+			justify-content: center;
+			width: 50%;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			padding: 16px;
+			margin: 8px 0;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.Verktøy {
+			background-color: #3cba54;
+
+		}
+
+		.Html {
+			background-color: #4885ed;
+		}
+
+		.Css {
+			background-color: #db3236;
+		}
+
+		.JavaScript {
+			background-color: #f4c20d;
+		}
+
+		.Spill {
+			background-color: #36393f;
+		}
+
+		.kort {
+			background: white;
+			border-radius: 8px;
+			padding: 16px;
+			margin: 8px 0;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		}
+
+		.paragraph {
+			background-color: bisque;
+		}
+	</style>
+
 </head>
 
 <body>
 
 	<button>Ingen Layout</button>
-    <button>Vertikal Layout</button>
-        <button>Horisontal Layout</button>
-            <button>Grid Layout</button>
+	<button>Vertikal Layout</button>
+	<button>Horisontal Layout</button>
+	<button>Grid Layout</button>
 
-            <h1>Eksempel 1</h1>
-
-            
+	<h1>Eksempel 1</h1>
 
 
+	<div class="Verktøy card">
+		<h3>Verktøy</h3>
+	</div>
+
+	<div class="paragraph">
+		<pre>
+De to viktigste verktøyene vi skal bruke er disse:
+
+<ul>
+Koderedigeringsprogrammet Visual Studio Code
+Vi skal bruke noen extensions:
+
+JavaScript-booster
+es6-string-html
+live-server
+live-share</li>
+Nettleseren Google Chrome
+</ul>
+</pre>
+	</div>
+
+	<div class="Html card">
+		<h3>HTML</h3>
+	</div>
+
+	<div class="Css card">
+		<h3>CSS</h3>
+	</div>
+
+	<div class="JavaScript card">
+		<h3>JavaScript</h3>
+	</div>
+
+	<div class="Spill card">
+		<h3>Hode, kropp og ben</h3>
+	</div>
 
 
-	<div><h3>Verktøy</h3></div>
-	<div><h3>HTML</h3></div>
-	<div><h3>CSS</h3></div>
-	<div><h3>JavaScript</h3></div>
-	<div><h3>Hode, kropp og ben</h3></div>
+
 
 	<!-- 
 4 knapper 
@@ -48,12 +128,51 @@ div header = spill
 onclick som viser spill
 
 -->
+	<div id="Verktøy" class="kort"></div>
+	<div id="HTML" class="kort"></div>
+	<div id="CSS" class="kort"></div>
+	<div id="JavaScripct" class="kort"></div>
+
+
+
+
 
 	<script>
 
-		function output()
+		function output() {
+
+		}
+
+		function Verktøy() {
+			document.getElementById("Verktøy").innerHTML =
+				`<p> test </p>`
+			document.getElementById("Verktøy").style.display = "none"
+		}
+
+		function HTML() {
+			document.getElementById("HTML").innerHTML =
+				`<p> Hallo </p>`
+			document.getElementById("Verktøy").style.display = "block"
+		}
+		function CSS() {
+			document.getElementById("CSS").innerHTML =
+				`<p> Skjera bagera </p>`
+		}
+
+		function JavaScripct() {
+			document.getElementById("JavaScripct").innerHTML =
+				`<p> Hallo 123 </p>`
+		}
+
+
 
 	</script>
+
+	<button onclick="Verktøy()">Verktøy</button>
+	<button onclick="HTML()">HTML</button>
+	<button onclick="CSS()">CSS</button>
+	<button onclick="JavaScripct()">JavaScripct</button>
+
 
 
 </body>
