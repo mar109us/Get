@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Kortgenerator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+		}
+
+		/* Lag CSS for .kort slik at hvert kort:
+           - har hvit bakgrunn
+           - har runde hjørner
+           - har litt padding
+           - har litt margin-bottom
+           - ser presentabelt ut */
+		.kort {}
+
+		/* Valgfritt: style overskriften og teksten inni kortene */
+
+		#output {
+			margin-top: 24px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Teknologier jeg har lært</h1>
+	<div id="output"></div>
+
+	<script>
+
+		// OPPGAVE: Kortgenerator med funksjoner og parametre
+
+		// STEG 1:
+		// Lag en funksjon som heter lagKort(tittel, tekst)
+		// Funksjonen skal bruke document.getElementById("output").innerHTML
+		// til å vise et kort med tittelen og teksten
+		// Kortet skal ha class="kort"
+
+
+		// STEG 2:
+		// Kall lagKort() tre ganger med ulike titler og tekster:
+		// - "HTML" og en beskrivelse
+		// - "CSS" og en beskrivelse
+		// - "JavaScript" og en beskrivelse
+		// Problemet: hvert kall overskriver det forrige. Hvorfor?
+
+
+		// STEG 3:
+		// Endre funksjonen slik at den LEGGER TIL et kort
+		// i stedet for å erstatte alt
+		// Tips: innerHTML += i stedet for innerHTML =
+
+
+		// STEG 4 (bonus):
+		// Legg til en tredje parameter: farge
+		// lagKort(tittel, tekst, farge)
+		// Bruk fargen som bakgrunnsfarge på kortets overskrift
+
+
+	</script>
+
+</body>
+
+</html>
