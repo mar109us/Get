@@ -36,19 +36,27 @@
 <body>
 
 	<h1>Teknologier jeg har lært</h1>
-	<div id="output1" class="kort"></div>
-	<div id="output2" class="kort"></div>
-	<div id="output3" class="kort"></div>
+	<div id="card-html" class="kort"></div>
+	<div id="card-css" class="kort"></div>
+	<div id="card-javascript" class="kort"></div>
 
 	<script>
 
 		function makeCard(id, title, text) {
-			document.getElementById(id).innerHTML = title + text
+
+			document.getElementById(id).innerHTML +=
+				`
+				<h1> ${title} </h1>
+			<p> ${text} </p>
+
+			`
 		}
 
-		makeCard("output1", "<h1>HTML</h1>", "<p>HTML is the structure of a website</p>")
-		makeCard("output2", "<h1>CSS</h1>", "<p>CSS is the style of a website</p>")
-		makeCard("output3", "<h1>JavaScript</h1>", "<p>Javascript is the functionality of a website</p>")
+		makeCard("card-html", "HTML", "HTML is the structure of a website")
+		makeCard("card-css", "CSS", "CSS is the style of a website")
+		makeCard("card-javascript", "JavaScript", "Javascript is the functionality of a website")
+
+
 
 		// OPPGAVE: Kortgenerator med funksjoner og parametre
 
