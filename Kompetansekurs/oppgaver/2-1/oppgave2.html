@@ -58,38 +58,12 @@
 
 	</div>
 
-	<!-- BONUSOPPGAVE: Endre CSS fra JavaScript -->
-
-	<!-- Lag fire knapper, én for hver farge:
-         Rød, Grønn, Blå og Lilla
-         Gi dem passende bakgrunnsfarger med style="" -->
-
 	<script>
 
 		function changeColour(colour) {
-
-			if (colour === "red") {
-				document.getElementById("boks").style.backgroundColor = 'red'
-			}
-			if (colour === "green") {
-				document.getElementById("boks").style.backgroundColor = 'green'
-			}
-			if (colour === "blue") {
-				document.getElementById("boks").style.backgroundColor = 'blue'
-			}
-			if (colour === "purple") {
-				document.getElementById("boks").style.backgroundColor = 'purple'
-			}
-
+			document.getElementById("boks").style.backgroundColor = colour
 		}
 
-
-		// Lag én funksjon som heter byttFarge(farge)
-		// Den skal endre bakgrunnsfargen på #boks
-		// Tips: document.getElementById("boks").style.backgroundColor = farge;
-
-		// Koble alle fire knappene til samme funksjon
-		// men send inn ulik farge som argument
 	</script>
 </body>
 
