@@ -60,11 +60,28 @@
 
 	<script>
 
+		console.log("outside fuction - before change")
+		console.log("element =", document.getElementById("boks").style.backgroundColor)
+		console.log("")
+
 		function changeColour(colour) {
-			console.log(colour)
-			document.getElementById("boks").style.backgroundColor = colour
-			console.log(colour)
+			console.log("inside fuction - before change")
+			console.log("element =", document.getElementById("boks").style.backgroundColor)
+			console.log("parameter =", colour)
+			console.log("")
+
+			document.getElementById("boks").style.backgroundColor = colour;
+
+			console.log("inside fuction - after change")
+			console.log("element =", document.getElementById("boks").style.backgroundColor)
+			console.log("parameter =", colour)
+			console.log("")
+
 		}
+
+		console.log("outside fuction - after change")
+		console.log("element =", document.getElementById("boks").style.backgroundColor)
+		console.log("")
 
 	</script>
 </body>
