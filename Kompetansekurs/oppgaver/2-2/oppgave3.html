@@ -31,16 +31,36 @@
 	<h1>Hva slags billett?</h1>
 	<p>Skriv inn alderen til en person og få vite hvilken billett de skal ha.</p>
 
-	<!-- OPPGAVE 3 av 3: If-setninger -->
 
 	<input type="text" name="age" id="input-age">
 	<button onclick="checkTicket()">Sjekk type billett</button>
 
-	<!-- Lag et inputfelt for alder og en knapp som kaller sjekkBillett() -->
 
 	<p id="svar"></p>
 
 	<script>
+
+		function checkTicket() {
+			let setAge = Number(document.getElementById("input-age").value)
+			let sendResult = document.getElementById("svar")
+
+
+			if (setAge < 6) {
+				sendResult.innerHTML = "Gratis"
+			}
+			else if (setAge >= 6) {
+				sendResult.innerHTML = "Barnebillett"
+			}
+			else if (setAge >= 18) {
+				sendResult.innerHTML = "Voksenbillett"
+			}
+			else if (setAge >= 67) {
+				sendResult.innerHTML = "Pensjonistbillett"
+			}
+
+		}
+
+
 
 		// Lag funksjonen sjekkBillett()
 		// Den skal lese alderen fra inputfeltet og vise riktig billettype i #svar:
