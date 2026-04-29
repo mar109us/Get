@@ -48,9 +48,9 @@
 	<!-- OPPGAVE 2 av 3: Aritmetiske operatorer -->
 
 	<!-- To inputfelt for tallene vises allerede -->
-	<input id="tall1" type="number" placeholder="0">
+	<input id="tall1" type="number" placeholder="Tall 1">
 	<span style="font-size:24px; margin: 0 8px;">og</span>
-	<input id="tall2" type="number" placeholder="0">
+	<input id="tall2" type="number" placeholder="Tall 2">
 
 	<br><br>
 
@@ -66,26 +66,38 @@
 
 	<script>
 
-		let numberOne = document.getElementById("tall1").value
-		let numberTwo = document.getElementById("tall2").value
+		let storedNumberOne
+		let storedNumberTwo
+
+		function readValues() {
+			let getNumberOne = Number(document.getElementById("tall1").value);
+			let getNumberTwo = Number(document.getElementById("tall2").value);
+			storedNumberOne = getNumberOne
+			storedNumberTwo = getNumberTwo
+		}
 
 		function doAdd() {
-
+			readValues()
+			sendResult(storedNumberOne + storedNumberTwo)
 		}
 
 		function doSubtract() {
-
+			readValues()
+			sendResult(storedNumberOne - storedNumberTwo)
 		}
 
 		function doMultiply() {
-
+			readValues()
+			sendResult(storedNumberOne * storedNumberTwo)
 		}
 
 		function doDivide() {
-
+			readValues()
+			sendResult(storedNumberOne / storedNumberTwo)
 		}
 
 		function sendResult(result) {
+			console.log(result)
 			document.getElementById("svar").innerHTML = result
 
 		}
