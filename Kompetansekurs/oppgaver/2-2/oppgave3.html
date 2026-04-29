@@ -46,16 +46,20 @@
 
 
 			if (setAge < 6) {
-				sendResult.innerHTML = "Gratis"
+				displayResult("Gratis")
 			}
 			if (setAge >= 6) {
-				sendResult.innerHTML = "Barnebillett"
+				displayResult("Barnebillett")
 			}
 			if (setAge >= 18) {
-				sendResult.innerHTML = "Voksenbillett"
+				displayResult("Voksenbillett")
 			}
 			if (setAge >= 67) {
-				sendResult.innerHTML = "Pensjonistbillett"
+				displayResult("Pensjonistbillett")
+			}
+
+			function displayResult(result) {
+				sendResult.innerHTML = result
 			}
 
 		}
