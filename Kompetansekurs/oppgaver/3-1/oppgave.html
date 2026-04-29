@@ -38,7 +38,10 @@
 			color: rgb(0, 0, 0);
 		}
 
-		.etikett {}
+		.etikett {
+			color: red;
+			align-self: ;
+		}
 
 		/* Lag CSS for disse klassene slik at siden ser presentabel ut:
            .kort       — hvit boks med runde hjørner og skygge
@@ -52,13 +55,15 @@
 	<h1>Fagkort</h1>
 	<div id="output"></div>
 
-	<div class="kort">
-		<h2>Kort</h2>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, quod ad! Harum saepe sint alias, cum unde
-			beatae quam doloremque itaque? Officiis similique eos quas repudiandae natus laborum saepe reprehenderit.</p>
-	</div>
-
 	<script>
+
+		document.getElementById("output").innerHTML =
+			lagKort("HTML",
+				`HTML er selve oppsettet av en nettside,
+			der man legger til elementer som for eksempel 
+			<button>en knapp</button> <input placeholder="eller en input boks"> 
+			<div style="border: 1px solid black; align-items: left;">Man kan også lage bokser</div>
+			`, "grunnleggende")
 
 		function lagEtikett(tekst) {
 			return "<span class='etikett'>" + tekst + "</span>"
@@ -66,7 +71,8 @@
 		}
 
 		function lagKort(tittel, tekst, etikett) {
-			return '<div class="kort"><h2>' + tittel + "</h2><p>" + lagEtikett() + "</p></div>"
+			return '<div class="kort"><h2>' + tittel + "</h2><p>" + tekst + "</p>" + lagEtikett(etikett) + "</div>"
+
 		}
 
 
