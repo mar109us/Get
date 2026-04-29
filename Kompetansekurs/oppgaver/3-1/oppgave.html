@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Komponentbibliotek</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+		}
+
+		/* Lag CSS for disse klassene slik at siden ser presentabel ut:
+           .kort       — hvit boks med runde hjørner og skygge
+           .kort h2    — farget overskrift
+           .kort p     — grå brødtekst
+           .etikett    — liten farget merkelapp (badge) */
+	</style>
+</head>
+
+<body>
+	<h1>Fagkort</h1>
+	<div id="output"></div>
+
+	<script>
+
+		// OPPGAVE: Funksjoner med returverdi = gjenbrukbare komponenter
+
+		// STEG 1:
+		// Lag en funksjon lagEtikett(tekst)
+		// Den skal RETURNERE en HTML-streng:
+		// "<span class='etikett'>" + tekst + "</span>"
+
+
+		// STEG 2:
+		// Lag en funksjon lagKort(tittel, tekst, etikett)
+		// Den skal RETURNERE en HTML-streng for et kort
+		// Kortet skal inneholde:
+		// - en <h2> med tittelen
+		// - resultatet fra lagEtikett(etikett)
+		// - en <p> med teksten
+		// Husk class="kort" på ytterste div
+
+
+		// STEG 3:
+		// Bruk de to funksjonene til å fylle #output med minst fire kort
+		// om temaer fra kurset (HTML, CSS, JavaScript, funksjoner, osv.)
+		// Eksempel:
+		// document.getElementById("output").innerHTML =
+		//     lagKort("HTML", "Strukturen på en nettside", "Grunnlag") +
+		//     lagKort(...) + ...
+
+
+		// STEG 4 (bonus):
+		// Lag en funksjon lagSeksjon(overskrift, innhold)
+		// som returnerer en seksjon med en <h2> og innhold
+		// Bruk den til å gruppere kortene i to seksjoner:
+		// "Web-teknologier" og "Programmering"
+
+	</script>
+</body>
+
+</html>
