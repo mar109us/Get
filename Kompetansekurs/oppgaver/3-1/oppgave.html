@@ -6,26 +6,36 @@
 	<title>Komponentbibliotek</title>
 	<style>
 		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			font-family: Arial, sans-serif;
 			padding: 32px;
-			background: #f0f4f8;
+			background: #99acbe;
 		}
 
 
 		.kort {
-			border: 2px solid black;
-			box-shadow: 2px 2px 5px black;
-			border-radius: 15px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			max-width: 500px;
+			padding: 25px;
+
+			border: 1px solid rgb(0, 0, 0);
+			box-shadow: 0px 0px 10px black;
+			border-radius: 20px;
 		}
 
 		.kort h2 {
-			color: rgb(31, 145, 222);
-			text-shadow: 0px 0px 1px black;
+
+			color: rgb(30, 107, 158);
+
 		}
 
 		.kort p {
-			color: rgb(109, 109, 109);
-			text-shadow: 0px 0px 2px black;
+			color: rgb(0, 0, 0);
 		}
 
 		.etikett {}
@@ -47,7 +57,19 @@
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, quod ad! Harum saepe sint alias, cum unde
 			beatae quam doloremque itaque? Officiis similique eos quas repudiandae natus laborum saepe reprehenderit.</p>
 	</div>
+
 	<script>
+
+		function lagEtikett(tekst) {
+			return "<span class='etikett'>" + tekst + "</span>"
+
+		}
+
+		function lagKort(tittel, tekst, etikett) {
+			return '<div class="kort"><h2>' + tittel + "</h2><p>" + lagEtikett() + "</p></div>"
+		}
+
+
 
 		// OPPGAVE: Funksjoner med returverdi = gjenbrukbare komponenter
 
