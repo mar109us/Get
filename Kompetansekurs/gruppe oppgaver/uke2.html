@@ -65,20 +65,24 @@
 	<h1>Eksempel 1</h1>
 
 
-	<div class="Verktøy card">
+	<div onclick="paragraphVerktøy()"class="Verktøy card">
 		<h3>Verktøy</h3>
 	</div>
 
-	<div onclick="changeParagrapghHTML()" class="Html card">
+	<div id="change-content-verktøy" class="kort"></div>
+
+	<div onclick="paragraphHTML()" class="Html card">
 		<h3>HTML</h3>
 	</div>
 
 	<div id="change-content-html" class="kort"></div>
 
 
-	<div class="Css card">
+	<div onclick="paragraphCSS()" class="Css card">
 		<h3>CSS</h3>
 	</div>
+
+	<div id="change-content-css" class="kort"></div>
 
 	<div class="JavaScript card">
 		<h3>JavaScript</h3>
@@ -89,9 +93,8 @@
 	</div>
 
 
-
-
 	<!-- 
+
 4 knapper 
 
 header
@@ -112,77 +115,76 @@ div header = spill
 onclick som viser spill
 
 -->
-	<div id="Verktøy" class="kort"></div>
+
+	
 	<div id="HTML" class="kort"></div>
-	<div id="CSS" class="kort"></div>
+	<div id="change-content-css" class="kort"></div>
 	<div id="JavaScripct" class="kort"></div>
-
-
-
-
 
 	<script>
 
-		function Verktøy() {
-			document.getElementById("Verktøy").innerHTML =
-				`<p> De to viktigste verktøyene vi skal bruke er disse:
+		function paragraphVerktøy() {
+			document.getElementById("change-content-verktøy").innerHTML =
+				`<p>
+					De to viktigste verktøyene vi skal bruke er disse:
 
-    Koderedigeringsprogrammet Visual Studio Code
-    Vi skal bruke noen extensions:
-        JavaScript-booster
-        es6-string-html
-        live-server
-        live-share
-    Nettleseren Google Chrome
- </p>`
+					Koderedigeringsprogrammet Visual Studio Code
+					Vi skal bruke noen extensions:
+					JavaScript-booster
+					es6-string-html
+					live-server
+					live-share
+					Nettleseren Google Chrome
+ 				</p>`
 		}
 
-		function changeParagrapghHTML() {
+		function paragraphHTML() {
 			document.getElementById("change-content-html").innerHTML =
-				`<p> Vi bruker HTML til å definere et dokument. 
+				`<p>
+					Vi bruker HTML til å definere et dokument. 
 
-     Tagger for grunnleggende oppsett av en HTML-fil
-    Tagger for grunnleggende formatering av tekst
-    <div>
-    <input type="text">
-    <button>
-    W3Schools HTML Tutorial
-    W3Schools HTML Reference 
- </p>`
-		}
-		function CSS() {
-			document.getElementById("CSS").innerHTML =
-				`<p> Vi bruker CSS til å style et dokument, altså farger, fonter, utseende og lignende.
-
-    background-color
-    color
-    padding
-    margin
-    border
-    text-align
-    font-size
-    Flexbox
-    Grid
-    W3Schools CSS Tutorial
-    W3Schools CSS Reference
- </p>`
+					Tagger for grunnleggende oppsett av en HTML-fil
+					Tagger for grunnleggende formatering av tekst
+					<div>
+					<input type="text">
+					<button>
+					W3Schools HTML Tutorial
+					W3Schools HTML Reference 
+				</p>`
 		}
 
-		function JavaScripct() {
+		function paragraphCSS() {
+			document.getElementById("change-content-css").innerHTML =
+				`<p>
+					Vi bruker CSS til å style et dokument, altså farger, fonter, utseende og lignende.
+
+					background-color
+					color
+					padding
+					margin
+					border
+					text-align
+					font-size
+					Flexbox
+					Grid
+					W3Schools CSS Tutorial
+					W3Schools CSS Reference
+				</p>`
+		}
+
+		function paragraphJS() {
 			document.getElementById("JavaScripct").innerHTML =
-				`<p> Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.
+				`<p>
+					Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.
 
-    Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
-    W3Schools JavaScript Reference
- </p>`
+					Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
+					W3Schools JavaScript Reference
+				</p>`
 		}
 
 	</script>
 
-	<button onclick="Verktøy()">Verktøy</button>
-	<button onclick="HTML()">HTML</button>
-	<button onclick="CSS()">CSS</button>
-	<button onclick="JavaScripct()">JavaScripct</button>
+	
 
 
 
