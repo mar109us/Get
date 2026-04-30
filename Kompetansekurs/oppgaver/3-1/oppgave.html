@@ -6,9 +6,10 @@
 	<title>Komponentbibliotek</title>
 	<style>
 		body {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+			/* grid-template-columns: 1fr 1fr 1fr;
+			gap: 16px;
+			justify-content: space-evenly; */
+			/* align-items: center; */
 			font-family: monospace;
 			font-size: 18px;
 			padding: 32px;
@@ -20,9 +21,7 @@
 			display: flex;
 			flex-direction: column;
 			flex-wrap: wrap;
-			/* align-items: center; */
 
-			/* max-width: 33%; */
 			max-width: 370px;
 			padding: 30px;
 
@@ -32,7 +31,7 @@
 		}
 
 		.kort h2 {
-
+			text-align: center;
 			color: rgb(30, 107, 158);
 
 		}
@@ -53,6 +52,14 @@
 			color: rgb(255, 226, 183);
 
 
+		}
+
+		#output {
+			max-width: max-content;
+			display: flex;
+			justify-content: space-evenly;
+			gap: 25px;
+			/* background-color: black; */
 		}
 
 		/* Lag CSS for disse klassene slik at siden ser presentabel ut:
@@ -121,6 +128,61 @@ kan
 
 `,
 				"basics")
+			+
+
+			lagKort("HTML",
+				`
+HTML er selve oppsettet av en nettside,
+og brukes for å legge til elementer som for eksempel 
+
+<br>
+
+<button>
+en knapp
+</button>
+
+<input style="width:81px;" placeholder="tekst områder">
+
+<br><br>
+
+<span style="border: 2px solid black; font-size:15px; padding-left: 5px; padding-right: 5px;">
+eller elementer i elementer</span>
+
+<br><br>
+
+Det
+<input type="checkbox" checked="true">
+
+er
+
+<input type="radio" checked="true">
+
+mye
+
+<img src="https://www.pinclipart.com/picdir/big/195-1956004_blazing-vitality-deviantart-a-pixel-art-pokemon-charmander.png" height="60px">
+
+morsomt
+
+<br><br>
+
+<input type="color" value="#000099">
+
+man
+
+<input type="week">
+
+kan
+
+<br><br>
+
+<a href="">www.gjoere-i.html</a>
+
+</br>
+
+`,
+				"basics")
+
+
 
 		function lagEtikett(tekst) {
 			return "<span class='etikett'>" + tekst + "</span>"
