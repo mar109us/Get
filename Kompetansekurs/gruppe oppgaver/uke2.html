@@ -57,15 +57,15 @@
 
 <body>
 
-	<button>Ingen Layout</button>
-	<button>Vertikal Layout</button>
-	<button>Horisontal Layout</button>
-	<button>Grid Layout</button>
+	<button onclick="buttonNoLayout()">Ingen Layout</button>
+	<button onclick="buttonVerticalLayout()">Vertikal Layout</button>
+	<button onclick="buttonHorizontalLayout()">Horisontal Layout</button>
+	<button onclick="buttonGridLayout()">Grid Layout</button>
 
 	<h1>Eksempel 1</h1>
 
 
-	<div onclick="paragraphVerktøy()"class="Verktøy card">
+	<div onclick="paragraphVerktøy()" class="Verktøy card">
 		<h3>Verktøy</h3>
 	</div>
 
@@ -84,9 +84,11 @@
 
 	<div id="change-content-css" class="kort"></div>
 
-	<div class="JavaScript card">
+	<div onclick="paragraphJS()" class="JavaScript card">
 		<h3>JavaScript</h3>
 	</div>
+
+	<div id="change-content-javascript" class="kort"></div>
 
 	<div class="Spill card">
 		<h3>Hode, kropp og ben</h3>
@@ -116,12 +118,14 @@ onclick som viser spill
 
 -->
 
-	
+
 	<div id="HTML" class="kort"></div>
 	<div id="change-content-css" class="kort"></div>
-	<div id="JavaScripct" class="kort"></div>
+	<div id="change-content-javascript" class="kort"></div>
 
 	<script>
+
+
 
 		function paragraphVerktøy() {
 			document.getElementById("change-content-verktøy").innerHTML =
@@ -136,6 +140,10 @@ onclick som viser spill
 					live-share
 					Nettleseren Google Chrome
  				</p>`
+			/* return <div id="change-content-html" class="kort"></div> */
+			return document.getElementById("change-content-html").innerHTML = "",
+				document.getElementById("change-content-css").innerHTML = "",
+				document.getElementById("change-content-javascript").innerHTML = "";
 		}
 
 		function paragraphHTML() {
@@ -151,6 +159,9 @@ onclick som viser spill
 					W3Schools HTML Tutorial
 					W3Schools HTML Reference 
 				</p>`
+			return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-css").innerHTML = "",
+				document.getElementById("change-content-javascript").innerHTML = "";
 		}
 
 		function paragraphCSS() {
@@ -170,21 +181,51 @@ onclick som viser spill
 					W3Schools CSS Tutorial
 					W3Schools CSS Reference
 				</p>`
+
+			return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-html").innerHTML = "",
+			document.getElementById("change-content-javascript").innerHTML = "";
 		}
 
 		function paragraphJS() {
-			document.getElementById("JavaScripct").innerHTML =
+			document.getElementById("change-content-javascript").innerHTML =
 				`<p>
 					Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.
 
 					Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
 					W3Schools JavaScript Reference
 				</p>`
+
+				return document.getElementById("change-content-verktøy").innerHTML = "",
+		document.getElementById("change-content-html").innerHTML = "",
+		document.getElementById("change-content-css").innerHTML = "";
 		}
+
+		function buttonNoLayout() {
+			document.getElementsByClassName("card").style.color = "black";
+
+
+		}
+
+		function buttonVerticalLayout() {
+
+		}
+
+		function buttonHorizontalLayout() {
+
+		}
+
+		function buttonGridLayout() {
+
+		}
+
+
+
+
 
 	</script>
 
-	
+
 
 
 
