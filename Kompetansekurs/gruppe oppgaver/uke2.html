@@ -9,47 +9,51 @@
 	<style>
 		.card {
 			display: flex;
-			color: white;
+			flex-direction: row;
+			gap: 10%;
+			color: black;
 			border: 2px solid gray;
 			justify-content: center;
 			width: 50%;
+			padding: 5px;
 			border-top-left-radius: 8px;
 			border-top-right-radius: 8px;
-			padding: 16px;
-			margin: 8px 0;
+
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 
-		.Verktøy {
+		h3 {
+			color: white;
+		}
+
+		.verktøy {
 			background-color: #3cba54;
 
 		}
 
-		.Html {
+		.html {
 			background-color: #4885ed;
 
 		}
 
-		.Css {
+		.css {
 			background-color: #db3236;
 		}
 
-		.JavaScript {
+		.javaScript {
 			background-color: #f4c20d;
 		}
 
-		.Spill {
+		.spill {
 			background-color: #36393f;
 		}
 
-		.kort {
-			display: flex;
-			width: 50%;
-			background: white;
-			border-radius: 8px;
-			padding: 16px;
-			margin: 8px 0;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		.content {
+			background-color: lightgray;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
 		}
 	</style>
 
@@ -65,66 +69,39 @@
 	<h1>Eksempel 1</h1>
 
 
-	<div onclick="paragraphVerktøy()" class="Verktøy card">
+	<div onclick="paragraphVerktøy()" class="verktøy card">
 		<h3>Verktøy</h3>
 	</div>
 
-	<div id="change-content-verktøy" class="kort"></div>
+	<div id="change-content-verktøy" class="card content"></div>
 
-	<div onclick="paragraphHTML()" class="Html card">
+
+	<div onclick="paragraphHTML()" class="html card">
 		<h3>HTML</h3>
 	</div>
 
-	<div id="change-content-html" class="kort"></div>
+	<div id="change-content-html" class="card content"></div>
 
 
-	<div onclick="paragraphCSS()" class="Css card">
+	<div onclick="paragraphCSS()" class="css card">
 		<h3>CSS</h3>
 	</div>
 
-	<div id="change-content-css" class="kort"></div>
+	<div id="change-content-css" class="card content"></div>
 
-	<div onclick="paragraphJS()" class="JavaScript card">
+
+	<div onclick="paragraphJS()" class="javaScript card">
 		<h3>JavaScript</h3>
 	</div>
 
-	<div id="change-content-javascript" class="kort"></div>
+	<div id="change-content-javascript" class="card content"></div>
 
-	<div class="Spill card">
+
+	<div class="spill card">
 		<h3>Hode, kropp og ben</h3>
 	</div>
 
-
-	<!-- 
-
-4 knapper 
-
-header
-
-div header = verktøy
-onclick som viser noe content
-
-div header = html
-onclick som viser noe content
-
-div header = css
-onclick som viser noe content
-
-div header = js
-onclick som viser noe content
-
-div header = spill
-onclick som viser spill
-
--->
-
-
-	<div id="HTML" class="kort"></div>
-	<div id="change-content-css" class="kort"></div>
-	<div id="change-content-javascript" class="kort"></div>
-
 	<script>
-
 
 
 		function paragraphVerktøy() {
@@ -140,7 +117,6 @@ onclick som viser spill
 					live-share
 					Nettleseren Google Chrome
  				</p>`
-			/* return <div id="change-content-html" class="kort"></div> */
 			return document.getElementById("change-content-html").innerHTML = "",
 				document.getElementById("change-content-css").innerHTML = "",
 				document.getElementById("change-content-javascript").innerHTML = "";
@@ -184,7 +160,7 @@ onclick som viser spill
 
 			return document.getElementById("change-content-verktøy").innerHTML = "",
 				document.getElementById("change-content-html").innerHTML = "",
-			document.getElementById("change-content-javascript").innerHTML = "";
+				document.getElementById("change-content-javascript").innerHTML = "";
 		}
 
 		function paragraphJS() {
@@ -196,40 +172,45 @@ onclick som viser spill
 					W3Schools JavaScript Reference
 				</p>`
 
-				return document.getElementById("change-content-verktøy").innerHTML = "",
-		document.getElementById("change-content-html").innerHTML = "",
-		document.getElementById("change-content-css").innerHTML = "";
+			return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-html").innerHTML = "",
+				document.getElementById("change-content-css").innerHTML = "";
 		}
 
+
+
+		const elements = document.querySelectorAll("body")
+
 		function buttonNoLayout() {
-			document.getElementsByClassName("card").style.color = "black";
-
-
+			elements.forEach((element) => {
+				element.style.display = "block"
+			})
 		}
 
 		function buttonVerticalLayout() {
-
+			elements.forEach((element) => {
+				element.style.display = "flex"
+				element.style.flexDirection = "column"
+			})
 		}
 
 		function buttonHorizontalLayout() {
-
+			elements.forEach((element) => {
+				element.style.display = "flex"
+				element.style.flexDirection = "row"
+			})
 		}
 
 		function buttonGridLayout() {
-
+			elements.forEach((element) => {
+				element.style.display = "grid"
+				element.style.gridTemplateColumns = "repeat(2, 50%)"
+				element.style.width = "auto"
+				element.style.height = "auto"
+			})
 		}
 
-
-
-
-
 	</script>
-
-
-
-
-
-
 
 </body>
 
