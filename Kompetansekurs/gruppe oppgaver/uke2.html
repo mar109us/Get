@@ -13,7 +13,7 @@
 
 			gap: 10%;
 			justify-content: center;
-			width: 50%;
+			width: 500px;
 			padding: 5px;
 
 			border-top-left-radius: 8px;
@@ -51,21 +51,22 @@
 		}
 
 		.content {
+			display: flex;
 			flex-direction: column;
 			background-color: lightgray;
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
+			flex-wrap: wrap;
 		}
 
 		.spill-content {
-			background-color: black;
 			display: flex;
+			flex-wrap: wrap;
+
 			justify-content: center;
 			align-items: center;
-			gap: 0px;
-
 
 		}
 	</style>
@@ -119,28 +120,35 @@
 
 		<div class="spill-content">
 
+
 			<button onclick="gameHead('previous')">◀</button>
 
-			<img src="https://getacademy.github.io/Eksempel1/img/head1.png" width="212px" height="135px"></img>
+			<img id="head-image" src="https://getacademy.github.io/Eksempel1/img/head1.png" width="212px"
+				height="135px"></img>
 
 			<button onclick="gameHead('next')">▶</button>
 
-		</div>
-
-		<!-- kropp -->
-		<div class="card content">
-			<div class="spill-content"></div>
-			<img src="https://getacademy.github.io/Eksempel1/img/body1.png" width="212px" height="135px"></img>
-		</div>
 
 
-		<!-- bein -->
-		<div id="change-content-game-legs" class="card content">
+			<!-- kropp -->
+
 			<div class="spill-content">
-				<button>◀</button>
-				<img src="https://getacademy.github.io/Eksempel1/img/legs1.png" width="212px" height="135px"></img>
-				<button>▶</button>
+				<button onclick="gameBody('previous')">◀</button>
+				<img src="https://getacademy.github.io/Eksempel1/img/body1.png" width="212px" height="135px"></img>
+				<button onclick="gameBody('next')">▶</button>
 			</div>
+
+
+
+			<!-- bein -->
+			<div id="change-content-game-legs" class="spill-content">
+				<div class="spill-content">
+					<button>◀</button>
+					<img src="https://getacademy.github.io/Eksempel1/img/legs1.png" width="212px" height="135px"></img>
+					<button>▶</button>
+				</div>
+			</div>
+
 		</div>
 
 
@@ -255,18 +263,60 @@
 
 			function paragraphGame() {
 
-
-
 			}
 			paragraphGame()
 
+			
+
+			
+			let currentShownImage = 1;
 			function gameHead(action) {
-				if (action === "previous") {
-					console.log("previous")
+
+
+
+
+				if (action == "previous") {
+					if (currentShownImage === 1) {
+						currentShownImage = 4
+					}
+					else {
+						currentShownImage -= 1
+					}
+					console.log("currentShownImage")
 				}
-				if (action === "next") {
-					console.log("next")
+
+				if (action == "next") {
+					if (currentShownImage === 4) {
+						currentShownImage = 1
+					}
+					else {
+						currentShownImage += 1
+					}
+					console.log(currentShownImage)
 				}
+
+				if (currentShownImage === 1) {
+					document.getElementById("head-image").src = "https://getacademy.github.io/Eksempel1/img/head1.png"
+				}
+
+				if (currentShownImage === 2) {
+					document.getElementById("head-image").src = "https://getacademy.github.io/Eksempel1/img/head2.png"
+				}
+
+				if (currentShownImage === 3) {
+					document.getElementById("head-image").src = "https://getacademy.github.io/Eksempel1/img/head3.png"
+				}
+
+				if (currentShownImage === 4) {
+					document.getElementById("head-image").src = "https://getacademy.github.io/Eksempel1/img/head4.png"
+				}
+
+				/* 		
+						
+						
+						 */
+
+
 			}
 
 
