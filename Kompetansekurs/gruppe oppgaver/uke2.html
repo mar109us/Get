@@ -10,15 +10,17 @@
 		.card {
 			display: flex;
 			flex-direction: row;
+
 			gap: 10%;
-			color: black;
-			border: 2px solid gray;
 			justify-content: center;
 			width: 50%;
 			padding: 5px;
+
 			border-top-left-radius: 8px;
 			border-top-right-radius: 8px;
 
+			color: black;
+			border: 2px solid gray;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		}
 
@@ -49,12 +51,15 @@
 		}
 
 		.content {
+			flex-direction: column;
 			background-color: lightgray;
 			border-top-left-radius: 0px;
 			border-top-right-radius: 0px;
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
 		}
+
+		.spill-content {}
 	</style>
 
 </head>
@@ -97,87 +102,135 @@
 	<div id="change-content-javascript" class="card content"></div>
 
 
-	<div class="spill card">
+	<div onclick="paragraphGame()" class="spill card">
 		<h3>Hode, kropp og ben</h3>
 	</div>
+
+	<div id="change-content-game" class="card content"></div>
+
+	https://getacademy.github.io/Eksempel1/img/head1.png
+	https://getacademy.github.io/Eksempel1/img/head2.png
+	https://getacademy.github.io/Eksempel1/img/head3.png
+	https://getacademy.github.io/Eksempel1/img/head4.png
+
+	https://getacademy.github.io/Eksempel1/img/body1.png
+	https://getacademy.github.io/Eksempel1/img/body2.png
+	https://getacademy.github.io/Eksempel1/img/body3.png
+	https://getacademy.github.io/Eksempel1/img/body4.png
+
+	https://getacademy.github.io/Eksempel1/img/legs1.png
+	https://getacademy.github.io/Eksempel1/img/legs2.png
+	https://getacademy.github.io/Eksempel1/img/legs3.png
+	https://getacademy.github.io/Eksempel1/img/legs4.png
 
 	<script>
 
 
 		function paragraphVerktøy() {
 			document.getElementById("change-content-verktøy").innerHTML =
-				`<p>
+				`
 					De to viktigste verktøyene vi skal bruke er disse:
-
-					Koderedigeringsprogrammet Visual Studio Code
-					Vi skal bruke noen extensions:
-					JavaScript-booster
-					es6-string-html
-					live-server
-					live-share
-					Nettleseren Google Chrome
+					<ul>
+					<li>Koderedigeringsprogrammet <a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+					<div>Vi skal bruke noen <i>extensions</i>:</div> 
+						<ul>
+					<li>JavaScript-booster</li>
+					<li>es6-string-html</li>
+					<li>live-server</li>
+					<li>live-share</li>
+						</ul>
+					<li>Nettleseren <a href="https://www.google.com/intl/no/chrome/">Google Chrome</a></li>
+					</ul>
  				</p>`
-			return document.getElementById("change-content-html").innerHTML = "",
-				document.getElementById("change-content-css").innerHTML = "",
-				document.getElementById("change-content-javascript").innerHTML = "";
+
+
+			/* 			return document.getElementById("change-content-html").innerHTML = "",
+							document.getElementById("change-content-css").innerHTML = "",
+							document.getElementById("change-content-javascript").innerHTML = ""; */
 		}
 
 		function paragraphHTML() {
 			document.getElementById("change-content-html").innerHTML =
 				`<p>
 					Vi bruker HTML til å definere et dokument. 
-
-					Tagger for grunnleggende oppsett av en HTML-fil
-					Tagger for grunnleggende formatering av tekst
-					<div>
-					<input type="text">
-					<button>
-					W3Schools HTML Tutorial
-					W3Schools HTML Reference 
+					<ul>
+					<li>Tagger for grunnleggende oppsett av en HTML-fil</li>
+					<li>Tagger for grunnleggende formatering av tekst</li>
+					<li>&lt;div&gt;</li>
+					<li>&lt;input type="text"&gt;</li>
+					<li>&lt;button&gt;</li>
+					<li><a href="https://www.w3schools.com/html/default.asp">W3Schools HTML Tutorial</a></li>
+					<li><a href="https://www.w3schools.com/tags/default.asp">W3Schools HTML Reference</a></li>
+					</ul>
 				</p>`
-			return document.getElementById("change-content-verktøy").innerHTML = "",
-				document.getElementById("change-content-css").innerHTML = "",
-				document.getElementById("change-content-javascript").innerHTML = "";
+			/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
+							document.getElementById("change-content-css").innerHTML = "",
+							document.getElementById("change-content-javascript").innerHTML = ""; */
 		}
 
 		function paragraphCSS() {
 			document.getElementById("change-content-css").innerHTML =
-				`<p>
-					Vi bruker CSS til å style et dokument, altså farger, fonter, utseende og lignende.
+				`<p>Vi bruker CSS til å <i>style</i> et dokument, altså farger, fonter, utseende og lignende.</p>
+				<ul>
+				<li>background-color
+				<li>color
+				<li>padding
+				<li>margin
+				<li>border
+				<li>text-align
+				<li>font-size
+				<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">Flexbox</a>
+				<li><a href="https://css-tricks.com/complete-guide-css-grid-layout/" target="_blank">Grid</a>
+				<li><a href="https://www.w3schools.com/css/default.asp" target="_blank">W3Schools CSS Tutorial</a>
+	
+				<li><a href="https://www.w3schools.com/cssref/index.php" target="_blank">W3Schools CSS Reference</a>
+				</ul>
+				`
 
-					background-color
-					color
-					padding
-					margin
-					border
-					text-align
-					font-size
-					Flexbox
-					Grid
-					W3Schools CSS Tutorial
-					W3Schools CSS Reference
-				</p>`
-
-			return document.getElementById("change-content-verktøy").innerHTML = "",
-				document.getElementById("change-content-html").innerHTML = "",
-				document.getElementById("change-content-javascript").innerHTML = "";
+			/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
+							document.getElementById("change-content-html").innerHTML = "",
+							document.getElementById("change-content-javascript").innerHTML = ""; */
 		}
-
+		paragraphCSS()
 		function paragraphJS() {
 			document.getElementById("change-content-javascript").innerHTML =
 				`<p>
-					Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.
+					Det viktigste vi skal lære er programmeringsspråket JavaScript. Vi skal lære grunnleggende programmering ved å manipulere HTML- og CSS-kode på en nettside ved hjelp av JavaScript.</p>
 
-					Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
-					W3Schools JavaScript Reference
-				</p>`
+					<ul>
+					<li>Det finnes en W3Schools JavaScript Tutorial, men her anbefaler vi heller å følge kurset vårt på Moodle.
+					<li><a href="https://www.w3schools.com/jsref/default.asp">W3Schools JavaScript Reference
+					</ul>
+				`
 
-			return document.getElementById("change-content-verktøy").innerHTML = "",
-				document.getElementById("change-content-html").innerHTML = "",
-				document.getElementById("change-content-css").innerHTML = "";
+			/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
+							document.getElementById("change-content-html").innerHTML = "",
+							document.getElementById("change-content-css").innerHTML = ""; */
 		}
 
+		function paragraphGame() {
+			document.getElementById("change-content-game").innerHTML =
+				`
+			<div><button>◀</button>
+			<img src="https://getacademy.github.io/Eksempel1/img/head1.png" width="212px" height="135px"></img>
+			<button>▶</button></div>
+			`
 
+				+
+
+
+				`<br>
+			abdoulai - kropp`
+
+
+				+
+
+
+				`<br>
+			stian - bein`
+
+		}
+		paragraphGame()
 
 		const elements = document.querySelectorAll("body")
 
