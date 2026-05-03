@@ -61,27 +61,54 @@
 
 	<script>
 
+		let errorMessage = ""
+		let createUser = 0
+
 		function sjekkSkjema() {
 
 			let brukernavn = document.getElementById("brukernavn").value
 			let passord = document.getElementById("passord").value
 			let alder = document.getElementById("alder").value
 
+			console.log(brukernavn, passord, alder)
+
 
 
 			if (brukernavn.length < 3) {
-				console.log(brukernavn, passord, alder)
+				errorMessage += "Username error: <br>" + '"' + brukernavn + '"' + " is too short <br><br>"
 			}
 
-			if (passord.length < 6 || passord === "") {
-				console.log(brukernavn, passord, alder)
+			if (passord.length < 6) {
+				errorMessage += "Password error: <br>need more than " + passord.length + " characters <br><br>"
+			}
+
+			if (passord == "") {
+				errorMessage += "Password error: <br>password is empty <br><br>"
 			}
 
 			if (alder < 18 || alder == "") {
-				console.log(brukernavn, passord, alder)
+				errorMessage += "Age error:<br> " + alder + " is not old enough"
 			}
 
+			if (errorMessage !== "") {
+				informationNotAccepted()
+			}
 
+			if (
+				brukernavn.length >= 3 &&
+				passord.length >= 6 &&
+				passord !== "" &&
+				alder >= 18 &&
+				alder !== ""
+			) {
+				document.getElementById("melding").innerHTML = '<div style="color: green;">Registrering vellykket!</div>'
+			}
+
+		}
+
+		function informationNotAccepted() {
+			document.getElementById("melding").innerHTML = '<div style="color: tomato;">' + errorMessage + "</div>"
+			errorMessage = ""
 		}
 
 		// Lag funksjonen sjekkSkjema()
