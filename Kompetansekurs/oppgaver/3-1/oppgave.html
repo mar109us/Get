@@ -21,8 +21,8 @@
 
 		body {
 			/* grid-template-columns: 1fr 1fr 1fr;
-			gap: 16px;
-			justify-content: space-evenly; */
+			gap: 16px;*/
+			justify-content: space-evenly;
 			/* align-items: center; */
 			font-family: monospace;
 			font-size: 18px;
@@ -36,7 +36,6 @@
 			display: flex;
 			flex-direction: column;
 			flex-wrap: wrap;
-
 
 			min-width: 370px;
 			max-width: 370px;
@@ -92,13 +91,33 @@
 		}
 
 		#output {
-			/* max-width: max-content; */
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-evenly;
-			gap: 100px;
+			gap: 80px;
+		}
 
-			/* background-color: black; */
+		.button {
+			font-size: 40px;
+
+			color: #001219;
+			background-color: #ee9b00;
+			text-align: center;
+
+			width: fit-content;
+			height: fit-content;
+
+			padding: 10px;
+			border-radius: 20px;
+		}
+
+		.header {
+			position: relative;
+			top: 0%;
+			height: 20px;
+			max-width: 100%;
+			background-color: #005f73;
+			margin-bottom: 50px;
 		}
 
 		/* Lag CSS for disse klassene slik at siden ser presentabel ut:
@@ -110,7 +129,11 @@
 </head>
 
 <body>
-	<div onclick="lagSeksjon()" style="background-color: red; width: 200px; height: 200px;">"test test test"</div>
+	<div class="header"></div>
+	<div style="display:flex; justify-content: space-evenly; gap: 20px;">
+		<div onclick="lagSeksjon('tech')" class="button">Web-Teknologier</div>
+		<div onclick="lagSeksjon('tech')" class="button">Programmering</div>
+	</div>
 	<div id="output"></div>
 
 
@@ -185,12 +208,12 @@
 
 		function lagSeksjon(overskrift, innhold) {
 
-			if (overskrift === "tech") { }
+			if (overskrift === "tech") {
 
-			return document.getElementById("output").innerHTML =
-				"<h2 style='flex: column; color: white;'>Web-teknologier</h2>" +
-				lagKort("HTML",
-					`
+				return document.getElementById("output").innerHTML =
+					"<h2 style='text-align: center; width:100%; color: white;'>Web-teknologier</h2>" +
+					lagKort("HTML",
+						`
 HTML er selve oppsettet av en nettside,
 og brukes for å legge til elementer som for eksempel 
 
@@ -241,11 +264,11 @@ kan
 `,
 
 
-					"mild 🌶️")
+						"mild 🌶️")
 
-				+ lagKort("CSS",
+					+ lagKort("CSS",
 
-					`
+						`
 CSS brukes når HTML skal på selskap og må ta på seg dress og slips. <br>
 Det er koden man bruker for å style HTML elementer. <br>
 Man kan gjøre ting veldig fint med for eksemepel:
@@ -264,17 +287,18 @@ Man kan gjøre ting veldig fint med for eksemepel:
 
 `,
 
-					"mild 🌶️")
+						"mild 🌶️")
 
-				+ lagKort("JavaScript",
+					+ lagKort("JavaScript",
 
-					`
+						`
 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
 
 `,
 
-					"somewhat spicy 🌶️ 🌶️")
+						"somewhat spicy 🌶️ 🌶️")
+			}
 		}
 
 		// STEG 4 (bonus):
