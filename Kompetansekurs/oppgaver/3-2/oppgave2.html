@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Skjemavalidering</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 500px;
+		}
+
+		input {
+			font-size: 16px;
+			padding: 10px;
+			width: 100%;
+			margin: 6px 0 16px 0;
+			border: 2px solid #ccc;
+			border-radius: 6px;
+			box-sizing: border-box;
+		}
+
+		button {
+			font-size: 18px;
+			padding: 12px 28px;
+			cursor: pointer;
+			border: none;
+			border-radius: 8px;
+			background: #005f99;
+			color: white;
+		}
+
+		#melding {
+			font-size: 18px;
+			margin-top: 16px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Registreringsskjema</h1>
+
+	<!-- OPPGAVE 2 av 2: Logiske operatorer og null/undefined -->
+
+	<label>Brukernavn (minst 3 tegn):</label>
+	<input id="brukernavn" type="text" placeholder="Skriv brukernavn">
+
+	<label>Passord (minst 6 tegn):</label>
+	<input id="passord" type="password" placeholder="Skriv passord">
+
+	<label>Alder (må være 18 eller eldre):</label>
+	<input id="alder" type="number" placeholder="Skriv alder">
+
+	<button onclick="sjekkSkjema()">Registrer</button>
+	<p id="melding"></p>
+
+	<script>
+
+		// Lag funksjonen sjekkSkjema()
+		// Den skal lese verdiene fra alle tre feltene
+
+		// Vis en feilmelding i #melding hvis:
+		// - brukernavnet er kortere enn 3 tegn ELLER er tomt
+		// - passordet er kortere enn 6 tegn ELLER er tomt
+		// - alderen er under 18
+
+		// Vis "Registrering vellykket!" hvis ALLE feltene er gyldige
+		// Tips: bruk && for å sjekke alle på én gang
+
+		// Bonus: sjekk om alder-feltet er tomt (null eller undefined)
+		// og vis en egen feilmelding for det
+
+	</script>
+
+</body>
+
+</html>
