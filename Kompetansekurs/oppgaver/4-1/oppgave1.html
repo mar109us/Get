@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Stemmeteller – MVC</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 500px;
+		}
+
+		/* Lag CSS som gjør siden presentabel.
+           Du trenger minst:
+           - stil på knappene
+           - stil på #status-meldingen
+           - stil på stemme-visningen */
+	</style>
+</head>
+
+<body>
+	<h1>Stemmeteller</h1>
+	<p>En enkel app der du kan stemme for eller mot et forslag.</p>
+
+	<!-- Legg til to knapper: "For" og "Mot" -->
+	<!-- Og en "Nullstill"-knapp -->
+
+	<!-- Lag et element som viser: "For: X | Mot: Y" -->
+	<!-- Lag et element som viser en statusmelding, f.eks. "Det er flertall for!" -->
+
+	<script>
+		// OPPGAVE: Bygg stemmetelleren i MVC-stil
+
+		// ---- MODEL ----
+		// Lag to variabler: stemmerFor og stemmerMot
+		// Begge starter på 0
+
+		// ---- VIEW ----
+		// Lag en funksjon render() som:
+		// 1. Oppdaterer visningen med antall stemmer for og mot
+		// 2. Viser en statusmelding:
+		//    - "Det er flertall for!" hvis stemmerFor > stemmerMot
+		//    - "Det er flertall mot!" hvis stemmerMot > stemmerFor
+		//    - "Det er uavgjort!" hvis de er like
+		// render() skal ALDRI endre model — bare lese fra den
+
+		// ---- CONTROLLER ----
+		// Lag tre funksjoner: stemmFor(), stemmMot(), nullstill()
+		// Hver funksjon skal:
+		// 1. Oppdatere riktig modellvariabel
+		// 2. Kalle render()
+		// Controller-funksjoner skal ALDRI endre HTML direkte
+
+		// Kall render() én gang nederst slik at siden vises korrekt ved oppstart
+	</script>
+</body>
+
+</html>
