@@ -30,14 +30,8 @@
 </head>
 
 <body>
-	<h1 id="teller">0</h1>
 
 	<!-- OPPGAVE 1 av 2: Tilordningsoperatorer -->
-
-	<button onclick="add()">+ 5</button>
-	<button onclick="subtract()">- 3</button>
-	<button onclick="double()">x 2</button>
-	<button onclick="clear()">Clear</button>
 
 	<!-- Lag tre knapper:
          "+5"       → øker telleren med 5
@@ -45,16 +39,26 @@
          "Doble"    → ganger telleren med 2
          "Nullstill" → setter telleren til 0 -->
 
+	<h1 id="teller">0</h1>
+
+	<button onclick="add()">+ 5</button>
+	<button onclick="subtract()">- 3</button>
+	<button onclick="double()">x 2</button>
+	<button onclick="clear()">Clear</button>
+
 	<script>
+
 		let antall = 0;
 
-		function update() {
+		function update(newNumber) {
+			document.getElementById("teller").innerHTML = newNumber
 
 		}
 
 
 		function add() {
-
+			antall += 5
+			update(antall)
 		}
 
 		function subtract() {
