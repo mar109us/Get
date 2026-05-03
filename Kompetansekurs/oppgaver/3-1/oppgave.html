@@ -21,12 +21,12 @@
 
 		body {
 			/* grid-template-columns: 1fr 1fr 1fr;
-			gap: 16px;*/
+			gap: 50px; */
 			justify-content: space-evenly;
 			/* align-items: center; */
 			font-family: monospace;
 			font-size: 18px;
-			padding: 32px;
+			/* padding: 32px; */
 			background: #001219;
 		}
 
@@ -77,6 +77,7 @@
 			/* padding: 8px; */
 			color: #9cb9c4;
 
+
 		}
 
 		.green-background {
@@ -92,9 +93,11 @@
 
 		#output {
 			display: flex;
+			flex-direction: row;
+			gap: 50px;
 			flex-wrap: wrap;
 			justify-content: space-evenly;
-			gap: 80px;
+			/* gap: 80px; */
 		}
 
 		.button {
@@ -134,6 +137,7 @@
 		<div onclick="lagSeksjon('tech')" class="button">Web-Teknologier</div>
 		<div onclick="lagSeksjon('programmering')" class="button">Programmering</div>
 	</div>
+	<br>
 	<div id="output"></div>
 
 
@@ -181,7 +185,7 @@
 			if (overskrift === "tech") {
 
 				return document.getElementById("output").innerHTML =
-					"<h2 style='text-align: center; width:100%; color: white;'>Web-teknologier</h2>" +
+					"<h2 style='font-size: 40px;text-align: center; width:100%; color: white;'>Web-teknologier</h2>" +
 
 					lagKort("HTML",
 						`HTML er selve oppsettet av en nettside,
@@ -256,15 +260,40 @@
 						"mild 🌶️") +
 
 					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+						`<p></p>
+						<p></p>`,
 
-						"somewhat spicy 🌶️ 🌶️")
+						"picante 🌶️ 🌶️ 🌶️")
 			}
 
 			if (overskrift === "programmering") {
 				return document.getElementById("output").innerHTML =
-					"<h2 style='text-align: center; width:100%; color: white;'>Web-teknologier</h2>" +
+					"<h2 style='font-size: 40px; text-align: center; width:100%; color: white;'>Programmering</h2>" +
+
+					lagKort("JavaScript",
+						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+
+						"somewhat spicy 🌶️ 🌶️") +
+
+					lagKort("JavaScript",
+						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+
+						"somewhat spicy 🌶️ 🌶️") +
+
+					lagKort("JavaScript",
+						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+
+						"somewhat spicy 🌶️ 🌶️") +
+
+					lagKort("JavaScript",
+						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
+						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+
+						"somewhat spicy 🌶️ 🌶️") +
+
 
 					lagKort("JavaScript",
 						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
@@ -285,7 +314,7 @@
 						"somewhat spicy 🌶️ 🌶️")
 			}
 		}
-
+		/* lagSeksjon() */
 
 
 		// STEG 4 (bonus):
