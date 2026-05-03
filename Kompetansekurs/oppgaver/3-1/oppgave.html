@@ -44,7 +44,7 @@
 			background-color: #005f73;
 
 			/* border: 20px solid  inset #ffffff; */
-			box-shadow: 0px 10px 50px 0px #ffffff28;
+			box-shadow: 0px 10px 25px 0px #ffffff28;
 			border-top-right-radius: 150px;
 			border-top-left-radius: 25px;
 		}
@@ -83,7 +83,7 @@
 		.green-background {
 			/* background-color: #0a9396; */
 			/* border-top: 7px solid #00121949; */
-			box-shadow: 0px -20px 50px 0px #005f73;
+			box-shadow: 0px -20px 30px 0px #005f73;
 		}
 
 		.red-background {
@@ -192,6 +192,7 @@
 						og brukes for å legge til elementer som for eksempel 
 
 						<br>
+						<br>
 
 						<button>
 						en knapp
@@ -245,23 +246,24 @@
 						`CSS brukes når HTML skal på selskap og må ta på seg dress og slips. <br>
 						Det er koden man bruker for å style HTML elementer. <br>
 						Man kan gjøre ting veldig fint med for eksemepel:
-						<li><span style="color: darkred;">Endre farge</span></li>
+						<li><span style="color: white;">Endre farge</span></li>
 						<li style="background-color: hotpink;">farge på bakgrunn</li>
 						<li style="background-image: linear-gradient(to right, orange, darkred);">Lage gradients</li>
 						<li><span style="font-family:times; font-size:30px;">og endre på font</span></li>
 						<br>
 						<li><span style="border: 2px solid black;">legge til borders</span></li>
 						<br>
-						<li><span style="box-shadow:0px 0px 10px hotpink">eller skygger</span></li>
+						<li><span style="box-shadow:0px 0px 15px 5px hotpink">eller skygger</span></li>
 						<br>
 						<li>og masse annet gøy!</li>
-						<div style=" padding: 10px; width: 120px; height: max-content; position: relative; top: -80px; left: 225px; box-shadow:0px 0px 30px 5px white">man kan også flytte containere within en annen om den er absolute og parent er relative</div>`,
+						<div style=" padding: 10px; width: 120px; height: max-content; position: absolute; top: 350px; left: 270px; box-shadow:0px 0px 10px 1px white">man kan også flytte containere within en annen om den er absolute og parent er relative</div>`,
 
-						"mild 🌶️") +
+						"a bit peppery 🌶️ 🌶️") +
 
 					lagKort("JavaScript",
-						`<p></p>
-						<p></p>`,
+						`<p>JavaScript er selve funksjonaliteten til en nettside, og det finnes omtrent ingen begrensninger på hva du kan oppnå.</p>
+						<p>Du kan også modifisere HTML og CSS med JS direkte, eller til og med lage helt nye elementer rett fra JS kode.</p>
+						<p>Du kan gjøre alt fra å lage grafikk, generere lyder, mattematiske utregninger, behandle data og til og med lage spill.</p>`,
 
 						"picante 🌶️ 🌶️ 🌶️")
 			}
@@ -270,51 +272,73 @@
 				return document.getElementById("output").innerHTML =
 					"<h2 style='font-size: 40px; text-align: center; width:100%; color: white;'>Programmering</h2>" +
 
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+					lagKort("Funksjoner",
+						`<p>Med funksjoner kan du lage gjenbrukbar kode, om du for eksempel har en blokk med kode du ønsker å gjenta flere ganger.</p>
+						<p>De kan kalles ved å bruke</p>
+						<p>function funksjonsNavn() {</p>
+						<p>- gjør noe her -</p>
+						<p>}</p>`,
+
+						"mild 🌶️") +
+
+					lagKort("Parameter",
+						`<p>Når du kaller en funksjon så kan du også sende data inne i parantesene. Parameterene inne i mottaker funksjonen er et semantiskt navn.</p>
+						<p>&lt;div onclick="funksjonsNavn(verdiEn, verdiTo)"></p>
+						<p>Om du klikker på div'en, kjør funksjonen den er rettet mot med disse verdiene som parameter</p>
+						<p>function funksjonsNavn(navn1, navn2) {</p>
+						<p>- gjør noe her -</p>
+						<p>}</p>
+						
+						`,
 
 						"somewhat spicy 🌶️ 🌶️") +
 
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+					lagKort("If / Else",
+						`<p>Dette er en måte å lage logikk i koden.</p>
+						<p>Du lager på en måte et lyskryss for koden, og om lyset er grønt, kjør framover.</p>
+						<p>if (1 == 0) {  // false - kjører ikke</p>
+						<p>}</p>
+						<p>else { // true - kjører</p>
+						<p>}</p>
+						`,
 
-						"somewhat spicy 🌶️ 🌶️") +
+						"mild 🌶️") +
 
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+					lagKort("Variabler",
+						`<p>Man kan sette veldig mye rart i en variabel</p>
+						<p>De vanligste måtene å sette en variabel på er med "let" eller "const"</p>
+						<p>let variabelEn = 5</p>
+						<p>const varaiabelTo = 10</p>
+						<p>En const er en konstant variable, så den kan ikke endres senere</p>
+						<p>en let variabel kan endres på senere</p>`,
 
-						"somewhat spicy 🌶️ 🌶️") +
-
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
-
-						"somewhat spicy 🌶️ 🌶️") +
+						"mild 🌶️") +
 
 
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
-
-						"somewhat spicy 🌶️ 🌶️") +
-
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
-
-						"somewhat spicy 🌶️ 🌶️") +
-
-					lagKort("JavaScript",
-						`<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>
-						<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut porro illo pariatur. Porro nulla magni obcaecati praesentium, reprehenderit assumenda quos error alias ea sequi dicta fugiat, impedit suscipit sed facilis!</p>`,
+					lagKort("Operatører",
+						`<p>Man har forskjellige måter å endre på data eller sammenligne data.</p>
+						<ul>
+							<li> + pluss
+							<li> - minus
+							<li> * gange
+							<li> / dele
+							<li> = er lik
+							<li> && foran OG bak
+							<li> || foran ELLER bak
+							<li> ! ikke - NOT
+							<li> != ikke er lik
+							<li> > større enn
+							<li> >= større enn eller er lik
+							<li> < mindre enn
+							<li> <= mindre enn eller er lik
+						</ul>
+						`,
 
 						"somewhat spicy 🌶️ 🌶️")
+
 			}
 		}
-		/* lagSeksjon() */
+		lagSeksjon()
 
 
 		// STEG 4 (bonus):
