@@ -44,7 +44,7 @@
 	<button onclick="add()">+ 5</button>
 	<button onclick="subtract()">- 3</button>
 	<button onclick="double()">x 2</button>
-	<button onclick="clear()">Clear</button>
+	<button onclick="clearNumber()">Clear</button>
 
 	<script>
 
@@ -62,15 +62,18 @@
 		}
 
 		function subtract() {
-
+			antall -= 3
+			update(antall)
 		}
 
 		function double() {
-
+			antall *= 2
+			update(antall)
 		}
 
-		function clear() {
-
+		function clearNumber() {
+			antall = 0
+			update(antall)
 		}
 
 		// Lag en funksjon oppdater() som viser antall i #teller
