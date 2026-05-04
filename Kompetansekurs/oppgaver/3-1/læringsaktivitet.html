@@ -39,23 +39,35 @@
 </style>
 
 <body>
-
+	<div id="buttons"></div>
 	<div id="output"></div>
 
 </body>
 
 <script>
 
+	let technologiesButton = makeButton("Teknologier", "technologies()")
+	let codingButton = makeButton("Programmering", "programming()")
+
+	function programming() {
+		makeCard("Funksjoner", "Funksjoner er en måte å skrive gjenbrukbar kode.")
+		makeCard("Variabler", "de vanligste måtene å sette en variabel er med 'let' eller 'const'. 'let' kan endres senere i koden mens 'const' kan ikke endres.")
+		makeCard("Parameter", "Parameter kan brukes for å sende verdier til en funksjon når du kaller funksjonen")
+	}
+
+	function technologies() {
+		makeCard("HTML", "HTML er strukturen til en nettside.")
+		makeCard("CSS", "CSS er stylingen til en nettside.")
+		makeCard("JavaScript", "JavaScript er hvordan man kan lage ekstra interaktivitet på en nettside.")
+	}
+
+	function makeButton(text, action) {
+		return document.getElementById("buttons").innerHTML += `<div class="card" onclick="${action}"><h1>${text}</h1></div>`
+	}
+
 	function makeCard(title, text) {
 		return document.getElementById("output").innerHTML += `<div class="card"><h1>${title}</h1> <p>${text}</p></div>`
 	}
-
-	let htmlCard = makeCard("HTML", "HTML er strukturen til en nettside.")
-	let cssCard = makeCard("CSS", "CSS er stylingen til en nettside.")
-	let jsCard = makeCard("JavaScript", "JavaScript er hvordan man kan lage ekstra interaktivitet på en nettside.")
-	let functionsCard = makeCard("Funksjoner", "Funksjoner er en måte å skrive gjenbrukbar kode.")
-	let variablesCard = makeCard("Variabler", "de vanligste måtene å sette en variabel er med 'let' eller 'const'. 'let' kan endres senere i koden mens 'const' kan ikke endres.")
-	let ParameterCard = makeCard("Parameter", "Parameter kan brukes for å sende verdier til en funksjon når du kaller funksjonen")
 
 </script>
 
