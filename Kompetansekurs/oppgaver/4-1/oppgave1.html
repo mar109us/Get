@@ -36,11 +36,19 @@
 			background: #555555;
 			/* background: linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) 50%, rgb(220, 90, 90) 50%, rgb(110, 1, 1) 100%); */
 			width: 100%;
+			padding: 20px;
 		}
 
-		#status-message {}
+		#status-message {
+			font-weight: bold;
+			font-size: 30px;
+		}
 
-		.vote-result {}
+		.vote-result {
+			font-size: 30px;
+			font-weight: bold;
+			justify-content: space-between;
+		}
 
 		/* Lag CSS som gjør siden presentabel.
            Du trenger minst:
@@ -69,11 +77,11 @@
 
 		<!-- Lag et element som viser: "For: X | Mot: Y" -->
 		<div class="result-bar-style" id="change-result-bar">
-			<div class="container" id="current-votes"></div>
+			<div class="container vote-result" id="current-votes"></div>
 		</div>
 
 		<!-- Lag et element som viser en statusmelding, f.eks. "Det er flertall for!" -->
-		<div class="container" id="current-result"></div>
+		<div class="container" id="status-message"></div>
 	</div>
 
 
@@ -86,7 +94,7 @@
 		let vote = 0
 		let voteAgainst = 0
 		let totalVotes = 0
-		let votePercent = 0
+		let votePercent = 50
 
 
 
@@ -102,30 +110,25 @@
 
 			const changeCurrentVotes = document.getElementById("current-votes")
 
-			changeCurrentVotes.innerHTML = `<h2>For: ${vote} | Against: ${voteAgainst}</h2>`
+			changeCurrentVotes.innerHTML = `<div>For ${vote}</div> <div>${voteAgainst} Against</div>`
 
-			const changeCurrentResult = document.getElementById("current-result")
+			const changeCurrentResult = document.getElementById("status-message")
 
 			const changeVisualVote = document.getElementById("change-result-bar")
 
 			changeVisualVote.style = ` background-image: linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) ${votePercent}%, rgb(220, 90, 90) ${votePercent}%, rgb(110, 1, 1) 100%);`
 
-			console.log(changeVisualVote.style.background)
-			/* background: linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) 50%, rgb(220, 90, 90) 50%, rgb(110, 1, 1) 100%); */
-
-
-
 			if (vote > voteAgainst) {
-				changeCurrentResult.innerHTML = "<h2>Majority voted for</h2>"
+				changeCurrentResult.innerHTML = "Majority voted for"
 			}
 			if (voteAgainst > vote) {
-				changeCurrentResult.innerHTML = "<h2>Majority voted against</h2>"
+				changeCurrentResult.innerHTML = "Majority voted against"
 			}
 			if (voteAgainst === vote) {
-				changeCurrentResult.innerHTML = "<h2>Tied vote</h2>"
+				changeCurrentResult.innerHTML = "Tied vote"
 			}
 			if (vote === 0 && voteAgainst === 0) {
-				changeCurrentResult.innerHTML = "<h2>No votes yet</h2>"
+				changeCurrentResult.innerHTML = "No votes yet"
 			}
 		}
 
