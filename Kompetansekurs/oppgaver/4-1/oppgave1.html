@@ -12,6 +12,8 @@
 
 			background-color: #75828f;
 
+			user-select: none;
+
 		}
 
 		.container {
@@ -28,6 +30,12 @@
 			padding-right: 20px;
 
 			background-color: beige;
+		}
+
+		.result-bar-style {
+			background: #555555;
+			/* background: linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) 50%, rgb(220, 90, 90) 50%, rgb(110, 1, 1) 100%); */
+			width: 100%;
 		}
 
 		#status-message {}
@@ -49,38 +57,36 @@
 	<!-- Legg til to knapper: "For" og "Mot" -->
 	<!-- Og en "Nullstill"-knapp -->
 	<div class="container">
-		<div class="button">
+		<div onclick="buttonVote()" class="button">
 			<h2>Vote</h2>
 		</div>
-		<div class="button">
+		<div onclick="buttonVoteAgainst()" class="button">
 			<h2>Vote Against</h2>
 		</div>
-		<div class="button">
+		<div onclick="buttonClear()" class="button">
 			<h2>Clear</h2>
 		</div>
+
+		<!-- Lag et element som viser: "For: X | Mot: Y" -->
+		<div class="result-bar-style" id="change-result-bar">
+			<div class="container" id="current-votes"></div>
+		</div>
+
+		<!-- Lag et element som viser en statusmelding, f.eks. "Det er flertall for!" -->
+		<div class="container" id="current-result"></div>
 	</div>
 
-	<!-- Lag et element som viser: "For: X | Mot: Y" -->
-	<div class="container" id="current-votes">
-		<h2>For: X | Mot: Y</h2>
-	</div>
-
-	<div class="container" id="current-result">
-		<h2>result</h2>
-	</div>
-
-	<!-- Lag et element som viser en statusmelding, f.eks. "Det er flertall for!" -->
 
 	<script>
-
-		let vote = 0
-		let voteAgainst = 0
-
 		// OPPGAVE: Bygg stemmetelleren i MVC-stil
 
 		// ---- MODEL ----
 		// Lag to variabler: stemmerFor og stemmerMot
 		// Begge starter på 0
+		let vote = 0
+		let voteAgainst = 0
+
+
 
 		// ---- VIEW ----
 		// Lag en funksjon render() som:
@@ -90,6 +96,36 @@
 		//    - "Det er flertall mot!" hvis stemmerMot > stemmerFor
 		//    - "Det er uavgjort!" hvis de er like
 		// render() skal ALDRI endre model — bare lese fra den
+		function render() {
+
+			const changeCurrentVotes = document.getElementById("current-votes")
+
+			changeCurrentVotes.innerHTML = `<h2>For: ${vote} | Against: ${voteAgainst}</h2>`
+
+			const changeCurrentResult = document.getElementById("current-result")
+
+			const changeVisualVote = document.getElementById("change-result-bar")
+
+			changeVisualVote.style.background = `linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) 50%, rgb(220, 90, 90) 50%, rgb(110, 1, 1) 100%);`
+
+			console.log(changeVisualVote.style.background)
+			/* background: linear-gradient(to right, rgb(39, 110, 0) 0%, rgb(155, 221, 120) 50%, rgb(220, 90, 90) 50%, rgb(110, 1, 1) 100%); */
+
+
+
+			if (vote > voteAgainst) {
+				changeCurrentResult.innerHTML = "<h2>Majority voted for</h2>"
+			}
+			if (voteAgainst > vote) {
+				changeCurrentResult.innerHTML = "<h2>Majority voted against</h2>"
+			}
+			if (voteAgainst === vote) {
+				changeCurrentResult.innerHTML = "<h2>Tied vote</h2>"
+			}
+			if (vote === 0 && voteAgainst === 0) {
+				changeCurrentResult.innerHTML = "<h2>No votes yet</h2>"
+			}
+		}
 
 		// ---- CONTROLLER ----
 		// Lag tre funksjoner: stemmFor(), stemmMot(), nullstill()
@@ -98,7 +134,29 @@
 		// 2. Kalle render()
 		// Controller-funksjoner skal ALDRI endre HTML direkte
 
+
+		function buttonVote() {
+			vote += 1
+			render()
+		}
+
+		function buttonVoteAgainst() {
+			voteAgainst += 1
+			render()
+		}
+
+		function buttonClear() {
+			vote = 0
+			voteAgainst = 0
+			render()
+		}
 		// Kall render() én gang nederst slik at siden vises korrekt ved oppstart
+		render()
+
+
+
+
+
 	</script>
 </body>
 
