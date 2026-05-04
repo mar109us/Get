@@ -47,6 +47,7 @@
 		.vote-result {
 			font-size: 30px;
 			font-weight: bold;
+
 			justify-content: space-between;
 		}
 
@@ -110,7 +111,7 @@
 
 			const changeCurrentVotes = document.getElementById("current-votes")
 
-			changeCurrentVotes.innerHTML = `<div>For ${vote}</div> <div>${voteAgainst} Against</div>`
+			changeCurrentVotes.innerHTML = `<div>For ${vote}</div> <div>${votePercent}%</div> <div>${voteAgainst} Against</div>`
 
 			const changeCurrentResult = document.getElementById("status-message")
 
@@ -162,7 +163,7 @@
 		function votesToPercent() {
 			totalVotes = vote + voteAgainst
 			console.log(totalVotes)
-			votePercent = vote / totalVotes * 100
+			votePercent = Math.round(vote / totalVotes * 100)
 			console.log(votePercent)
 		}
 
