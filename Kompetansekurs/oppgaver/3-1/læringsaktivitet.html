@@ -29,6 +29,14 @@
 		gap: 10px;
 	}
 
+	#buttons {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 10px;
+	}
+
 	.card {
 		width: 25%;
 		min-width: 300px;
@@ -46,28 +54,41 @@
 
 <script>
 
-	let technologiesButton = makeButton("Teknologier", "technologies()")
-	let codingButton = makeButton("Programmering", "programming()")
+	let cardElement = document.getElementById("output")
 
-	function programming() {
-		makeCard("Funksjoner", "Funksjoner er en måte å skrive gjenbrukbar kode.")
-		makeCard("Variabler", "de vanligste måtene å sette en variabel er med 'let' eller 'const'. 'let' kan endres senere i koden mens 'const' kan ikke endres.")
-		makeCard("Parameter", "Parameter kan brukes for å sende verdier til en funksjon når du kaller funksjonen")
-	}
-
-	function technologies() {
-		makeCard("HTML", "HTML er strukturen til en nettside.")
-		makeCard("CSS", "CSS er stylingen til en nettside.")
-		makeCard("JavaScript", "JavaScript er hvordan man kan lage ekstra interaktivitet på en nettside.")
-	}
+	let technologiesButton = makeButton("Teknologier", "tech()")
+	let codingButton = makeButton("Programmering", "code()")
 
 	function makeButton(text, action) {
-		return document.getElementById("buttons").innerHTML += `<div class="card" onclick="${action}"><h1>${text}</h1></div>`
+		return `<div class="card" onclick="${action}"><h1>${text}</h1></div>`
 	}
 
-	function makeCard(title, text) {
-		return document.getElementById("output").innerHTML += `<div class="card"><h1>${title}</h1> <p>${text}</p></div>`
+	function tech() {
+		cardElement.innerHTML = ""
+		return makeCard("HTML", "HTML er strukturen til en nettside.") +
+			makeCard("CSS", "CSS er stylingen til en nettside.") +
+			makeCard("JavaScript", "JavaScript er hvordan man kan lage ekstra interaktivitet på en nettside.")
 	}
+
+	function code() {
+		cardElement.innerHTML = ""
+		return makeCard("Funksjoner", "Funksjoner er en måte å skrive gjenbrukbar kode.") +
+			makeCard("Variabler", "de vanligste måtene å sette en variabel er med 'let' eller 'const'. 'let' kan endres senere i koden mens 'const' kan ikke endres.") +
+			makeCard("Parameter", "Parameter kan brukes for å sende verdier til en funksjon når du kaller funksjonen")
+	}
+
+	document.getElementById("buttons").innerHTML = `${technologiesButton} ${codingButton}`
+
+
+
+	function makeCard(title, text) {
+
+		cardElement.innerHTML += `<div class="card"><h1>${title}</h1> <p>${text}</p></div>`
+
+
+	}
+
+
 
 </script>
 
