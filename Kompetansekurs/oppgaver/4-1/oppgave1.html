@@ -8,9 +8,31 @@
 		body {
 			font-family: Arial, sans-serif;
 			padding: 32px;
-			background: #f0f4f8;
 			max-width: 500px;
+
+			background-color: #75828f;
+
 		}
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-evenly;
+			gap: 10px 10px;
+
+		}
+
+		.button {
+			padding-left: 20px;
+			padding-right: 20px;
+
+			background-color: beige;
+		}
+
+		#status-message {}
+
+		.vote-result {}
 
 		/* Lag CSS som gjør siden presentabel.
            Du trenger minst:
@@ -26,11 +48,34 @@
 
 	<!-- Legg til to knapper: "For" og "Mot" -->
 	<!-- Og en "Nullstill"-knapp -->
+	<div class="container">
+		<div class="button">
+			<h2>Vote</h2>
+		</div>
+		<div class="button">
+			<h2>Vote Against</h2>
+		</div>
+		<div class="button">
+			<h2>Clear</h2>
+		</div>
+	</div>
 
 	<!-- Lag et element som viser: "For: X | Mot: Y" -->
+	<div class="container" id="current-votes">
+		<h2>For: X | Mot: Y</h2>
+	</div>
+
+	<div class="container" id="current-result">
+		<h2>result</h2>
+	</div>
+
 	<!-- Lag et element som viser en statusmelding, f.eks. "Det er flertall for!" -->
 
 	<script>
+
+		let vote = 0
+		let voteAgainst = 0
+
 		// OPPGAVE: Bygg stemmetelleren i MVC-stil
 
 		// ---- MODEL ----
