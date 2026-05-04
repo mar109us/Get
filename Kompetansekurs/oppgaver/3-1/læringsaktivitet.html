@@ -9,10 +9,6 @@
 
 <style>
 	body {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-
 		background-color: rgb(79, 90, 100);
 		font-family: monospace;
 	}
@@ -25,7 +21,16 @@
 		font-size: 1.5em;
 	}
 
+	#output {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 10px;
+	}
+
 	.card {
+		max-width: 300px;
 		padding: 20px;
 		margin: 10px;
 		background-color: bisque;
@@ -33,18 +38,16 @@
 </style>
 
 <body>
+
 	<div id="output"></div>
+
 </body>
 
 <script>
 
-	let cardSetup = ``
-
 	function makeCard(title, text) {
 		return document.getElementById("output").innerHTML += `<div class="card"><h1>${title}</h1> <p>${text}</p></div>`
 	}
-
-
 
 	let htmlCard = makeCard("HTML", "HTML er strukturen til en nettside")
 	let cssCard = makeCard("CSS", "CSS er stylingen til en nettside")
