@@ -134,7 +134,8 @@
 
 			<div class="spill-content">
 				<button onclick="gameBody('previous')">◀</button>
-				<img src="https://getacademy.github.io/Eksempel1/img/body1.png" width="212px" height="135px"></img>
+				<img id="body-image" src="https://getacademy.github.io/Eksempel1/img/body1.png" width="212px"
+					height="135px"></img>
 				<button onclick="gameBody('next')">▶</button>
 			</div>
 
@@ -154,7 +155,7 @@
 
 		<!-- linker for bilder til spill -->
 
-		https://getacademy.github.io/Eksempel1/img/head1.png
+		<!-- 		https://getacademy.github.io/Eksempel1/img/head1.png
 		https://getacademy.github.io/Eksempel1/img/head2.png
 		https://getacademy.github.io/Eksempel1/img/head3.png
 		https://getacademy.github.io/Eksempel1/img/head4.png
@@ -167,7 +168,7 @@
 		https://getacademy.github.io/Eksempel1/img/legs1.png
 		https://getacademy.github.io/Eksempel1/img/legs2.png
 		https://getacademy.github.io/Eksempel1/img/legs3.png
-		https://getacademy.github.io/Eksempel1/img/legs4.png
+		https://getacademy.github.io/Eksempel1/img/legs4.png -->
 
 		<script>
 
@@ -190,9 +191,9 @@
  				</p>`
 
 
-				/* 			return document.getElementById("change-content-html").innerHTML = "",
-								document.getElementById("change-content-css").innerHTML = "",
-								document.getElementById("change-content-javascript").innerHTML = ""; */
+				return document.getElementById("change-content-html").innerHTML = "",
+					document.getElementById("change-content-css").innerHTML = "",
+					document.getElementById("change-content-javascript").innerHTML = "";
 			}
 
 			/* funksjon for html kort */
@@ -210,9 +211,9 @@
 					<li><a href="https://www.w3schools.com/tags/default.asp">W3Schools HTML Reference</a></li>
 					</ul>
 				</p>`
-				/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
-								document.getElementById("change-content-css").innerHTML = "",
-								document.getElementById("change-content-javascript").innerHTML = ""; */
+				return document.getElementById("change-content-verktøy").innerHTML = "",
+					document.getElementById("change-content-css").innerHTML = "",
+					document.getElementById("change-content-javascript").innerHTML = "";
 			}
 
 			/* funksjon for css kort */
@@ -235,9 +236,9 @@
 				</ul>
 				`
 
-				/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
-								document.getElementById("change-content-html").innerHTML = "",
-								document.getElementById("change-content-javascript").innerHTML = ""; */
+				return document.getElementById("change-content-verktøy").innerHTML = "",
+					document.getElementById("change-content-html").innerHTML = "",
+					document.getElementById("change-content-javascript").innerHTML = "";
 			}
 
 			/* funksjon for js kort */
@@ -252,9 +253,9 @@
 					</ul>
 				`
 
-				/* 			return document.getElementById("change-content-verktøy").innerHTML = "",
-								document.getElementById("change-content-html").innerHTML = "",
-								document.getElementById("change-content-css").innerHTML = ""; */
+				return document.getElementById("change-content-verktøy").innerHTML = "",
+					document.getElementById("change-content-html").innerHTML = "",
+					document.getElementById("change-content-css").innerHTML = "";
 			}
 
 			/* funksjon for spill kort */
@@ -266,9 +267,9 @@
 			}
 			paragraphGame()
 
-			
 
-			
+
+
 			let currentShownImage = 1;
 			function gameHead(action) {
 
@@ -311,12 +312,39 @@
 					document.getElementById("head-image").src = "https://getacademy.github.io/Eksempel1/img/head4.png"
 				}
 
-				/* 		
-						
-						
-						 */
+			}
 
+			let currentShownImageBody = 1;
+			function gameBody(action) {
 
+				if (action == "previous") {
+					if (currentShownImageBody === 1) {
+						currentShownImageBody = 4
+					} else {
+						currentShownImageBody -= 1
+					}
+				}
+
+				if (action == "next") {
+					if (currentShownImageBody === 4) {
+						currentShownImageBody = 1
+					} else {
+						currentShownImageBody += 1
+					}
+				}
+
+				if (currentShownImageBody === 1) {
+					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body1.png"
+				}
+				if (currentShownImageBody === 2) {
+					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body2.png"
+				}
+				if (currentShownImageBody === 3) {
+					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body3.png"
+				}
+				if (currentShownImageBody === 4) {
+					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body4.png"
+				}
 			}
 
 
