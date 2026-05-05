@@ -152,24 +152,6 @@
 
 		</div>
 
-
-		<!-- linker for bilder til spill -->
-
-		<!-- https://getacademy.github.io/Eksempel1/img/head1.png
-		https://getacademy.github.io/Eksempel1/img/head2.png
-		https://getacademy.github.io/Eksempel1/img/head3.png
-		https://getacademy.github.io/Eksempel1/img/head4.png
-
-		https://getacademy.github.io/Eksempel1/img/body1.png
-		https://getacademy.github.io/Eksempel1/img/body2.png
-		https://getacademy.github.io/Eksempel1/img/body3.png
-		https://getacademy.github.io/Eksempel1/img/body4.png
-
-		https://getacademy.github.io/Eksempel1/img/legs1.png
-		https://getacademy.github.io/Eksempel1/img/legs2.png
-		https://getacademy.github.io/Eksempel1/img/legs3.png
-		https://getacademy.github.io/Eksempel1/img/legs4.png -->
-
 		<script>
 
 			/* funksjon for verktøy kort */
@@ -191,7 +173,7 @@
  				</p>`
 
 
-				return document.getElementById("change-content-html").innerHTML = "",
+				document.getElementById("change-content-html").innerHTML = "",
 					document.getElementById("change-content-css").innerHTML = "",
 					document.getElementById("change-content-javascript").innerHTML = "";
 			}
@@ -211,7 +193,7 @@
 					<li><a href="https://www.w3schools.com/tags/default.asp">W3Schools HTML Reference</a></li>
 					</ul>
 				</p>`
-				return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-verktøy").innerHTML = "",
 					document.getElementById("change-content-css").innerHTML = "",
 					document.getElementById("change-content-javascript").innerHTML = "";
 			}
@@ -236,7 +218,7 @@
 				</ul>
 				`
 
-				return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-verktøy").innerHTML = "",
 					document.getElementById("change-content-html").innerHTML = "",
 					document.getElementById("change-content-javascript").innerHTML = "";
 			}
@@ -253,19 +235,11 @@
 					</ul>
 				`
 
-				return document.getElementById("change-content-verktøy").innerHTML = "",
+				document.getElementById("change-content-verktøy").innerHTML = "",
 					document.getElementById("change-content-html").innerHTML = "",
 					document.getElementById("change-content-css").innerHTML = "";
 			}
 
-
-dette tenkte jeg å gjøre
-
-hvordan skal koden jeg vil lage fungere fra A til å
-step by step
-
-
-			
 			/* funksjoner for spill kort */
 			let currentShownImage = 1;
 			function gameHead(action) {
@@ -309,7 +283,7 @@ step by step
 			}
 
 			let currentShownImageBody = 1;
-			function gameBody(action) {
+			function gameBody(action,) {
 
 				if (action == "previous") {
 					if (currentShownImageBody === 1) {
@@ -327,20 +301,10 @@ step by step
 					}
 				}
 
-				let bodyImage = document.getElementById("body-image").src
+				const bodyImage = document.getElementById("body-image")
+				let bodyImageLink = "https://getacademy.github.io/Eksempel1/img/body" + currentShownImageBody + ".png"
+				let linkToImage = bodyImage.src = bodyImageLink
 
-				if (currentShownImageBody === 1) {
-					bodyImage = "https://getacademy.github.io/Eksempel1/img/body1.png"
-				}
-				if (currentShownImageBody === 2) {
-					bodyImage = "https://getacademy.github.io/Eksempel1/img/body2.png"
-				}
-				if (currentShownImageBody === 3) {
-					bodyImage = "https://getacademy.github.io/Eksempel1/img/body3.png"
-				}
-				if (currentShownImageBody === 4) {
-					bodyImage = "https://getacademy.github.io/Eksempel1/img/body4.png"
-				}
 			}
 
 
@@ -386,12 +350,6 @@ step by step
 			function legs() {
 				if (document.getElementById("change-content-game-legs")) { }
 			}
-
-			/* 			if ( ) {
-			
-							} 
-			*/
-
 
 		</script>
 
