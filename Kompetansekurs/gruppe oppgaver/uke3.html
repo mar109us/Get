@@ -155,7 +155,7 @@
 
 		<!-- linker for bilder til spill -->
 
-		<!-- 		https://getacademy.github.io/Eksempel1/img/head1.png
+		<!-- https://getacademy.github.io/Eksempel1/img/head1.png
 		https://getacademy.github.io/Eksempel1/img/head2.png
 		https://getacademy.github.io/Eksempel1/img/head3.png
 		https://getacademy.github.io/Eksempel1/img/head4.png
@@ -258,6 +258,14 @@
 					document.getElementById("change-content-css").innerHTML = "";
 			}
 
+
+dette tenkte jeg å gjøre
+
+hvordan skal koden jeg vil lage fungere fra A til å
+step by step
+
+
+			
 			/* funksjoner for spill kort */
 			let currentShownImage = 1;
 			function gameHead(action) {
@@ -319,17 +327,19 @@
 					}
 				}
 
+				let bodyImage = document.getElementById("body-image").src
+
 				if (currentShownImageBody === 1) {
-					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body1.png"
+					bodyImage = "https://getacademy.github.io/Eksempel1/img/body1.png"
 				}
 				if (currentShownImageBody === 2) {
-					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body2.png"
+					bodyImage = "https://getacademy.github.io/Eksempel1/img/body2.png"
 				}
 				if (currentShownImageBody === 3) {
-					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body3.png"
+					bodyImage = "https://getacademy.github.io/Eksempel1/img/body3.png"
 				}
 				if (currentShownImageBody === 4) {
-					document.getElementById("body-image").src = "https://getacademy.github.io/Eksempel1/img/body4.png"
+					bodyImage = "https://getacademy.github.io/Eksempel1/img/body4.png"
 				}
 			}
 
