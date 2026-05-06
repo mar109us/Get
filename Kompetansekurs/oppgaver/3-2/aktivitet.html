@@ -70,12 +70,11 @@
 		<h1>Age</h1>
 	</div>
 
+	<!-- <form class="container"> -->
 	<div class="container">
-		<input oninput="checkName()" id="name-input" type="text" placeholder="enter name">
-		<input oninput="checkAge()" id="age-input" type="text" placeholder="enter age">
+		<input oninput="changeName()" id="name-input" type="text" placeholder="enter name"></form>
+		<input oninput="changeAge()" id="age-input" type="text" placeholder="enter age"></form>
 	</div>
-
-
 
 	<div class="text-container">
 		<h4>Must contain 8 letters, 1 special character, and divided by 4</h4>
@@ -95,13 +94,24 @@
 		<input oninput="checkIsHuman()" id="is-human-input" type="text" placeholder="i am human">
 	</div>
 
+	<div class="text-container">
+		<h2 id="is-human-output">Output</h2>
+	</div>
 
 	<script>
+
+
+
+		/* console.log("%c" + "test", "font-size:30px; font-weight:bold; background:#706060; color:#051120; padding:10px; border-radius:10px;") */
 
 		//model
 		const linkNameInput = document.getElementById("name-input")
 		const linkAgeInput = document.getElementById("age-input")
 		const linkIsHumanInput = document.getElementById("is-human-input")
+
+		let linkNameOutput = document.getElementById("name-output")
+		let linkAgeOutput = document.getElementById("age-output")
+		let linkIsHumanOutput = document.getElementById("is-human-output")
 
 		//view
 		function checkName() {
@@ -116,10 +126,42 @@
 			console.log(linkIsHumanInput.value)
 		}
 
-
 		//controller
 
-		const linkToAgeInput = document.getElementById("age-output")
+
+		function consoleFunctionStyle(functionName) {
+			return console.log("%c" + `${functionName}`)
+		}
+
+		function changeName() {
+			console.group(consoleFunctionStyle("changeName()"))
+
+
+
+			if (linkNameInput.value.length < 11) {
+				console.log(
+					"%c" + linkNameInput.value.length,
+					"font-size:50px; background:#F9F9F9; color:#581845; padding:10px; border-radius:10px;"
+				);
+			}
+
+			if (linkNameInput.value.length >= 11) {
+				/* linkNameOutput.innerHTML = linkNameInput.value */
+				console.log("PASS: name length", linkNameInput.value.length)
+			}
+
+			console.groupEnd("called changeName()", "font-size:30px; font-weight:bold; background:#706060; color:#051120; padding:10px; border-radius:10px;")
+
+
+		}
+
+		function changeAge() {
+			console.log(linkAgeInput.value)
+		}
+
+		function changeIsHuman() {
+			console.log(linkIsHumanInput.value)
+		}
 
 
 	</script>
