@@ -71,8 +71,8 @@
 	</div>
 
 	<div class="container">
-		<input type="text" placeholder="enter name">
-		<input type="text" placeholder="enter age">
+		<input oninput="checkName()" id="name-input" type="text" placeholder="enter name">
+		<input id="age-input" type="text" placeholder="enter age">
 	</div>
 
 
@@ -96,7 +96,28 @@
 	</div>
 
 
+	<script>
 
+		//model
+		const linkToNameInput = document.getElementById("name-input")
+
+		function checkName() {
+
+			console.log(linkToNameInput.value)
+
+		}
+
+
+		//view
+
+
+
+		//controller
+
+		const linkToAgeInput = document.getElementById("age-output")
+
+
+	</script>
 
 	<!-- 
 Lag et enkelt skjema med:
