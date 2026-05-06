@@ -72,7 +72,7 @@
 
 	<div class="container">
 		<input oninput="checkName()" id="name-input" type="text" placeholder="enter name">
-		<input id="age-input" type="text" placeholder="enter age">
+		<input oninput="checkAge()" id="age-input" type="text" placeholder="enter age">
 	</div>
 
 
@@ -92,24 +92,29 @@
 	</div>
 
 	<div class="container">
-		<input type="text" placeholder="i am human">
+		<input oninput="checkIsHuman()" id="is-human-input" type="text" placeholder="i am human">
 	</div>
 
 
 	<script>
 
 		//model
-		const linkToNameInput = document.getElementById("name-input")
-
-		function checkName() {
-
-			console.log(linkToNameInput.value)
-
-		}
-
+		const linkNameInput = document.getElementById("name-input")
+		const linkAgeInput = document.getElementById("age-input")
+		const linkIsHumanInput = document.getElementById("is-human-input")
 
 		//view
+		function checkName() {
+			console.log(linkNameInput.value)
+		}
 
+		function checkAge() {
+			console.log(linkAgeInput.value)
+		}
+
+		function checkIsHuman() {
+			console.log(linkIsHumanInput.value)
+		}
 
 
 		//controller
