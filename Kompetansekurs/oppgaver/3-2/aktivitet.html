@@ -166,15 +166,26 @@
 			var1: "test",
 			var2: "yes"
 		}
+		consoleStyleVariable = "background:#3c3836; color:#8ec07c; padding:4px;"
+		consoleStyleData = "background:#3c3836; color:white; padding:4px;"
+		consoleStyleGroup = "background:#3c3836; color:#fabd2f; padding:4px;"
 
 
-		console.log(`%c${Object.entries(variables)} %c10345`, "color:#275F96;", "color:white;")
+		console.group("%cvariables", `${consoleStyleGroup}`)
+		for (const [key, value] of Object.entries(variables)) {
 
-		console.group("%cfunction %cfunctionName%c()", "color:gold;", "color:#2233dd;", "color:gold;")
-		console.log("%cFAILED %cdata", "color:red;", "color:white;")
-		console.log("%cPASSED %cdata", "color:green;", "color:white;")
-		console.log("%cvariableName %c10345", "color:#275F96;", "color:white;")
-		console.log("%cvariableName %c36662115", "color:#275F96;", "color:white;")
+			console.log(`%c${key}: %c${value}`, `${consoleStyleVariable}`, `${consoleStyleData}`)
+		}
+		console.groupEnd()
+
+
+		/* console.log(`%c${Object.keys.foreach(variables)} %c10345`, "color:#275F96;", "color:white;") */
+
+		console.group("%cfunctionName()", "background:#3c3836; color:#fabd2f; padding:4px;")
+		console.log("%cFAILED %cdata", "background:#3c3836; color:#fb4934; padding:4px;", "background:#3c3836; color:white; padding:4px;")
+		console.log("%cPASSED %cdata", "background:#3c3836; color:#b8bb26; padding:4px;", "background:#3c3836; color:white; padding:4px;")
+		console.log("%cvariableName %c10345", "background:#3c3836; color:#8ec07c; padding:4px;", "background:#3c3836; color:white; padding:4px;")
+		console.log("%cvariableName %c36662115", "background:#3c3836; color:#8ec07c; padding:4px;", "background:#3c3836; color:white; padding:4px;")
 		console.groupEnd()
 
 
