@@ -126,38 +126,87 @@
 			console.log(linkIsHumanInput.value)
 		}
 
+
+
+
+
+
+
+
+
+
+
+
 		//controller
+
+
 		function logStart(functionName, style) {
 			return console.group("%c" + `${functionName}`, logStyle(style))
 		}
 
-		function logStyle() {
-			return "font-size:20px; font-weight:bold; background:#eeeeee; color:#2266bb; padding:10px; border-radius:10px;"
+
+
+		function logContent(isActive, content, data) {
+
+			console.log("%c" + content + data, logStyle(isActive))
+		}
+
+		function logStyle(type) {
+
+			if (type === "function") {
+				return `font: 1.6em "arial"; background:#96275F; color:#ffffff; padding:10px;`
+			}
+
+			if (type === false) {
+				return `font: 1.2em "arial"; background:#962727; color:#ffffff; padding:10px`
+			}
+
+			if (type === true) {
+				return `font: 1.2em "arial"; background:#27965F; color:#ffffff; padding:10px`
+			}
+
+			if (type === "yellow") {
+				return `font: 1.2em "arial"; background:#965F27; color:#ffffff; padding:10px`
+			}
+
+			if (type === "blue") {
+				return `font: 1.2em "arial"; background:#275F96; color:#ffffff; padding:10px`
+			}
+
+
 		}
 
 
 
-		function logContent() {
-
-		}
-
-		logStart("change\nName()")
 		function changeName() {
-			logStart("changeName()")
+			logStart("changeName()", "function")
 
 			if (linkNameInput.value.length < 11) {
-				console.log(linkNameInput.value.length);
+				logContent(false, "name length: ", linkNameInput.value.length)
 			}
 
 			if (linkNameInput.value.length >= 11) {
 				/* linkNameOutput.innerHTML = linkNameInput.value */
-				console.log("PASS: name length", linkNameInput.value.length)
+				logContent(true, "name length: ", linkNameInput.value.length)
 			}
 
 			console.groupEnd()
-
-
 		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		function changeAge() {
 			console.log(linkAgeInput.value)
