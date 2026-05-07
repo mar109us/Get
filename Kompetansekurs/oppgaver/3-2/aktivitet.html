@@ -127,22 +127,26 @@
 		}
 
 		//controller
-
-
-		function consoleFunctionStyle(functionName) {
-			return console.log("%c" + `${functionName}`)
+		function logStart(functionName, style) {
+			return console.group("%c" + `${functionName}`, logStyle(style))
 		}
 
+		function logStyle() {
+			return "font-size:20px; font-weight:bold; background:#eeeeee; color:#2266bb; padding:10px; border-radius:10px;"
+		}
+
+
+
+		function logContent() {
+
+		}
+
+		logStart("change\nName()")
 		function changeName() {
-			console.group(consoleFunctionStyle("changeName()"))
-
-
+			logStart("changeName()")
 
 			if (linkNameInput.value.length < 11) {
-				console.log(
-					"%c" + linkNameInput.value.length,
-					"font-size:50px; background:#F9F9F9; color:#581845; padding:10px; border-radius:10px;"
-				);
+				console.log(linkNameInput.value.length);
 			}
 
 			if (linkNameInput.value.length >= 11) {
@@ -150,7 +154,7 @@
 				console.log("PASS: name length", linkNameInput.value.length)
 			}
 
-			console.groupEnd("called changeName()", "font-size:30px; font-weight:bold; background:#706060; color:#051120; padding:10px; border-radius:10px;")
+			console.groupEnd()
 
 
 		}
