@@ -25,14 +25,24 @@
 
 	}
 
-	.container {
+	.container-one-items {
+		display: grid;
+		grid-template-columns: 100px;
+		grid-template-rows: 100px;
+		gap: 2px;
+		justify-content: center;
+		margin: 10px;
+	}
+
+	.container-two-items {
 		display: grid;
 		grid-template-columns: repeat(2, 100px);
 		grid-template-rows: 100px;
 		gap: 2px;
 		justify-content: center;
-		
-		
+		margin: 10px;
+
+
 	}
 
 	.item {
@@ -40,18 +50,19 @@
 		height: 100px;
 		width: 100px;
 	}
-
-
 </style>
 
 <body>
+	<div class="container-one-items">
+		<div class="item"> </div>
+	</div>
 
-<div class="container">
-	<div class="item"> </div>
-	<div class="item"> </div>
-	<div class="item"> </div>
-	<div class="item"> </div>
-</div>
+	<div class="container-two-items">
+		<div class="item"> </div>
+		<div class="item"> </div>
+		<div class="item"> </div>
+		<div class="item"> </div>
+	</div>
 
 </body>
 
@@ -61,7 +72,7 @@
 
 lag spill som går på tid
 
-selected = gul
+to click = gul
 unselected = grå
 
 CSS grid 2x2
@@ -69,24 +80,14 @@ CSS grid 2x2
 funksjon som lager HTML med parameter selectedIndex
 
 funksjon selectedIndex
-hent 1 value fra getRandomNumber for compare
+hent 1 value fra getRandomNumber for å velge 1 av de 4 rutene
 
 funksjon getRandomNumber
-array med 4 random values
+array for de 4 rutene
 clone 1 value som korrekt value og sjekk om riktig tall er valgt.
-init ny array
+init nytt random nummer for å velge ny aktiv rute
 
 ta tid på hvor lang tid til completion
 bruk global
 new Date().getTime()
-difference / 1000 = sekunde
-
-
-
-neutral_red    = #cc241d
-neutral_green  = #98971a
-neutral_yellow = #d79921
-neutral_blue   = #458588
-neutral_purple = #b16286
-neutral_aqua   = #689d6a
-neutral_orange = #d65d0e
+difference / 1000 = sekunder
