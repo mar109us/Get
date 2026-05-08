@@ -22,21 +22,36 @@
 
 	body {
 		background-color: var(--background);
+
 	}
 
-	div {
-		background-color: var(--gray);
-		height: 200px;
-		width: 200px;
+	.container {
+		display: grid;
+		grid-template-columns: repeat(2, 100px);
+		grid-template-rows: 100px;
+		gap: 2px;
+		justify-content: center;
+		
+		
 	}
+
+	.item {
+		background-color: var(--gray);
+		height: 100px;
+		width: 100px;
+	}
+
+
 </style>
 
 <body>
 
-	<div> </div>
-	<div> </div>
-	<div> </div>
-	<div> </div>
+<div class="container">
+	<div class="item"> </div>
+	<div class="item"> </div>
+	<div class="item"> </div>
+	<div class="item"> </div>
+</div>
 
 </body>
 
