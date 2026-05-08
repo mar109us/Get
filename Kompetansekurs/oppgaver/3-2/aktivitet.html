@@ -72,8 +72,8 @@
 
 	<!-- <form class="container"> -->
 	<div class="container">
-		<input oninput="changeName()" id="name-input" type="text" placeholder="enter name"></form>
-		<input oninput="changeAge()" id="age-input" type="text" placeholder="enter age"></form>
+		<input oninput="changeName()" id="name-input" type="text" placeholder="name..."></form>
+		<input oninput="changeAge()" id="age-input" type="text" placeholder="age..."></form>
 	</div>
 
 
@@ -92,7 +92,7 @@
 		<h2 id="age-output">Output</h2>
 	</div>
 
-	<div class="test">
+	<!-- 	<div class="test">
 		<h1>Captcha</h1>
 	</div>
 
@@ -102,7 +102,7 @@
 
 	<div class="text-container">
 		<h2 id="is-human-output">Output</h2>
-	</div>
+	</div> -->
 
 	<script>
 
@@ -209,10 +209,6 @@
 
 		function changeName() {
 			logStart("changeName()", "function")
-
-
-
-
 
 			if (linkNameInput.value.length >= 2) {
 				linkNameOutput.innerHTML = `Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`
