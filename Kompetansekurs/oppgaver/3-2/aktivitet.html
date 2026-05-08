@@ -76,9 +76,15 @@
 		<input oninput="changeAge()" id="age-input" type="text" placeholder="enter age"></form>
 	</div>
 
+
+
 	<div class="text-container">
-		<h4>Must contain 8 letters, 1 special character, and divided by 4</h4>
-		<h4>Must be 18+ (in ms)</h4>
+		<h4>Must contain 2 letters or more<br>Must contain 1 special character<br>Must be divided by 4</h4>
+		<h4>Must be 18 or older<br>Must be in milliseconds</h4>
+	</div>
+
+	<div class="container">
+		<button onclick="changeName(), changeAge()" style="font-size: 50px; padding: 20px;">Submit</button>
 	</div>
 
 	<div class="text-container">
@@ -163,13 +169,24 @@
 		}
 
 		const variables = {
-			var1: "test",
-			var2: "yes"
+			group1: {
+				var1: "test",
+				var2: "yes"
+			},
+			group2: {
+				var1: "yy",
+				var2: "aa"
+			}
 		}
+
+
 		consoleStyleVariable = "background:#3c3836; color:#d3869b; padding:4px;"
 		consoleStyleData = "background:#3c3836; color:white; padding:4px;"
 		consoleStyleGroup = "background:#3c3836; color:#fabd2f; padding:4px;"
 
+		const consoleStyle = {
+			groupStart: ""
+		}
 
 		console.group("%cvariables", `${consoleStyleGroup}`)
 		for (const [key, value] of Object.entries(variables)) {
@@ -182,25 +199,54 @@
 		/* console.log(`%c${Object.keys.foreach(variables)} %c10345`, "color:#275F96;", "color:white;") */
 
 		console.group("%cfunctionName()", "background:#3c3836; color:#fabd2f; padding:4px;")
-		console.log("%cFAILED %cdata", "background:#3c3836; color:#fb4934; padding:4px;", "background:#3c3836; color:white; padding:4px;")
-		console.log("%cPASSED %cdata", "background:#3c3836; color:#b8bb26; padding:4px;", "background:#3c3836; color:white; padding:4px;")
+		console.log("%c░▒ FAILED ▒░ %cdata", "background:#3c3836; color:#fb4934; padding:4px;", "background:#3c3836; color:white; padding:4px;")
+		console.log("%c░▒ PASSED ▒░ %cdata", "background:#3c3836; color:#b8bb26; padding:4px;", "background:#3c3836; color:white; padding:4px;")
 		console.log("%cvariableName %c10345", "background:#3c3836; color:#d3869b; padding:4px;", "background:#3c3836; color:white; padding:4px;")
 		console.log("%cvariableName %c36662115", "background:#3c3836; color:#d3869b; padding:4px;", "background:#3c3836; color:white; padding:4px;")
 		console.groupEnd()
 
-
+		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
 		function changeName() {
 			logStart("changeName()", "function")
 
-			if (linkNameInput.value.length < 11) {
+
+
+
+
+			if (linkNameInput.value.length >= 2) {
+				linkNameOutput.innerHTML = `Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`
+				linkNameOutput.style.color = `#b8bb26`
+				logContent(true, "name length: ", linkNameInput.value.length)
+			}
+
+			if (linkNameInput.value.length < 2) {
+				linkNameOutput.innerHTML = `"${linkNameInput.value}" not accepted as a name`
+				linkNameOutput.style.color = `#fb4934`
 				logContent(false, "name length: ", linkNameInput.value.length)
 			}
 
-			if (linkNameInput.value.length >= 11) {
-				/* linkNameOutput.innerHTML = linkNameInput.value */
-				logContent(true, "name length: ", linkNameInput.value.length)
+			if (!linkNameInput.value) {
+				linkNameOutput.innerHTML = `Can't submit with empty name field`
+				linkNameOutput.style.color = `#fb4934`
+				logContent(false, "name length: ", linkNameInput.value.length)
 			}
+
+			if (!linkNameInput.value.includes("/4")) {
+				linkNameOutput.innerHTML = `Not dividing by 4`
+				linkNameOutput.style.color = `#fb4934`
+				logContent(linkNameInput.value.includes("/4"), "divide by 4 ", linkNameInput.value.includes("/4"))
+			}
+
+			if (!specialCharacters.test(linkNameInput.value)) {
+				linkNameOutput.innerHTML = `No special characters`
+				linkNameOutput.style.color = `#fb4934`
+				logContent(specialCharacters.test(linkNameInput.value), "No special characters ", specialCharacters.test(linkNameInput.value))
+
+			}
+
+			console.log(parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4)
+
 			console.groupEnd()
 		}
 
@@ -213,9 +259,12 @@
 
 			if (calculateAge < 18) {
 				linkAgeOutput.innerHTML = calculateAge + " years old - Not old enough"
+				linkAgeOutput.style.color = `#fb4934`
 			}
+
 			if (calculateAge >= 18) {
 				linkAgeOutput.innerHTML = calculateAge + " years old - Old enough"
+				linkAgeOutput.style.color = `#b8bb26`
 			}
 
 
