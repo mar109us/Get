@@ -87,6 +87,7 @@
 
 		let currentActiveSquare = ""
 		let randomNumber = 0
+		let newRandomNumber = 0
 
 		function selectedIndex(index) {
 			console.log("selectedIndex")
@@ -118,7 +119,12 @@
 			console.log("getRandomNumber")
 
 			if (currentActiveSquare) { clearActiveSquare() }
-			selectedIndex(Math.floor(Math.random() * 4) + 1)
+
+			newRandomNumber = Math.floor(Math.random() * 4) + 1
+
+			if (randomNumber === newRandomNumber) { getRandomNumber() }
+
+			selectedIndex(newRandomNumber)
 
 		}
 
