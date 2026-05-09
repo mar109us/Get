@@ -57,7 +57,7 @@
 
 <body>
 	<div class="container-one-items">
-		<h1>press yellow button</h1>
+		<h1>click a square to start</h1>
 	</div>
 
 	<div class="container-two-items">
@@ -89,6 +89,14 @@
 		let randomNumber = 0
 		let newRandomNumber = 0
 
+		let getTime = {
+			start: null,
+			end: null,
+
+		}
+
+
+
 		function selectedIndex(index) {
 			console.log("selectedIndex")
 
@@ -108,6 +116,9 @@
 
 			if (square === randomNumber) {
 				console.log("clicked correct")
+				getTime.end = new Date().getTime()
+				console.log((getTime.end - getTime.start) / 1000)
+				console.log()
 				getRandomNumber()
 			}
 			else {
@@ -123,6 +134,8 @@
 			newRandomNumber = Math.floor(Math.random() * 4) + 1
 
 			if (randomNumber === newRandomNumber) { getRandomNumber() }
+
+			getTime.start = new Date().getTime()
 
 			selectedIndex(newRandomNumber)
 
