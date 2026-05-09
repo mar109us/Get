@@ -72,19 +72,21 @@
 
 		const getElement = (calledId) => document.getElementById(calledId)
 
-		const activeElement = (element) => (element.style.background = "var(--bright_yellow)")
+		const activeElement = (element) => (element).style.backgroundColor = "var(--bright_yellow)";
+
+		const inactiveElement = (element) => (element).style.backgroundColor = "var(--gray)";
 
 		const square = {
-			position1: getElement("square-1x1"),
-			position2: getElement("square-1x2"),
-			position3: getElement("square-2x1"),
-			position4: getElement("square-2x2")
+			position: {
+				1: getElement("square-1x1"),
+				2: getElement("square-1x2"),
+				3: getElement("square-2x1"),
+				4: getElement("square-2x2")
+			}
 		}
 
 		function selectedIndex(index) {
-
-			let setSquare = "square.position" + index
-			console.log(setSquare)
+			activeElement(square.position[index])
 		}
 
 		function getRandomNumber() {
