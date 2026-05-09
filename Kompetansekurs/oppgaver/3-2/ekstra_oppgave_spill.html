@@ -86,31 +86,45 @@
 		}
 
 		let currentActiveSquare = ""
+		let randomNumber = 0
 
 		function selectedIndex(index) {
+			console.log("selectedIndex")
+
+			randomNumber = index
+
 			currentActiveSquare = square.position[index]
 			activeElement(square.position[index])
 		}
 
 		function squareClicked(square) {
+			console.log("squareClicked")
 
 			if (!currentActiveSquare) {
 				console.log("nothing to click yet")
 				getRandomNumber()
 			}
 
-			if (square) {
-				console.log(square)
+			if (square === randomNumber) {
+				console.log("clicked correct")
+				getRandomNumber()
+			}
+			else {
+				console.log("clicked wrong")
 			}
 		}
 
 		function getRandomNumber() {
+			console.log("getRandomNumber")
+
 			if (currentActiveSquare) { clearActiveSquare() }
 			selectedIndex(Math.floor(Math.random() * 4) + 1)
 
 		}
 
 		function clearActiveSquare() {
+			console.log("clearActiveSquare")
+
 			inactiveElement(currentActiveSquare)
 		}
 
