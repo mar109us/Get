@@ -85,12 +85,21 @@
 			}
 		}
 
+		let currentActiveSquare = ""
+
 		function selectedIndex(index) {
+			currentActiveSquare = square.position[index]
 			activeElement(square.position[index])
 		}
 
 		function getRandomNumber() {
+			if (currentActiveSquare) { clearActiveSquare() }
 			selectedIndex(Math.floor(Math.random() * 4) + 1)
+
+		}
+
+		function clearActiveSquare() {
+			inactiveElement(currentActiveSquare)
 		}
 
 	</script>
