@@ -70,27 +70,25 @@
 
 	<script>
 
+		const getElement = (calledId) => document.getElementById(calledId)
+
+		const activeElement = (element) => (element.style.background = "var(--bright_yellow)")
+
 		const square = {
-			position1: "square-1x1",
-			position2: "square-1x2",
-			position3: "square-2x1",
-			position4: "square-2x2"
+			position1: getElement("square-1x1"),
+			position2: getElement("square-1x2"),
+			position3: getElement("square-2x1"),
+			position4: getElement("square-2x2")
 		}
 
-		console.log(square.position1)
-		console.log(Math.floor(Math.random() * 4) + 1)
-		function selectSquare(whatSquare) {
+		function selectedIndex(index) {
 
+			let setSquare = "square.position" + index
+			console.log(setSquare)
 		}
 
 		function getRandomNumber() {
-
-		}
-
-
-
-		function selectedIndex() {
-
+			selectedIndex(Math.floor(Math.random() * 4) + 1)
 		}
 
 	</script>
