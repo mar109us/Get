@@ -9,6 +9,8 @@
 
 <style>
 	:root {
+		user-select: none;
+
 		--background: #1d2021;
 		--highlight: #665c54;
 		--gray: #928374;
@@ -19,8 +21,6 @@
 		--bright_purple: #d3869b;
 		--bright_aqua: #8ec07c;
 		--bright_orange: #fe8019;
-
-		user-select: none;
 	}
 
 	body {
@@ -72,6 +72,13 @@
 		width: 200px;
 		border: 4px solid var(--highlight);
 	}
+
+	p {
+		color: var(--bright_green);
+		font-size: 1.5em;
+		font-family: monospace;
+		text-align: start;
+	}
 </style>
 
 <body>
@@ -82,16 +89,7 @@
 
 	<div class="game-content">
 		<div>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
-			<p>hello</p>
+			<p id="results"></p>
 		</div>
 
 		<div>
@@ -127,9 +125,14 @@
 			}
 		}
 
+		const element = {
+			timedResults: getElement("results")
+		}
+
 		let currentActiveSquare = ""
 		let randomNumber = 0
 		let newRandomNumber = 0
+		let timesClicked = 0
 
 		let getTime = {
 			start: null,
@@ -159,8 +162,13 @@
 			if (square === randomNumber) {
 				console.log("clicked correct")
 				getTime.end = new Date().getTime()
+
+				timesClicked = timesClicked + 1
+
+				element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
+
 				console.log((getTime.end - getTime.start) / 1000)
-				console.log()
+
 				getRandomNumber()
 			}
 			else {
