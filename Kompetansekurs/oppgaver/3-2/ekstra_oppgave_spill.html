@@ -61,10 +61,10 @@
 	</div>
 
 	<div class="container-two-items">
-		<div id="square-1x1" class="item"> </div>
-		<div id="square-1x2" class="item"> </div>
-		<div id="square-2x1" class="item"> </div>
-		<div id="square-2x2" class="item"> </div>
+		<div onclick="squareClicked(1)" id="square-1x1" class="item"> </div>
+		<div onclick="squareClicked(2)" id="square-1x2" class="item"> </div>
+		<div onclick="squareClicked(3)" id="square-2x1" class="item"> </div>
+		<div onclick="squareClicked(4)" id="square-2x2" class="item"> </div>
 	</div>
 
 
@@ -90,6 +90,18 @@
 		function selectedIndex(index) {
 			currentActiveSquare = square.position[index]
 			activeElement(square.position[index])
+		}
+
+		function squareClicked(square) {
+
+			if (!currentActiveSquare) {
+				console.log("nothing to click yet")
+				getRandomNumber()
+			}
+
+			if (square) {
+				console.log(square)
+			}
 		}
 
 		function getRandomNumber() {
