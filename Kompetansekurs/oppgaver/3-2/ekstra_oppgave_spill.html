@@ -147,25 +147,21 @@
 				inactiveElement(currentActiveBox)
 			}
 
-			previousNumber = index
+			oldRandomNumber = index
 			currentActiveBox = square.position[index]
 			activeElement(square.position[index])
 		}
 
 		function boxClicked(whatBox) {
-
-			// if no active
 			if (currentActiveBox === "") {
 				getRandomNumber()
 				return
 			}
 
-			//if correct
 			if (currentActiveBox === whatBox) {
 				getRandomNumber()
 				return
 			}
-
 
 			if (currentActiveBox !== whatBox && currentActiveBox !== "") {
 				getRandomNumber()
@@ -174,12 +170,20 @@
 		}
 
 		function isNewNumberNeeded() {
-
+			if (oldRandomNumber === newRandomNumber) {
+				return getRandomNumber()
+			}
+			selectedIndex(newRandomNumber)
 		}
 
 		function getRandomNumber() {
 			newRandomNumber = Math.floor(Math.random() * 4) + 1
-			selectedIndex(newRandomNumber)
+
+			if (currentActiveBox === "") {
+				return selectedIndex(newRandomNumber)
+			}
+
+			isNewNumberNeeded(newRandomNumber)
 		}
 
 
