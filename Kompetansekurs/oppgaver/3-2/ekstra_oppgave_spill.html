@@ -94,7 +94,7 @@
 		<div>
 			<p id="results"></p>
 		</div>
-		<div class="text-click-to-play">
+		<div id="play-text" class="text-click-to-play">
 			<h1>click to play</h1>
 		</div>
 		<div>
@@ -153,7 +153,20 @@
 		}
 
 		function boxClicked(whatBox) {
+			timesClicked += 1
+
+			if (timesClicked === 4) {
+				inactiveElement(currentActiveBox)
+				getElement("play-text").innerHTML =
+					`
+				<h1>Score ${currentScore}</h1>
+				`
+				getElement("play-text").style.display = "block"
+				return newGame()
+			}
+
 			if (currentActiveBox === "") {
+				getElement("play-text").style.display = "none"
 				getRandomNumber()
 				return
 			}
@@ -184,6 +197,16 @@
 			}
 
 			isNewNumberNeeded(newRandomNumber)
+		}
+
+		function newGame() {
+			currentActiveBox = ""
+			oldRandomNumber = 0
+			newRandomNumber = 0
+			timesClicked = 0
+			currentScore = 0
+			getTime.start = 0
+			getTime.end = 0
 		}
 
 
