@@ -29,18 +29,6 @@
 		justify-items: center;
 	}
 
-	h1 {
-		font-size: 3em;
-		color: var(--bright_blue);
-	}
-
-	.container-one-items {
-		display: grid;
-		gap: 12px;
-		justify-content: center;
-		margin: 10px;
-	}
-
 	.game-content {
 		background-color: #665c54;
 		display: grid;
@@ -49,12 +37,22 @@
 
 		min-width: fit-content;
 		max-width: fit-content;
+
 		justify-items: center;
+
 		margin-left: 20%;
 		margin-right: 20%;
-		padding-top: 100px;
-		padding-bottom: 100px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
 
+	.text-click-to-play {
+		font-size: 2em;
+		pointer-events: none;
+		position: absolute;
+		justify-self: center;
+		align-self: center;
+		color: var(--bright_yellow);
 	}
 
 	.container-two-items {
@@ -90,15 +88,15 @@
 
 <body>
 
-	<div class="container-one-items">
-		<h1>click a square to start</h1>
-	</div>
+
 
 	<div class="game-content">
 		<div>
 			<p id="results"></p>
 		</div>
-
+		<div class="text-click-to-play">
+			<h1>click to play</h1>
+		</div>
 		<div>
 			<div class="container-two-items">
 				<div onclick="squareClicked(1)" id="square-1x1" class="item"> </div>
@@ -107,7 +105,6 @@
 				<div onclick="squareClicked(4)" id="square-2x2" class="item"> </div>
 			</div>
 		</div>
-
 		<div>
 			<p id="score">1566</p>
 		</div>
@@ -136,8 +133,8 @@
 		}
 
 		let currentActiveSquare = ""
-		let randomNumber = null
-		let newRandomNumber = null
+		let previousNumber = null
+		let nextNumber = null
 		let timesClicked = null
 		let currentScore = null
 
@@ -146,53 +143,37 @@
 			end: null,
 		}
 
-
-
 		function selectedIndex(index) {
-			console.log("selectedIndex")
-
-			randomNumber = index
-
+			clearActiveSquare()
+			previousNumber = index
 			currentActiveSquare = square.position[index]
 			activeElement(square.position[index])
 		}
 
 		function squareClicked(square) {
-			console.log("squareClicked")
-
-			if (!currentActiveSquare) {
-				console.log("nothing to click yet")
+			if (currentActiveSquare === "") {
 				getRandomNumber()
 			}
 
-			if (square === randomNumber) {
-				console.log("clicked correct")
-
+			if (square === previousNumber) {
 				getTime.end = new Date().getTime()
-
 				timesClicked = timesClicked + 1
-
 				element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
-
 
 				if ((getTime.end - getTime.start) < 1000) {
 					currentScore += 10
-
 					console.log("score", currentScore)
 				}
 				if ((getTime.end - getTime.start) < 900) {
 					currentScore += 15
-
 					console.log("score", currentScore)
 				}
 				if ((getTime.end - getTime.start) < 800) {
 					currentScore += 20
-
 					console.log("score", currentScore)
 				}
 				if ((getTime.end - getTime.start) < 700) {
 					currentScore += 25
-
 					console.log("score", currentScore)
 				}
 
@@ -201,30 +182,28 @@
 
 				getRandomNumber()
 			}
-			else {
-				console.log("clicked wrong")
-			}
 		}
 
 		function getRandomNumber() {
-			console.log("getRandomNumber")
+			nextNumber = Math.floor(Math.random() * 4) + 1
+			noRepeatNumber()
+		}
 
-			if (currentActiveSquare) { clearActiveSquare() }
-
-			newRandomNumber = Math.floor(Math.random() * 4) + 1
-
-			if (randomNumber === newRandomNumber) { getRandomNumber() }
-
-			getTime.start = new Date().getTime()
-
-			selectedIndex(newRandomNumber)
+		function noRepeatNumber() {
+			if (previousNumber === nextNumber) {
+				getRandomNumber()
+			}
+			else {
+				getTime.start = new Date().getTime()
+				selectedIndex(nextNumber)
+			}
 
 		}
 
 		function clearActiveSquare() {
-			console.log("clearActiveSquare")
-
-			inactiveElement(currentActiveSquare)
+			if (currentActiveSquare) {
+				return inactiveElement(currentActiveSquare)
+			}
 		}
 
 	</script>
