@@ -131,7 +131,7 @@
 			score: getElement("score")
 		}
 
-		let currentActiveBox = 0
+		let currentActiveBox = ""
 		let oldRandomNumber = 0
 		let newRandomNumber = 0
 		let timesClicked = 0
@@ -142,18 +142,44 @@
 			end: 0,
 		}
 
-		function selectedIndex() {
+		function selectedIndex(index) {
+			if (currentActiveBox !== "") {
+				inactiveElement(currentActiveBox)
+			}
 
+			previousNumber = index
+			currentActiveBox = square.position[index]
+			activeElement(square.position[index])
 		}
 
 		function boxClicked(whatBox) {
 
+			// if no active
+			if (currentActiveBox === "") {
+				getRandomNumber()
+				return
+			}
+
+			//if correct
+			if (currentActiveBox === whatBox) {
+				getRandomNumber()
+				return
+			}
+
+
+			if (currentActiveBox !== whatBox && currentActiveBox !== "") {
+				getRandomNumber()
+				return
+			}
 		}
 
+		function isNewNumberNeeded() {
 
+		}
 
 		function getRandomNumber() {
 			newRandomNumber = Math.floor(Math.random() * 4) + 1
+			selectedIndex(newRandomNumber)
 		}
 
 
