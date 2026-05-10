@@ -26,7 +26,12 @@
 	body {
 		background-color: var(--background);
 		font-family: monospace;
-		justify-items: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		min-height: 80vh;
+
 	}
 
 	.game-content {
@@ -40,18 +45,19 @@
 
 		justify-items: center;
 
-		margin-left: 20%;
-		margin-right: 20%;
-		padding-top: 10px;
-		padding-bottom: 10px;
+		margin-left: 20px;
+		margin-right: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
 	}
 
 	.text-click-to-play {
-		font-size: 2em;
+		font-size: 1.5em;
 		pointer-events: none;
 		position: absolute;
 		justify-self: center;
 		align-self: center;
+		text-align: center;
 		color: var(--bright_yellow);
 	}
 
@@ -88,8 +94,6 @@
 
 <body>
 
-
-
 	<div class="game-content">
 		<div>
 			<p id="results"></p>
@@ -104,9 +108,6 @@
 				<div onclick="boxClicked(3)" id="square-2x1" class="item"> </div>
 				<div onclick="boxClicked(4)" id="square-2x2" class="item"> </div>
 			</div>
-		</div>
-		<div>
-			<p id="score">1566</p>
 		</div>
 	</div>
 
@@ -131,7 +132,7 @@
 			score: getElement("score")
 		}
 
-		let currentActiveBox = ""
+		let currentActiveBox = 0
 		let oldRandomNumber = 0
 		let newRandomNumber = 0
 		let timesClicked = 0
@@ -143,7 +144,8 @@
 		}
 
 		function selectedIndex(index) {
-			if (currentActiveBox !== "") {
+			startTimer()
+			if (currentActiveBox !== 0) {
 				inactiveElement(currentActiveBox)
 			}
 
@@ -153,30 +155,37 @@
 		}
 
 		function boxClicked(whatBox) {
-			timesClicked += 1
 
-			if (timesClicked === 4) {
+
+			if (timesClicked === 10) {
+				endTimer()
 				inactiveElement(currentActiveBox)
-				getElement("play-text").innerHTML =
+				getElement("play-text").innerHTML = `
+				<h1>response time
+					<br>
+					${Math.round(currentScore * 100)} ms
+					<br>
+					<br>
+					<br>
+					click to restart
+					</h1>
 					`
-				<h1>Score ${currentScore}</h1>
-				`
 				getElement("play-text").style.display = "block"
 				return newGame()
 			}
 
-			if (currentActiveBox === "") {
+
+			if (currentActiveBox === 0) {
+				element.timedResults.innerHTML = ""
+				timesClicked += 1
 				getElement("play-text").style.display = "none"
 				getRandomNumber()
 				return
 			}
 
-			if (currentActiveBox === whatBox) {
-				getRandomNumber()
-				return
-			}
-
-			if (currentActiveBox !== whatBox && currentActiveBox !== "") {
+			if (oldRandomNumber === whatBox) {
+				endTimer()
+				timesClicked += 1
 				getRandomNumber()
 				return
 			}
@@ -190,17 +199,28 @@
 		}
 
 		function getRandomNumber() {
+
 			newRandomNumber = Math.floor(Math.random() * 4) + 1
 
-			if (currentActiveBox === "") {
+			if (currentActiveBox === 0) {
 				return selectedIndex(newRandomNumber)
 			}
 
 			isNewNumberNeeded(newRandomNumber)
 		}
 
+		function startTimer() {
+			getTime.start = new Date().getTime()
+		}
+
+		function endTimer() {
+			getTime.end = new Date().getTime()
+			element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
+			currentScore += (getTime.end - getTime.start) / 1000
+		}
+
 		function newGame() {
-			currentActiveBox = ""
+			currentActiveBox = 0
 			oldRandomNumber = 0
 			newRandomNumber = 0
 			timesClicked = 0
