@@ -99,10 +99,10 @@
 		</div>
 		<div>
 			<div class="container-two-items">
-				<div onclick="squareClicked(1)" id="square-1x1" class="item"> </div>
-				<div onclick="squareClicked(2)" id="square-1x2" class="item"> </div>
-				<div onclick="squareClicked(3)" id="square-2x1" class="item"> </div>
-				<div onclick="squareClicked(4)" id="square-2x2" class="item"> </div>
+				<div onclick="boxClicked(1)" id="square-1x1" class="item"> </div>
+				<div onclick="boxClicked(2)" id="square-1x2" class="item"> </div>
+				<div onclick="boxClicked(3)" id="square-2x1" class="item"> </div>
+				<div onclick="boxClicked(4)" id="square-2x2" class="item"> </div>
 			</div>
 		</div>
 		<div>
@@ -111,7 +111,6 @@
 	</div>
 
 	<script>
-
 		const getElement = (calledId) => document.getElementById(calledId)
 
 		const activeElement = (element) => (element).style.backgroundColor = "var(--bright_yellow)";
@@ -132,79 +131,98 @@
 			score: getElement("score")
 		}
 
-		let currentActiveSquare = ""
-		let previousNumber = null
-		let nextNumber = null
-		let timesClicked = null
-		let currentScore = null
+		let currentActiveBox = 0
+		let oldRandomNumber = 0
+		let newRandomNumber = 0
+		let timesClicked = 0
+		let currentScore = 0
 
 		let getTime = {
-			start: null,
-			end: null,
+			start: 0,
+			end: 0,
 		}
 
-		function selectedIndex(index) {
-			clearActiveSquare()
-			previousNumber = index
-			currentActiveSquare = square.position[index]
-			activeElement(square.position[index])
+		function selectedIndex() {
+
 		}
 
-		function squareClicked(square) {
-			if (currentActiveSquare === "") {
-				getRandomNumber()
-			}
+		function boxClicked(whatBox) {
 
-			if (square === previousNumber) {
-				getTime.end = new Date().getTime()
-				timesClicked = timesClicked + 1
-				element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
-
-				if ((getTime.end - getTime.start) < 1000) {
-					currentScore += 10
-					console.log("score", currentScore)
-				}
-				if ((getTime.end - getTime.start) < 900) {
-					currentScore += 15
-					console.log("score", currentScore)
-				}
-				if ((getTime.end - getTime.start) < 800) {
-					currentScore += 20
-					console.log("score", currentScore)
-				}
-				if ((getTime.end - getTime.start) < 700) {
-					currentScore += 25
-					console.log("score", currentScore)
-				}
-
-
-				/* element.score.innerHTML +=  */
-
-				getRandomNumber()
-			}
 		}
+
+
 
 		function getRandomNumber() {
-			nextNumber = Math.floor(Math.random() * 4) + 1
-			noRepeatNumber()
+			newRandomNumber = Math.floor(Math.random() * 4) + 1
 		}
 
-		function noRepeatNumber() {
-			if (previousNumber === nextNumber) {
-				getRandomNumber()
-			}
-			else {
-				getTime.start = new Date().getTime()
-				selectedIndex(nextNumber)
-			}
 
-		}
 
-		function clearActiveSquare() {
-			if (currentActiveSquare) {
-				return inactiveElement(currentActiveSquare)
-			}
-		}
+
+
+		/* 		function selectedIndex(index) {
+					if (currentActiveSquare !== "") {
+						inactiveElement(currentActiveSquare)
+					}
+		
+					previousNumber = index
+					currentActiveSquare = square.position[index]
+					activeElement(square.position[index])
+		
+				}
+		
+		
+		
+				function squareClicked(square) {
+					if (currentActiveSquare === "") {
+						getRandomNumber()
+						return;
+					}
+		
+					if (square === previousNumber) {
+						getTime.end = new Date().getTime()
+						timesClicked = timesClicked + 1
+						element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
+		
+						if ((getTime.end - getTime.start) < 1000) {
+							currentScore += 10
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 900) {
+							currentScore += 15
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 800) {
+							currentScore += 20
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 700) {
+							currentScore += 25
+							console.log("score", currentScore)
+						}
+		
+		
+						// element.score.innerHTML +=  
+		
+						getRandomNumber()
+					}
+				}
+		
+				function getRandomNumber() {
+					nextNumber = Math.floor(Math.random() * 4) + 1
+					noRepeatNumber()
+				}
+		
+				function noRepeatNumber() {
+					if (previousNumber === nextNumber) {
+						getRandomNumber()
+					}
+					else {
+						getTime.start = new Date().getTime()
+						selectedIndex(nextNumber)
+					}
+		
+				} */
 
 	</script>
 
