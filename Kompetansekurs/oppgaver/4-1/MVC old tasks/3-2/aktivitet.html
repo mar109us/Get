@@ -70,21 +70,14 @@
 		<h1>Age</h1>
 	</div>
 
-	<!-- <form class="container"> -->
 	<div class="container">
 		<input oninput="changeName()" id="name-input" type="text" placeholder="name..."></form>
 		<input oninput="changeAge()" id="age-input" type="text" placeholder="age..."></form>
 	</div>
 
-
-
 	<div class="text-container">
 		<h4>Must contain 2 letters or more<br>Must contain 1 special character<br>Must be divided by 4</h4>
 		<h4>Must be 18 or older<br>Must be in milliseconds</h4>
-	</div>
-
-	<div class="container">
-		<button onclick="changeName(), changeAge()" style="font-size: 50px; padding: 20px;">Submit</button>
 	</div>
 
 	<div class="text-container">
@@ -92,25 +85,10 @@
 		<h2 id="age-output">Output</h2>
 	</div>
 
-	<!-- 	<div class="test">
-		<h1>Captcha</h1>
-	</div>
-
-	<div class="container">
-		<input oninput="checkIsHuman()" id="is-human-input" type="text" placeholder="i am human">
-	</div>
-
-	<div class="text-container">
-		<h2 id="is-human-output">Output</h2>
-	</div> -->
-
 	<script>
 
-
-
-		/* console.log("%c" + "test", "font-size:30px; font-weight:bold; background:#706060; color:#051120; padding:10px; border-radius:10px;") */
-
 		//model
+		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 		const linkNameInput = document.getElementById("name-input")
 		const linkAgeInput = document.getElementById("age-input")
 		const linkIsHumanInput = document.getElementById("is-human-input")
@@ -118,55 +96,6 @@
 		let linkNameOutput = document.getElementById("name-output")
 		let linkAgeOutput = document.getElementById("age-output")
 		let linkIsHumanOutput = document.getElementById("is-human-output")
-
-		//view
-		function checkName() {
-			console.log(linkNameInput.value)
-		}
-
-		function checkAge() {
-			console.log(linkAgeInput.value)
-		}
-
-		function checkIsHuman() {
-			console.log(linkIsHumanInput.value)
-		}
-
-		//controller
-
-		function logStart(functionName, style) {
-			return console.group("%c" + `${functionName}`, logStyle(style))
-		}
-
-
-
-		function logContent(isActive, content, data) {
-
-			console.log("%c" + content + data, logStyle(isActive))
-		}
-
-		function logStyle(type) {
-
-			if (type === "function") {
-				return `font-size: 1.6em; background:#96275F; color:#ffffff; padding:5px;`
-			}
-
-			if (type === false) {
-				return `font-size: 1.2em; background:#962727; color:#ffffff; padding:5px`
-			}
-
-			if (type === true) {
-				return `font-size: 1.2em; background:#27965F; color:#ffffff; padding:5px`
-			}
-
-			if (type === "yellow") {
-				return `font-size: 1.2em; background:#965F27; color:#ffffff; padding:5px`
-			}
-
-			if (type === "blue") {
-				return `font-size: 1.2em; background:#275F96; color:#ffffff; padding:5px`
-			}
-		}
 
 		const variables = {
 			group1: {
@@ -179,115 +108,53 @@
 			}
 		}
 
-
-		consoleStyleVariable = "background:#3c3836; color:#d3869b; padding:4px;"
-		consoleStyleData = "background:#3c3836; color:white; padding:4px;"
-		consoleStyleGroup = "background:#3c3836; color:#fabd2f; padding:4px;"
-
-		const consoleStyle = {
-			groupStart: ""
+		//view
+		function viewName(name, color) {
+			linkNameOutput.innerHTML = name
+			linkNameOutput.style.color = color
 		}
 
-		console.group("%cvariables", `${consoleStyleGroup}`)
-		for (const [key, value] of Object.entries(variables)) {
-
-			console.log(`%c${key}: %c${value}`, `${consoleStyleVariable}`, `${consoleStyleData}`)
+		function viewAge(age, color) {
+			linkAgeOutput.innerHTML = age
+			linkAgeOutput.style.color = color
 		}
-		console.groupEnd()
 
-
-		/* console.log(`%c${Object.keys.foreach(variables)} %c10345`, "color:#275F96;", "color:white;") */
-
-		console.group("%cfunctionName()", "background:#3c3836; color:#fabd2f; padding:4px;")
-		console.log("%c░▒ FAILED ▒░ %cdata", "background:#3c3836; color:#fb4934; padding:4px;", "background:#3c3836; color:white; padding:4px;")
-		console.log("%c░▒ PASSED ▒░ %cdata", "background:#3c3836; color:#b8bb26; padding:4px;", "background:#3c3836; color:white; padding:4px;")
-		console.log("%cvariableName %c10345", "background:#3c3836; color:#d3869b; padding:4px;", "background:#3c3836; color:white; padding:4px;")
-		console.log("%cvariableName %c36662115", "background:#3c3836; color:#d3869b; padding:4px;", "background:#3c3836; color:white; padding:4px;")
-		console.groupEnd()
-
-		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
-
+		//controller
 		function changeName() {
-			logStart("changeName()", "function")
 
 			if (linkNameInput.value.length >= 2) {
-				linkNameOutput.innerHTML = `Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`
-				linkNameOutput.style.color = `#b8bb26`
-				logContent(true, "name length: ", linkNameInput.value.length)
+				viewName(`Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`, `#b8bb26`)
 			}
 
 			if (linkNameInput.value.length < 2) {
-				linkNameOutput.innerHTML = `"${linkNameInput.value}" not accepted as a name`
-				linkNameOutput.style.color = `#fb4934`
-				logContent(false, "name length: ", linkNameInput.value.length)
+				viewName(`"${linkNameInput.value}" not accepted as a name`, `#fb4934`)
 			}
 
 			if (!linkNameInput.value) {
-				linkNameOutput.innerHTML = `Can't submit with empty name field`
-				linkNameOutput.style.color = `#fb4934`
-				logContent(false, "name length: ", linkNameInput.value.length)
+				viewName(`Can't submit with empty name field`, `#fb4934`)
 			}
 
 			if (!linkNameInput.value.includes("/4")) {
-				linkNameOutput.innerHTML = `Not dividing by 4`
-				linkNameOutput.style.color = `#fb4934`
-				logContent(linkNameInput.value.includes("/4"), "divide by 4 ", linkNameInput.value.includes("/4"))
+				viewName(`Not dividing by 4`, `#fb4934`)
 			}
 
 			if (!specialCharacters.test(linkNameInput.value)) {
-				linkNameOutput.innerHTML = `No special characters`
-				linkNameOutput.style.color = `#fb4934`
-				logContent(specialCharacters.test(linkNameInput.value), "No special characters ", specialCharacters.test(linkNameInput.value))
-
+				viewName(`No special characters`, `#fb4934`)
 			}
-
-			console.log(parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4)
-
-			console.groupEnd()
 		}
 
-
-
 		function changeAge() {
-			logStart("changeAge()", "function")
-
 			calculateAge = Math.round(linkAgeInput.value / 31557600000)
 
 			if (calculateAge < 18) {
-				linkAgeOutput.innerHTML = calculateAge + " years old - Not old enough"
-				linkAgeOutput.style.color = `#fb4934`
+				viewAge(calculateAge + " years old - Not old enough", `#fb4934`)
 			}
 
 			if (calculateAge >= 18) {
-				linkAgeOutput.innerHTML = calculateAge + " years old - Old enough"
-				linkAgeOutput.style.color = `#b8bb26`
+				viewAge(calculateAge + " years old - Old enough", `#b8bb26`)
 			}
-
-
-
-			logContent(false, "age value: ", linkAgeInput.value)
-
-			console.groupEnd()
 		}
-
-		function changeIsHuman() {
-			console.log(linkIsHumanInput.value)
-		}
-
-
 	</script>
-
-	<!-- 
-Lag et enkelt skjema med:
-Et navnfelt (min 2 tegn)
-Et aldersfelt (må være 18 eller eldre)
-En knapp som sjekker begge feltene
-Siden viser ulike meldinger avhengig av hva brukeren skriver inn. Bruk && for å sjekke begge feltene på én gang.
-
-Last opp til GitHub. 
--->
-
-
 </body>
 
 </html>
