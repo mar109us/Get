@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Do something</title>
+	<title>Name and age</title>
 </head>
 
 <style>
@@ -89,32 +89,20 @@
 
 		//model
 		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+
 		const linkNameInput = document.getElementById("name-input")
 		const linkAgeInput = document.getElementById("age-input")
-		const linkIsHumanInput = document.getElementById("is-human-input")
 
 		let linkNameOutput = document.getElementById("name-output")
 		let linkAgeOutput = document.getElementById("age-output")
-		let linkIsHumanOutput = document.getElementById("is-human-output")
-
-		const variables = {
-			group1: {
-				var1: "test",
-				var2: "yes"
-			},
-			group2: {
-				var1: "yy",
-				var2: "aa"
-			}
-		}
 
 		//view
-		function viewName(name, color) {
+		function updateName(name, color) {
 			linkNameOutput.innerHTML = name
 			linkNameOutput.style.color = color
 		}
 
-		function viewAge(age, color) {
+		function updateAge(age, color) {
 			linkAgeOutput.innerHTML = age
 			linkAgeOutput.style.color = color
 		}
@@ -123,23 +111,23 @@
 		function changeName() {
 
 			if (linkNameInput.value.length >= 2) {
-				viewName(`Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`, `#b8bb26`)
+				updateName(`Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`, `#b8bb26`)
 			}
 
 			if (linkNameInput.value.length < 2) {
-				viewName(`"${linkNameInput.value}" not accepted as a name`, `#fb4934`)
+				updateName(`"${linkNameInput.value}" not accepted as a name`, `#fb4934`)
 			}
 
 			if (!linkNameInput.value) {
-				viewName(`Can't submit with empty name field`, `#fb4934`)
+				updateName(`Can't submit with empty name field`, `#fb4934`)
 			}
 
 			if (!linkNameInput.value.includes("/4")) {
-				viewName(`Not dividing by 4`, `#fb4934`)
+				updateName(`Not dividing by 4`, `#fb4934`)
 			}
 
 			if (!specialCharacters.test(linkNameInput.value)) {
-				viewName(`No special characters`, `#fb4934`)
+				updateName(`No special characters`, `#fb4934`)
 			}
 		}
 
@@ -147,11 +135,11 @@
 			calculateAge = Math.round(linkAgeInput.value / 31557600000)
 
 			if (calculateAge < 18) {
-				viewAge(calculateAge + " years old - Not old enough", `#fb4934`)
+				updateAge(calculateAge + " years old - Not old enough", `#fb4934`)
 			}
 
 			if (calculateAge >= 18) {
-				viewAge(calculateAge + " years old - Old enough", `#b8bb26`)
+				updateAge(calculateAge + " years old - Old enough", `#b8bb26`)
 			}
 		}
 	</script>
