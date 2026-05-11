@@ -90,56 +90,82 @@
 		//model
 		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-		const linkNameInput = document.getElementById("name-input")
-		const linkAgeInput = document.getElementById("age-input")
+		const colorPass = `#b8bb26`
+		const colorFail = `#fb4934`
+		let currentOutput = 0
 
-		let linkNameOutput = document.getElementById("name-output")
-		let linkAgeOutput = document.getElementById("age-output")
-
-		//view
-		function updateName(name, color) {
-			linkNameOutput.innerHTML = name
-			linkNameOutput.style.color = color
+		const dataLogic = {
+			name: {
+				pass: "hello ",
+				fail: {
+					short: ` not accepted as a name`,
+					divide: `Not dividing by 4`,
+					special: `No special characters`
+				}
+			}
 		}
 
-		function updateAge(age, color) {
-			linkAgeOutput.innerHTML = age
-			linkAgeOutput.style.color = color
+		//view
+		const getElement = (calledId) => document.getElementById(calledId)
+
+		const element = {
+			write: {
+				name: getElement("name-input"),
+				age: getElement("age-input")
+			},
+			print: {
+				name: getElement("name-output"),
+				age: getElement("age-output")
+			}
+		}
+
+		function updateView(from, data, color) {
+
+			if (from === "name") {
+				element.print.name.innerHTML = data
+				element.print.name.style.color = color
+			}
+
+			if (from === "age") {
+				element.print.age.innerHTML = data
+				element.print.age.style.color = color
+			}
 		}
 
 		//controller
 		function changeName() {
 
-			if (linkNameInput.value.length >= 2) {
-				updateName(`Hello ${parseInt(linkNameInput.value.replaceAll("/4", ""), 36) / 4}`, `#b8bb26`)
+			if (element.write.name.value.length < 2) {
+				updateView("name", element.write.name.value + dataLogic.name.fail.short, colorFail)
 			}
 
-			if (linkNameInput.value.length < 2) {
-				updateName(`"${linkNameInput.value}" not accepted as a name`, `#fb4934`)
+			else if (!specialCharacters.test(element.write.name.value)) {
+				updateView("name", dataLogic.name.fail.special, colorFail)
 			}
 
-			if (!linkNameInput.value) {
-				updateName(`Can't submit with empty name field`, `#fb4934`)
+			else if (!element.write.name.value.includes("/4")) {
+				updateView("name", dataLogic.name.fail.divide, colorFail)
 			}
 
-			if (!linkNameInput.value.includes("/4")) {
-				updateName(`Not dividing by 4`, `#fb4934`)
-			}
-
-			if (!specialCharacters.test(linkNameInput.value)) {
-				updateName(`No special characters`, `#fb4934`)
+			else {
+				nameToNumber()
+				updateView("name", dataLogic.name.pass + currentOutput, colorPass)
 			}
 		}
 
+		function nameToNumber() {
+			currentOutput = Math.round(parseInt(element.write.name.value.replaceAll("/4", ""), 36) / 4)
+		}
+
 		function changeAge() {
-			calculateAge = Math.round(linkAgeInput.value / 31557600000)
+			calculateAge = Math.round(element.write.age.value / 31557600000)
 
 			if (calculateAge < 18) {
-				updateAge(calculateAge + " years old - Not old enough", `#fb4934`)
+				updateView("age", calculateAge + " years old - Not old enough", colorFail)
 			}
 
 			if (calculateAge >= 18) {
-				updateAge(calculateAge + " years old - Old enough", `#b8bb26`)
+				updateView("age", calculateAge + " years old - Old enough", colorPass)
 			}
 		}
 	</script>
