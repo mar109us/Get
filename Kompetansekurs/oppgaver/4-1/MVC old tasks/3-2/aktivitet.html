@@ -71,8 +71,8 @@
 	</div>
 
 	<div class="container">
-		<input oninput="changeName()" id="name-input" type="text" placeholder="name..."></form>
-		<input oninput="changeAge()" id="age-input" type="text" placeholder="age..."></form>
+		<input oninput="checkName()" id="name-input" type="text" placeholder="name..."></form>
+		<input oninput="checkAge()" id="age-input" type="text" placeholder="age..."></form>
 	</div>
 
 	<div class="text-container">
@@ -90,8 +90,7 @@
 		//model
 		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-		const colorPass = `#b8bb26`
-		const colorFail = `#fb4934`
+
 		let currentOutput = 0
 
 		const dataLogic = {
@@ -105,8 +104,19 @@
 			}
 		}
 
+		function changeName() {
+			updateView("name", element.write.name.value + dataLogic.name.fail.short, colorFail)
+		}
+
+		function changeNameOutput() {
+
+		}
+
+
 		//view
 		const getElement = (calledId) => document.getElementById(calledId)
+		const colorPass = `#b8bb26`
+		const colorFail = `#fb4934`
 
 		const element = {
 			write: {
@@ -133,10 +143,10 @@
 		}
 
 		//controller
-		function changeName() {
+		function checkName() {
 
 			if (element.write.name.value.length < 2) {
-				updateView("name", element.write.name.value + dataLogic.name.fail.short, colorFail)
+				changeName(amount)
 			}
 
 			else if (!specialCharacters.test(element.write.name.value)) {
@@ -157,7 +167,7 @@
 			currentOutput = Math.round(parseInt(element.write.name.value.replaceAll("/4", ""), 36) / 4)
 		}
 
-		function changeAge() {
+		function checkAge() {
 			calculateAge = Math.round(element.write.age.value / 31557600000)
 
 			if (calculateAge < 18) {
