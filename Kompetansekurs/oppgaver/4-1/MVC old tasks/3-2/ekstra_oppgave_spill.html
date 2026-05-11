@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spill - Reaksjon</title>
+</head>
+
+<style>
+	:root {
+		user-select: none;
+
+		--background: #1d2021;
+		--highlight: #665c54;
+		--gray: #928374;
+		--bright_red: #fb4934;
+		--bright_green: #b8bb26;
+		--bright_yellow: #fabd2f;
+		--bright_blue: #83a598;
+		--bright_purple: #d3869b;
+		--bright_aqua: #8ec07c;
+		--bright_orange: #fe8019;
+	}
+
+	body {
+		background-color: var(--background);
+		font-family: monospace;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		min-height: 80vh;
+
+	}
+
+	.game-content {
+		background-color: #665c54;
+		display: grid;
+
+		grid-template-columns: repeat(1, 1fr 2fr 1fr);
+
+		min-width: fit-content;
+		max-width: fit-content;
+
+		justify-items: center;
+
+		margin-left: 20px;
+		margin-right: 20px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	.text-click-to-play {
+		font-size: 1.5em;
+		pointer-events: none;
+		position: absolute;
+		justify-self: center;
+		align-self: center;
+		text-align: center;
+		color: var(--bright_yellow);
+	}
+
+	.container-two-items {
+		display: grid;
+		grid-template-columns: repeat(2, 200px);
+		grid-template-rows: 200px;
+		gap: 12px;
+		justify-content: center;
+		margin: 10px;
+	}
+
+	.item {
+		background-color: var(--gray);
+		height: 200px;
+		width: 200px;
+		border: 4px solid var(--highlight);
+	}
+
+	#results {
+		color: var(--bright_yellow);
+		font-size: 1.5em;
+		font-family: monospace;
+		text-align: start;
+	}
+
+	#score {
+		color: var(--bright_yellow);
+		font-size: 2em;
+		font-family: monospace;
+		text-align: end;
+	}
+</style>
+
+<body>
+
+	<div class="game-content">
+		<div>
+			<p id="results"></p>
+		</div>
+		<div id="play-text" class="text-click-to-play">
+			<h1>click to play</h1>
+		</div>
+		<div>
+			<div class="container-two-items">
+				<div onclick="boxClicked(1)" id="square-1x1" class="item"> </div>
+				<div onclick="boxClicked(2)" id="square-1x2" class="item"> </div>
+				<div onclick="boxClicked(3)" id="square-2x1" class="item"> </div>
+				<div onclick="boxClicked(4)" id="square-2x2" class="item"> </div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const getElement = (calledId) => document.getElementById(calledId)
+
+		const activeElement = (element) => (element).style.backgroundColor = "var(--bright_yellow)";
+
+		const inactiveElement = (element) => (element).style.backgroundColor = "var(--gray)";
+
+		const square = {
+			position: {
+				1: getElement("square-1x1"),
+				2: getElement("square-1x2"),
+				3: getElement("square-2x1"),
+				4: getElement("square-2x2")
+			}
+		}
+
+		const element = {
+			timedResults: getElement("results"),
+			score: getElement("score")
+		}
+
+		let currentActiveBox = 0
+		let oldRandomNumber = 0
+		let newRandomNumber = 0
+		let timesClicked = 0
+		let currentScore = 0
+
+		let getTime = {
+			start: 0,
+			end: 0,
+		}
+
+		function selectedIndex(index) {
+			startTimer()
+			if (currentActiveBox !== 0) {
+				inactiveElement(currentActiveBox)
+			}
+
+			oldRandomNumber = index
+			currentActiveBox = square.position[index]
+			activeElement(square.position[index])
+		}
+
+		function boxClicked(whatBox) {
+
+
+			if (timesClicked === 10) {
+				endTimer()
+				inactiveElement(currentActiveBox)
+				getElement("play-text").innerHTML = `
+				<h1>response time
+					<br>
+					${Math.round(currentScore * 100)} ms
+					<br>
+					<br>
+					<br>
+					click to restart
+					</h1>
+					`
+				getElement("play-text").style.display = "block"
+				return newGame()
+			}
+
+
+			if (currentActiveBox === 0) {
+				element.timedResults.innerHTML = ""
+				timesClicked += 1
+				getElement("play-text").style.display = "none"
+				getRandomNumber()
+				return
+			}
+
+			if (oldRandomNumber === whatBox) {
+				endTimer()
+				timesClicked += 1
+				getRandomNumber()
+				return
+			}
+		}
+
+		function isNewNumberNeeded() {
+			if (oldRandomNumber === newRandomNumber) {
+				return getRandomNumber()
+			}
+			selectedIndex(newRandomNumber)
+		}
+
+		function getRandomNumber() {
+
+			newRandomNumber = Math.floor(Math.random() * 4) + 1
+
+			if (currentActiveBox === 0) {
+				return selectedIndex(newRandomNumber)
+			}
+
+			isNewNumberNeeded(newRandomNumber)
+		}
+
+		function startTimer() {
+			getTime.start = new Date().getTime()
+		}
+
+		function endTimer() {
+			getTime.end = new Date().getTime()
+			element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
+			currentScore += (getTime.end - getTime.start) / 1000
+		}
+
+		function newGame() {
+			currentActiveBox = 0
+			oldRandomNumber = 0
+			newRandomNumber = 0
+			timesClicked = 0
+			currentScore = 0
+			getTime.start = 0
+			getTime.end = 0
+		}
+
+
+
+
+
+		/* 		function selectedIndex(index) {
+					if (currentActiveSquare !== "") {
+						inactiveElement(currentActiveSquare)
+					}
+		
+					previousNumber = index
+					currentActiveSquare = square.position[index]
+					activeElement(square.position[index])
+		
+				}
+		
+		
+		
+				function squareClicked(square) {
+					if (currentActiveSquare === "") {
+						getRandomNumber()
+						return;
+					}
+		
+					if (square === previousNumber) {
+						getTime.end = new Date().getTime()
+						timesClicked = timesClicked + 1
+						element.timedResults.innerHTML += `${timesClicked}: ${(getTime.end - getTime.start) / 1000}<br>`
+		
+						if ((getTime.end - getTime.start) < 1000) {
+							currentScore += 10
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 900) {
+							currentScore += 15
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 800) {
+							currentScore += 20
+							console.log("score", currentScore)
+						}
+						if ((getTime.end - getTime.start) < 700) {
+							currentScore += 25
+							console.log("score", currentScore)
+						}
+		
+		
+						// element.score.innerHTML +=  
+		
+						getRandomNumber()
+					}
+				}
+		
+				function getRandomNumber() {
+					nextNumber = Math.floor(Math.random() * 4) + 1
+					noRepeatNumber()
+				}
+		
+				function noRepeatNumber() {
+					if (previousNumber === nextNumber) {
+						getRandomNumber()
+					}
+					else {
+						getTime.start = new Date().getTime()
+						selectedIndex(nextNumber)
+					}
+		
+				} */
+
+	</script>
+
+</body>
+
+</html>
+
+<!-- 
+
+lag spill som går på tid
+
+to click = gul
+unselected = grå
+
+CSS grid 2x2
+
+funksjon som lager HTML med parameter selectedIndex
+
+funksjon selectedIndex
+hent 1 value fra getRandomNumber for å velge 1 av de 4 rutene
+
+funksjon getRandomNumber
+array for de 4 rutene
+clone 1 value som korrekt value og sjekk om riktig tall er valgt.
+init nytt random nummer for å velge ny aktiv rute
+
+ta tid på hvor lang tid til completion
+bruk global
+new Date().getTime()
+difference / 1000 = sekunder
