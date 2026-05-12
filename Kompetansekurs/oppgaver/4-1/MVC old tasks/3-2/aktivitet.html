@@ -71,8 +71,8 @@
 	</div>
 
 	<div class="container">
-		<input oninput="checkName()" id="name-input" type="text" placeholder="name..."></form>
-		<input oninput="checkAge()" id="age-input" type="text" placeholder="age..."></form>
+		<input oninput="checkSignal(`name`)" id="name-input" type="text" placeholder="name..."></form>
+		<input oninput="checkSignal(`age`)" id="age-input" type="text" placeholder="age..."></form>
 	</div>
 
 	<div class="text-container">
@@ -90,26 +90,61 @@
 		//model
 		const specialCharacters = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-
-		let currentOutput = 0
-
 		const dataLogic = {
 			name: {
 				pass: "hello ",
 				fail: {
+					empty: ``,
 					short: ` not accepted as a name`,
 					divide: `Not dividing by 4`,
 					special: `No special characters`
 				}
+			},
+			age: {
+				empty: ``,
+				fail: ` years old - Not old enough`,
+				pass: ` years old - Old enough`
 			}
 		}
 
-		function changeName() {
-			updateView("name", element.write.name.value + dataLogic.name.fail.short, colorFail)
+		function checkName(length, special, divide) {
+			if (length === 0 || length === "") {
+				modifyView("name", "empty")
+			}
+			else if (length === 1) {
+				modifyView("name", "too-short")
+			}
+			else if (!special) {
+				modifyView("name", "no-special")
+			}
+			else if (!divide) {
+				modifyView("name", "no-divide")
+			}
+			else {
+				modifyView("name", "pass")
+			}
 		}
 
-		function changeNameOutput() {
+		function checkAge(element) {
+			if (element === "") {
+				modifyView("age", "empty")
+			}
 
+			else if (calculateAge(element) < 18) {
+				modifyView("age", "fail")
+			}
+
+			else {
+				modifyView("age", "pass")
+			}
+		}
+
+		function nameToNumber(element) {
+			return Math.round(parseInt(element.replaceAll("/4", ""), 36) / 4)
+		}
+
+		function calculateAge(element) {
+			return Math.round(element / 31557600000)
 		}
 
 
@@ -142,42 +177,58 @@
 			}
 		}
 
-		//controller
-		function checkName() {
-
-			if (element.write.name.value.length < 2) {
-				changeName(amount)
+		//controller	
+		function checkSignal(signal) {
+			if (signal === "name") {
+				checkName(
+					element.write.name.value.length,
+					specialCharacters.test(element.write.name.value),
+					element.write.name.value.includes("/4")
+				)
 			}
 
-			else if (!specialCharacters.test(element.write.name.value)) {
-				updateView("name", dataLogic.name.fail.special, colorFail)
-			}
-
-			else if (!element.write.name.value.includes("/4")) {
-				updateView("name", dataLogic.name.fail.divide, colorFail)
-			}
-
-			else {
-				nameToNumber()
-				updateView("name", dataLogic.name.pass + currentOutput, colorPass)
+			if (signal === "age") {
+				checkAge(element.write.age.value)
 			}
 		}
 
-		function nameToNumber() {
-			currentOutput = Math.round(parseInt(element.write.name.value.replaceAll("/4", ""), 36) / 4)
-		}
+		function modifyView(toModify, signal) {
 
-		function checkAge() {
-			calculateAge = Math.round(element.write.age.value / 31557600000)
+			if (toModify === "name") {
+				if (signal === "empty") {
+					updateView("name", dataLogic.name.fail.empty, colorFail)
+				}
+				if (signal === "too-short") {
+					updateView("name", element.write.name.value + dataLogic.name.fail.short, colorFail)
+				}
+				if (signal === "no-special") {
+					updateView("name", dataLogic.name.fail.special, colorFail)
+				}
+				if (signal === "no-divide") {
+					updateView("name", dataLogic.name.fail.divide, colorFail)
+				}
 
-			if (calculateAge < 18) {
-				updateView("age", calculateAge + " years old - Not old enough", colorFail)
+				if (signal === "pass") {
+					updateView("name", dataLogic.name.pass + nameToNumber(element.write.name.value), colorPass)
+				}
 			}
 
-			if (calculateAge >= 18) {
-				updateView("age", calculateAge + " years old - Old enough", colorPass)
+			if (toModify === "age") {
+				if (signal === "empty") {
+					updateView("age", dataLogic.age.empty, colorFail)
+				}
+				if (signal === "fail") {
+					updateView("age", calculateAge(element.write.age.value) + dataLogic.age.fail, colorFail)
+				}
+				if (signal === "pass") {
+					updateView("age", calculateAge(element.write.age.value) + dataLogic.age.pass, colorPass)
+				}
 			}
 		}
+
+
+
+
 	</script>
 </body>
 
