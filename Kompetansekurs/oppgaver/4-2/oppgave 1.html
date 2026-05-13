@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Tallkonvertering</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 600px;
+		}
+
+		input,
+		button {
+			font-size: 16px;
+			padding: 10px;
+			margin: 6px;
+			border-radius: 6px;
+			border: 2px solid #ccc;
+		}
+
+		button {
+			background: #005f99;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+
+		.rad {
+			background: white;
+			padding: 12px 16px;
+			border-radius: 8px;
+			margin: 6px 0;
+			font-size: 17px;
+		}
+
+		.etikett {
+			font-weight: bold;
+			color: #005f99;
+			display: inline-block;
+			min-width: 220px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Tallkonvertering</h1>
+	<p>
+		Skriv inn noe — tall, tekst, eller en blanding — og se hva JavaScript gjør
+		med det.
+	</p>
+
+	<input id="input" type="text" placeholder='Prøv: "42", "3.14", "42px", "hei"' />
+	<button onclick="konverter()">Konverter</button>
+
+	<div id="output"></div>
+
+	<script>
+		// OPPGAVE 1: Number() og parseInt()
+
+		// Lag funksjonen konverter()
+		// Den skal lese verdien fra #input og vise fire rader i #output
+
+		// Rad 1: "Number():"        → resultatet av Number(input)
+		// Rad 2: "parseInt():"      → resultatet av parseInt(input)
+		// Rad 3: "Er det NaN?"      → bruk isNaN() på Number(input), vis true/false
+		// Rad 4: "Typen er:"        → bruk typeof på Number(input)
+
+		// Bruk denne HTML-strukturen for hver rad:
+		// "<div class='rad'><span class='etikett'>Number():</span> [verdi]</div>"
+
+		// Bonus: legg til en rad som viser parseInt(input, 16)
+		// og forklarer at det tolker input som et heksadesimalt tall
+
+
+		//model
+
+		//view
+
+		//controller
+	</script>
+</body>
+
+</html>

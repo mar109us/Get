@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Strengutforsker</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 600px;
+		}
+
+		input,
+		button {
+			font-size: 16px;
+			padding: 10px;
+			margin: 6px;
+			border-radius: 6px;
+			border: 2px solid #ccc;
+		}
+
+		button {
+			background: #005f99;
+			color: white;
+			border: none;
+			cursor: pointer;
+		}
+
+		.rad {
+			background: white;
+			padding: 12px 16px;
+			border-radius: 8px;
+			margin: 6px 0;
+			font-size: 17px;
+		}
+
+		.etikett {
+			font-weight: bold;
+			color: #005f99;
+			display: inline-block;
+			min-width: 200px;
+		}
+
+		.ja {
+			color: #43a047;
+			font-weight: bold;
+		}
+
+		.nei {
+			color: #e53935;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Strengutforsker</h1>
+	<p>Skriv inn en tekst og se hva ulike metoder gjør med den.</p>
+
+	<input id="tekst" type="text" placeholder='Prøv: "  Hei Verden!  "' />
+	<button onclick="analyser()">Analyser</button>
+
+	<div id="output"></div>
+
+	<script>
+		// OPPGAVE 3: Strengmetoder
+
+		// Lag funksjonen analyser()
+		// Den skal lese teksten fra #tekst og vise disse radene i #output:
+
+		// "Lengde (length):"         antall tegn
+		// "Stor skrift:"             toUpperCase()
+		// "Liten skrift:"            toLowerCase()
+		// "Uten mellomrom (trim):"   trim()
+		// "Første tegn (charAt):"    charAt(0)
+		// "Inneholder 'e':"          includes("e") — vis "Ja" eller "Nei"
+		// "Posisjon til 'e':"        indexOf("e") — vis -1 hvis ikke funnet
+		// "Etter replace:"           replace første tegn med "★"
+		//                            Tips: tekst.replace(tekst.charAt(0), "★")
+
+		// For "Ja"/"Nei"-raden: bruk class="ja" eller class="nei" på svaret
+
+		// Bonus: legg til en rad som viser teksten snudd baklengs
+		// Tips: tekst.split("").reverse().join("")
+	</script>
+</body>
+
+</html>

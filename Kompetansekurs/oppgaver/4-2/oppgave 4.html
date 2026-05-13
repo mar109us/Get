@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Navnebehandler</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 600px;
+		}
+
+		label {
+			display: block;
+			font-weight: bold;
+			margin-top: 16px;
+		}
+
+		input,
+		button {
+			font-size: 16px;
+			padding: 10px;
+			margin: 6px 0;
+			border-radius: 6px;
+			border: 2px solid #ccc;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		button {
+			background: #005f99;
+			color: white;
+			border: none;
+			cursor: pointer;
+			width: auto;
+			padding: 10px 28px;
+		}
+
+		.kort {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			margin-top: 16px;
+		}
+
+		.rad {
+			padding: 8px 0;
+			border-bottom: 1px solid #eee;
+			font-size: 17px;
+		}
+
+		.etikett {
+			font-weight: bold;
+			color: #005f99;
+			display: inline-block;
+			min-width: 180px;
+		}
+
+		.stor {
+			font-size: 26px;
+			font-weight: bold;
+			color: #005f99;
+			margin-bottom: 12px;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Navnebehandler</h1>
+	<p>
+		Brukere skriver inn navn på alle mulige måter. Din jobb er å rydde opp og
+		formatere.
+	</p>
+
+	<!-- OPPGAVE 4: Kombinere tall og strengmetoder -->
+
+	<label>Fornavn (skriv slurvet, f.eks. " kARI "):</label>
+	<input id="fornavn" type="text" placeholder="Fornavn" />
+
+	<label>Etternavn (f.eks. " nORdMANN "):</label>
+	<input id="etternavn" type="text" placeholder="Etternavn" />
+
+	<button onclick="behandleNavn()">Behandle</button>
+
+	<div id="output"></div>
+
+	<script>
+		// OPPGAVE 4: Kombiner streng- og tallmetoder
+
+		// Lag funksjonen behandleNavn()
+		// Den skal lese fornavn og etternavn og vise et kort med:
+
+		// Øverst: det ryddede fulle navnet stort (som en tittel)
+		// Tips for å rydde: trim() + første bokstav stor, resten små
+		// let ryddet = navn.trim();
+		// ryddet = ryddet.charAt(0).toUpperCase() + ryddet.slice(1).toLowerCase();
+
+		// Rad 1: "Slik du skrev:"    fornavn + " " + etternavn (uendret)
+		// Rad 2: "Ryddet:"           ryddet fornavn + " " + ryddet etternavn
+		// Rad 3: "Initialer:"        første bokstav i hvert navn + "." (f.eks. "K.N.")
+		// Rad 4: "Antall tegn:"      lengden på det ryddede fulle navnet (uten mellomrom)
+		//                            Tips: fulltNavn.replace(" ", "").length
+		// Rad 5: "Starts med vokal:" sjekk om fornavnet starter med a/e/i/o/u
+		//                            Tips: includes() på en streng med alle vokaler
+		//                            "aeiouæøå".includes(ryddetFornavn.charAt(0).toLowerCase())
+
+		// Bonus: legg til et felt for e-post
+		// Generer et forslag til brukernavn:
+		// fornavn.toLowerCase() + "." + etternavn.toLowerCase() + "@getacademy.no"
+	</script>
+</body>
+
+</html>

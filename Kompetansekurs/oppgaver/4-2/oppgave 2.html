@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Prisskalkulator</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			padding: 32px;
+			background: #f0f4f8;
+			max-width: 600px;
+		}
+
+		label {
+			display: block;
+			font-weight: bold;
+			margin-top: 16px;
+		}
+
+		input,
+		button {
+			font-size: 16px;
+			padding: 10px;
+			margin: 6px 0;
+			border-radius: 6px;
+			border: 2px solid #ccc;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		button {
+			background: #005f99;
+			color: white;
+			border: none;
+			cursor: pointer;
+			width: auto;
+			padding: 10px 28px;
+		}
+
+		.kort {
+			background: white;
+			padding: 20px;
+			border-radius: 10px;
+			margin-top: 16px;
+		}
+
+		.kort h2 {
+			color: #005f99;
+			margin: 0 0 12px 0;
+		}
+
+		.rad {
+			display: flex;
+			justify-content: space-between;
+			padding: 6px 0;
+			border-bottom: 1px solid #eee;
+			font-size: 17px;
+		}
+
+		.total {
+			font-weight: bold;
+			font-size: 22px;
+			color: #005f99;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Prisskalkulator</h1>
+
+	<!-- OPPGAVE 2: Math og toLocaleString -->
+
+	<label>Pris per enhet (kr):</label>
+	<input id="pris" type="number" placeholder="f.eks. 149.9" />
+
+	<label>Antall:</label>
+	<input id="antall" type="number" placeholder="f.eks. 3" />
+
+	<label>Rabatt (%):</label>
+	<input id="rabatt" type="number" placeholder="f.eks. 10" />
+
+	<button onclick="regnUt()">Regn ut</button>
+
+	<div id="output"></div>
+
+	<script>
+		// Lag funksjonen regnUt()
+		// Den skal lese pris, antall og rabatt, og vise et kort med:
+
+		// "Pris per enhet:"     prisen formatert med toLocaleString("nb-NO") + " kr"
+		// "Antall:"             antallet
+		// "Subtotal:"           pris * antall, formatert norsk
+		// "Rabatt (X%):"        rabattbeløpet, formatert norsk (bruk Math.round)
+		// "Total:"              subtotal minus rabatt, formatert norsk
+		// "MVA (25%):"          totalen * 0.25, formatert med toFixed(2)
+		// "Total inkl. MVA:"    total + mva, med toLocaleString + valuta NOK
+
+		// Tips for valutaformat:
+		// tall.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })
+
+		// Bonus: bruk Math.max for å sørge for at rabatten aldri er negativ
+		// Bonus: bruk Math.min for å sørge for at rabatten aldri er over 100%
+	</script>
+</body>
+
+</html>
