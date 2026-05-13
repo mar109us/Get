@@ -53,7 +53,8 @@
 	</p>
 
 	<input id="input" type="text" placeholder='Prøv: "42", "3.14", "42px", "hei"' />
-	<button onclick="konverter()">Konverter</button>
+	<button id="button-convert">convert</button>
+	<button id="button-clear">clear</button>
 
 	<div id="output"></div>
 
@@ -76,10 +77,41 @@
 
 
 		//model
+		function converter() {
+
+		}
 
 		//view
+		const getElement = (calledId) => document.getElementById(calledId)
 
-		//controller
+		const element = {
+			input: getElement("input"),
+			button: {
+				convert: getElement("button-convert"),
+				clear: getElement("button-clear")
+			},
+			output: getElement("output"),
+		}
+
+
+		const event = {
+			convert: element.button.convert.addEventListener("click", function () { userAction("convert") }),
+			clear: element.button.clear.addEventListener("click", function () { userAction("clear") })
+		}
+
+
+
+
+
+		//controller		
+		function userAction(element) {
+			if (element === "convert") {
+				console.log("convert")
+			}
+			if (element === "clear") {
+				console.log("clear")
+			}
+		}
 	</script>
 </body>
 
