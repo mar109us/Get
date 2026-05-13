@@ -77,8 +77,22 @@
 
 
 		//model
-		function converter() {
+		let newData
 
+
+		function modifyData(action, value) {
+			if (action === "convert") {
+				newData += Number(value)
+				newData += parseInt(value)
+				newData += isNaN(Number(value))
+				newData += typeof Number(value)
+				newData += parseInt(value, 16)
+				return newData
+			}
+			if (action === "clear") {
+				newData = ""
+				return newData
+			}
 		}
 
 		//view
@@ -93,23 +107,40 @@
 			output: getElement("output"),
 		}
 
-
 		const event = {
-			convert: element.button.convert.addEventListener("click", function () { userAction("convert") }),
-			clear: element.button.clear.addEventListener("click", function () { userAction("clear") })
+			convert: element.button.convert.addEventListener("click", function () { recievedAction("convert") }),
+			clear: element.button.clear.addEventListener("click", function () { recievedAction("clear") })
+		}
+
+		function recievedAction(action) {
+			if (action === "convert") {
+				userAction(action, element.input.innerHTML)
+			}
+			if (action === "clear") {
+				userAction(action, element.input.innerHTML)
+			}
+		}
+
+		function htmlStructure() {
+			element.output.innerHTML = `<div class='rad'><span class='etikett'>Number():</span> [verdi]</div>`
+		}
+
+		function updateView(action, value) {
+
 		}
 
 
-
-
-
 		//controller		
-		function userAction(element) {
-			if (element === "convert") {
-				console.log("convert")
+		function userAction(action, value) {
+			if (action === "convert") {
+				modifyData(action, value)
+				console.log(newData)
+				updateView(action, value)
 			}
-			if (element === "clear") {
-				console.log("clear")
+			if (action === "clear") {
+				modifyData(action, value)
+				console.log(value)
+				updateView(action, value)
 			}
 		}
 	</script>
