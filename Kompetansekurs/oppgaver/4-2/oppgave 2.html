@@ -8,7 +8,7 @@
 		body {
 			font-family: Arial, sans-serif;
 			padding: 32px;
-			background: #f0f4f8;
+			background: #6d6d6d;
 			max-width: 600px;
 		}
 
@@ -85,6 +85,28 @@
 	<div id="output"></div>
 
 	<script>
+		let pris = document.getElementById("pris").value
+		let antall = document.getElementById("antall")
+		let rabatt = document.getElementById("rabatt")
+
+		let prisValue = pris
+		console.log(prisValue)
+		console.log(prisValue.toFixed(2))
+		console.log(prisValue.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
+		
+		function regnUt() {
+/* 			let toNOK = pris.value
+			Number(toNOK.toFixed(2))
+			toNOK.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })
+			console.log(toNOK)
+			console.log(pris.value) */
+
+		}
+
+		function kort() {
+
+		}
+
 		// Lag funksjonen regnUt()
 		// Den skal lese pris, antall og rabatt, og vise et kort med:
 
