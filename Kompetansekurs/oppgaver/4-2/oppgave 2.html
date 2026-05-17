@@ -91,7 +91,12 @@
 
 		let nyPris
 		let nyAntall
+
+		let totalPris
+
 		let nyRabatt
+
+
 
 		function regnUt() {
 			nyPris = Number(pris.value).toFixed(2)
@@ -101,7 +106,14 @@
 
 			nyAntall = Number(antall.value).toFixed()
 			console.log(nyAntall)
-			console.log(nyPris * nyAntall)
+
+			totalPris = nyPris * nyAntall
+			console.log(totalPris)
+
+			nyRabatt = Number(rabatt.value).toFixed(0)
+			nyRabatt = totalPris - (nyRabatt / 100 * totalPris)
+			console.log(nyRabatt.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
+			/* console.log(nyPris * nyAntall) */
 		}
 
 		function kort() {
