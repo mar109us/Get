@@ -59,7 +59,7 @@
 	<h1>Strengutforsker</h1>
 	<p>Skriv inn en tekst og se hva ulike metoder gjør med den.</p>
 
-	<input id="tekst" type="text" placeholder='Prøv: "  Hei Verden!  "' value="test GK" />
+	<input id="tekst" type="text" placeholder='Prøv: "  Hei Verden!  "' />
 	<button onclick="analyser()">Analyser</button>
 
 	<div id="output"></div>
@@ -67,31 +67,58 @@
 	<script>
 
 		let text = document.getElementById("tekst")
-		let textValue = text.value
+
+		let textValue
+		let textString
 
 		let length
+		let uppercase
+		let lowercase
+		let doTrim
+		let charPosition
+		let eIncluded
+		let ePosition
+		let replaceFirst
+		let setClass
 
 		function analyser() {
+			textValue = text.value
+			textString = text.value.toString()
 
-			length = textValue.length
+			length = textString.length
+			uppercase = textString.toUpperCase()
+			lowercase = textString.toLowerCase()
+			doTrim = textString.trim()
+			charPosition = textString.charAt(0)
+
+			if (textString.includes("e")) {
+				setClass = `class="ja"`
+				eIncluded = "ja"
+				ePosition = textString.indexOf("e")
+			}
+			else {
+				setClass = `class="nei"`
+				eIncluded = "nei"
+				ePosition = "-1"
+			}
+
+			replaceFirst = textString.replace(textString.charAt(0), "★")
 
 
 			kort()
 		}
 
-		analyser()
-
 		function kort() {
 
 			document.getElementById("output").innerHTML = `
 			<div>Lengde (length): ${length}</div>
-			<div>Stor skrift: ${length}</div>
-			<div>Liten skrift: ${length}</div>
-			<div>Uten mellomrom (trim): ${length}</div>
-			<div>Første tegn (charAt): ${length}</div>
-			<div>Inneholder 'e': ${length}</div>
-			<div>Posisjon til 'e': ${length}</div>
-			<div>Etter replace: ${length}</div>
+			<div>Stor skrift: ${uppercase}</div>
+			<div>Liten skrift: ${lowercase}</div>
+			<div>Uten mellomrom (trim): ${doTrim}</div>
+			<div>Første tegn (charAt): ${charPosition}</div>
+			<div ${setClass}>Inneholder 'e': ${eIncluded}</div>
+			<div ${setClass}>Posisjon til 'e': ${ePosition}</div>
+			<div>Etter replace: ${replaceFirst}</div>
 			
 			`
 
