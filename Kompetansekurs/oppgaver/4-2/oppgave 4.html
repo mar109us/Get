@@ -8,7 +8,7 @@
 		body {
 			font-family: Arial, sans-serif;
 			padding: 32px;
-			background: #f0f4f8;
+			background: #8e8e8e;
 			max-width: 600px;
 		}
 
@@ -87,6 +87,47 @@
 	<div id="output"></div>
 
 	<script>
+
+		const fornavnLink = document.getElementById("fornavn")
+		const etternavnLink = document.getElementById("etternavn")
+
+		function behandleNavn() {
+			fornavn = fornavnLink.value
+			etternavn = etternavnLink.value
+
+
+			unchanged = fornavn + " " + etternavn
+
+			cleanFornavn = fornavn.charAt(0).toUpperCase() + fornavn.slice(1).toLowerCase()
+			cleanEtternavn = etternavn.charAt(0).toUpperCase() + etternavn.slice(1).toLowerCase()
+
+			clean = cleanFornavn + " " + cleanEtternavn
+
+			initialFornavn = fornavn.charAt(0).toUpperCase()
+			initialetternavn = etternavn.charAt(0).toUpperCase()
+
+			initial = initialFornavn + "." + initialetternavn
+
+			navnLength = fornavn.length + etternavn.length
+
+			vokal = "aeiouæøå".includes(fornavn.charAt(0).toLowerCase())
+
+			kort()
+		}
+		behandleNavn()
+
+		function kort() {
+
+			document.getElementById("output").innerHTML = `
+			<div>Slik du skrev: ${unchanged}</div>
+			<div>Ryddet: ${clean}</div>
+			<div>Initialer: ${initial}</div>
+			<div>Antall tegn: ${navnLength}</div>
+			<div>Starts med vokal: ${vokal}</div>
+			`
+
+		}
+
 		// OPPGAVE 4: Kombiner streng- og tallmetoder
 
 		// Lag funksjonen behandleNavn()
