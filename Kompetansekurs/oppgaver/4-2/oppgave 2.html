@@ -92,32 +92,54 @@
 		let nyPris
 		let nyAntall
 
+		let nok
+
 		let totalPris
 
 		let nyRabatt
+		let rabattSpart
+		let kalkulertRabatt
 
+		let mva
+
+		let totalSum
 
 
 		function regnUt() {
-			nyPris = Number(pris.value).toFixed(2)
 
-			console.log(nyPris)
-			console.log(nyPris.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
+			nyPris = Number(pris.value)
 
 			nyAntall = Number(antall.value).toFixed()
-			console.log(nyAntall)
 
 			totalPris = nyPris * nyAntall
-			console.log(totalPris)
 
-			nyRabatt = Number(rabatt.value).toFixed(0)
-			nyRabatt = totalPris - (nyRabatt / 100 * totalPris)
-			console.log(nyRabatt.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
-			/* console.log(nyPris * nyAntall) */
+			nyRabatt = Number(rabatt.value).toFixed()
+
+
+
+			rabattSpart = nyRabatt / 100 * totalPris
+
+			kalkulertRabatt = totalPris - (nyRabatt / 100 * totalPris)
+
+			mva = kalkulertRabatt * 0.25
+
+			totalSum = kalkulertRabatt + mva
+
+
+			kort()
 		}
 
 		function kort() {
-
+			document.getElementById("output").innerHTML = `
+			
+			<div>Pris per enhet: ${nyPris.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			<div>Antall: ${nyAntall}</div>
+			<div>Subtotal: ${totalPris.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			<div>Rabatt (${nyRabatt}%): -${rabattSpart.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			<div>Total: ${kalkulertRabatt.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			<div>MVA (25%): ${mva.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			<div>Total inkl. MVA: ${totalSum.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })}</div>
+			`
 		}
 
 		// Lag funksjonen regnUt()
