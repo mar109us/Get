@@ -99,6 +99,9 @@
 			console.log(nyPris)
 			console.log(nyPris.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
 
+			nyAntall = Number(antall.value).toFixed()
+			console.log(nyAntall)
+			console.log(nyPris * nyAntall)
 		}
 
 		function kort() {
