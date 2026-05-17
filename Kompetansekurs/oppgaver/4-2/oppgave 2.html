@@ -85,21 +85,19 @@
 	<div id="output"></div>
 
 	<script>
-		let pris = document.getElementById("pris").value
+		let pris = document.getElementById("pris")
 		let antall = document.getElementById("antall")
 		let rabatt = document.getElementById("rabatt")
 
-		let prisValue = pris
-		console.log(prisValue)
-		console.log(prisValue.toFixed(2))
-		console.log(prisValue.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
+		let nyPris
+		let nyAntall
+		let nyRabatt
 
 		function regnUt() {
-			/* 			let toNOK = pris.value
-						Number(toNOK.toFixed(2))
-						toNOK.toLocaleString("nb-NO", { style: "currency", currency: "NOK" })
-						console.log(toNOK)
-						console.log(pris.value) */
+			nyPris = Number(pris.value).toFixed(2)
+
+			console.log(nyPris)
+			console.log(nyPris.toLocaleString("nb-NO", { style: "currency", currency: "NOK" }))
 
 		}
 
