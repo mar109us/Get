@@ -8,7 +8,7 @@
 		body {
 			font-family: Arial, sans-serif;
 			padding: 32px;
-			background: #f0f4f8;
+			background: #666666;
 			max-width: 600px;
 		}
 
@@ -59,16 +59,43 @@
 	<h1>Strengutforsker</h1>
 	<p>Skriv inn en tekst og se hva ulike metoder gjør med den.</p>
 
-	<input id="tekst" type="text" placeholder='Prøv: "  Hei Verden!  "' />
+	<input id="tekst" type="text" placeholder='Prøv: "  Hei Verden!  "' value="test GK" />
 	<button onclick="analyser()">Analyser</button>
 
 	<div id="output"></div>
 
 	<script>
 
-function analyser() {
-	
-}
+		let text = document.getElementById("tekst")
+		let textValue = text.value
+
+		let length
+
+		function analyser() {
+
+			length = textValue.length
+
+
+			kort()
+		}
+
+		analyser()
+
+		function kort() {
+
+			document.getElementById("output").innerHTML = `
+			<div>Lengde (length): ${length}</div>
+			<div>Stor skrift: ${length}</div>
+			<div>Liten skrift: ${length}</div>
+			<div>Uten mellomrom (trim): ${length}</div>
+			<div>Første tegn (charAt): ${length}</div>
+			<div>Inneholder 'e': ${length}</div>
+			<div>Posisjon til 'e': ${length}</div>
+			<div>Etter replace: ${length}</div>
+			
+			`
+
+		}
 
 		// OPPGAVE 3: Strengmetoder
 
