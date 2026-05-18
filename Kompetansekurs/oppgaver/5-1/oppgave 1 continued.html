@@ -33,6 +33,7 @@
 			display: grid;
 			grid-template-columns: repeat(8, 100px);
 			grid-template-rows: repeat(8, 100px);
+			justify-content: center;
 		}
 
 		#app>div {
@@ -65,11 +66,6 @@
 			color: var(--gray);
 		}
 
-		.cordinates {
-			font-family: monospace;
-			font-size: 2em;
-		}
-
 		button {
 			font-family: 'Arial Unicode MS', 'Consolas';
 			font-size: 3.5em;
@@ -79,11 +75,19 @@
 			cursor: pointer;
 			transition: background-color 0.2s;
 		}
+
+		.cordinates {
+			display: flex;
+			justify-content: right;
+			font-family: monospace;
+			font-size: 2em;
+		}
 	</style>
 </head>
 
 <body>
 
+	<div id="currentPosition" class="cordinates"></div>
 
 	<div id="app"></div>
 
@@ -95,7 +99,7 @@
 			<button class="right" onclick="moveRight()">▸</button>
 		</div>
 	</div>
-	<div id="currentPosition" class="cordinates">test</div>
+
 	<script>
 
 		const size = 64;
