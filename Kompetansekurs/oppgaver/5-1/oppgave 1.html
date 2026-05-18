@@ -71,6 +71,10 @@
 		const highlightSquare = `<div class="selected"></div>`;
 		const mainDiv = document.getElementById("app");
 
+		let beforeYellow = 0
+		let yellowSquareIndex = 5
+		let afterYellow = 63
+
 		// Tegner brettet på nytt basert på squareIndex
 
 		// Martinius: 
@@ -81,9 +85,10 @@
 		// drawPattern(): parameter = antall squares som skal repeate
 		function showBoard() {
 			mainDiv.innerHTML = ``;
-			drawPattern(0);//endre her
+			drawPattern(beforeYellow)
+			drawPattern(yellowSquareIndex);
 			mainDiv.innerHTML += highlightSquare;
-			drawPattern(63);//endre her
+			drawPattern(afterYellow);
 		}
 
 		// Tegner et gitt antall tomme ruter
@@ -91,7 +96,20 @@
 		// Jeg må løse oppgaven ved å endre på drawpattern call 1 og drawpattern call 2
 		// de må utregnes slik at grid ikke blir mindre eller større, slik at grid alltid har 64 squares
 		function drawPattern(amount) {
-			mainDiv.innerHTML += pattern.repeat(amount);
+			if (amount === beforeYellow) {
+				beforeYellow += yellowSquareIndex
+			}
+			if (amount === yellowSquareIndex) {
+
+			}
+			if (amount === afterYellow) {
+				afterYellow -= yellowSquareIndex
+				
+			}
+
+mainDiv.innerHTML += pattern.repeat(amount);
+
+
 		}
 
 		//Før du skriver kode, les gjennom koden og forstå hva den gjør
