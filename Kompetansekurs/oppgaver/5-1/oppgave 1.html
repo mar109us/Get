@@ -55,11 +55,11 @@
 	<div id="app"></div>
 
 	<div class="dpad">
-		<button class="up">⬆️</button>
+		<button class="up" onclick="moveUp()">⬆️</button>
 		<div class="dpad-middle">
-			<button class="left">⬅️</button>
-			<button class="down">⬇️</button>
-			<button class="right">➡️</button>
+			<button class="left" onclick="moveLeft()">⬅️</button>
+			<button class="down" onclick="moveDown()">⬇️</button>
+			<button class="right" onclick="moveRight()">➡️</button>
 		</div>
 	</div>
 
@@ -78,7 +78,26 @@
 		let yellowSquareIndex = 0
 		let boardEnd = 63
 
-		function calculatePosition() {
+
+
+		function calculatePosition(action) {
+
+
+			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
+				yellowSquareIndex -= 8
+			}
+			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
+				yellowSquareIndex += 8
+			}
+
+			if (yellowSquareIndex < initBoardStart) {
+				yellowSquareIndex = initBoardEnd + yellowSquareIndex + 1
+			}
+			if (yellowSquareIndex > initBoardEnd) {
+				yellowSquareIndex = yellowSquareIndex - initBoardEnd - 1
+			}
+
+
 			boardStart = initBoardStart
 			boardEnd = initBoardEnd
 
@@ -94,8 +113,8 @@
 		// call 2: mainDiv.innerHTML += highlightSquare; = lag en highlighted square
 		// call 3: drawPattern(63) = tegn resterende empty squares
 		// drawPattern(): parameter = antall squares som skal repeate
-		function showBoard() {
-			calculatePosition()
+		function showBoard(action) {
+			calculatePosition(action)
 			mainDiv.innerHTML = ``;
 			drawPattern(boardStart)
 			mainDiv.innerHTML += highlightSquare;
@@ -111,19 +130,23 @@
 		}
 
 		function moveRight() {
-
+			yellowSquareIndex += 1
+			showBoard("moveRight")
 		}
 
 		function moveLeft() {
-
+			yellowSquareIndex -= 1
+			showBoard("moveLeft")
 		}
 
 		function moveDown() {
-
+			yellowSquareIndex += 8
+			showBoard("moveDown")
 		}
 
 		function moveUp() {
-
+			yellowSquareIndex -= 8
+			showBoard("moveUp")
 		}
 
 		//Før du skriver kode, les gjennom koden og forstå hva den gjør
