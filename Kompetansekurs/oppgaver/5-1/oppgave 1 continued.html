@@ -116,30 +116,24 @@
 
 	<div class="pageElements">
 		<div class="dpad">
-
-
 			<div class="dpad-row">
-				<button class="left" onclick="moveLeft()">🡬</button>
+				<button class="left" onclick="moveTopLeft()">🡬</button>
 				<button class="up" onclick="moveUp()">🢁</button>
-				<button class="right" onclick="moveRight()">🡭</button>
+				<button class="right" onclick="moveTopRight()">🡭</button>
 			</div>
 
 			<div class="dpad-row">
 				<button class="left" onclick="moveLeft()">🢀</button>
-				<button class="down"></button>
+				<button></button>
 				<button class="right" onclick="moveRight()">🢂</button>
 			</div>
 
 			<div class="dpad-row">
-				<button class="left" onclick="moveLeft()">🡯</button>
+				<button class="left" onclick="moveBotLeft()">🡯</button>
 				<button class="up" onclick="moveDown()">🢃</button>
-				<button class="right" onclick="moveRight()">🡮</button>
+				<button class="right" onclick="moveBotRight()">🡮</button>
 			</div>
-
-
-			
 		</div>
-
 
 		<div id="app"></div>
 
@@ -170,6 +164,42 @@
 
 			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
 				yellowSquareIndex += 8
+			}
+
+			if (action === "moveTopLeft") {
+				if (yellowSquareIndex + 1 % 8 === 0) {
+					yellowSquareIndex -= 16
+				}
+				else {
+					yellowSquareIndex -= 9
+				}
+			}
+
+			if (action === "moveTopRight") {
+				if (yellowSquareIndex % 8 === 0) {
+					yellowSquareIndex -= 14
+				}
+				else {
+					yellowSquareIndex -= 7
+				}
+			}
+
+			if (action === "moveBotLeft") {
+				if (yellowSquareIndex + 1 % 8 === 0) {
+					yellowSquareIndex += 14
+				}
+				else {
+					yellowSquareIndex += 7
+				}
+			}
+
+			if (action === "moveBotRight") {
+				if (yellowSquareIndex + 1 % 8 === 0) {
+					yellowSquareIndex += 16
+				}
+				else {
+					yellowSquareIndex += 9
+				}
 			}
 
 			if (yellowSquareIndex < initBoardStart) {
@@ -223,6 +253,22 @@
 		function moveUp() {
 			yellowSquareIndex -= 8
 			showBoard("moveUp")
+		}
+
+		function moveTopLeft() {
+			showBoard("moveTopLeft")
+		}
+
+		function moveTopRight() {
+			showBoard("moveTopRight")
+		}
+
+		function moveBotLeft() {
+			showBoard("moveBotLeft")
+		}
+
+		function moveBotRight() {
+			showBoard("moveBotRight")
 		}
 
 		showBoard();
