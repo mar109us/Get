@@ -126,10 +126,10 @@
 			drawPattern(boardStart)
 			mainDiv.innerHTML += highlightSquare;
 			drawPattern((boardEnd));
-			updatePosition()
+			updateCordinates()
 		}
 
-		function updatePosition() {
+		function updateCordinates() {
 			rowCordinate = Math.floor(yellowSquareIndex / 8) + 1
 			columnCordinate = (yellowSquareIndex % 8) + 1
 			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
