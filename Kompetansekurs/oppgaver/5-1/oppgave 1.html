@@ -48,10 +48,17 @@
 		.dpad button:hover {
 			background-color: #ccc;
 		}
+
+		.cordinates {
+			font-family: monospace;
+			font-size: 2em;
+		}
 	</style>
 </head>
 
 <body>
+
+
 	<div id="app"></div>
 
 	<div class="dpad">
@@ -62,7 +69,7 @@
 			<button class="right" onclick="moveRight()">➡️</button>
 		</div>
 	</div>
-
+	<div id="currentPosition" class="cordinates">test</div>
 	<script>
 		// ----- DISSE ER GITT — IKKE ENDRE DEM -----
 
@@ -70,6 +77,7 @@
 		const pattern = `<div></div>`;
 		const highlightSquare = `<div class="selected"></div>`;
 		const mainDiv = document.getElementById("app");
+		const printPosition = document.getElementById("currentPosition");
 
 		const initBoardStart = 0
 		const initBoardEnd = 63
@@ -78,14 +86,14 @@
 		let yellowSquareIndex = 0
 		let boardEnd = 63
 
-
+		let rowCordinate
+		let columnCordinate
 
 		function calculatePosition(action) {
-
-
 			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
 				yellowSquareIndex -= 8
 			}
+
 			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
 				yellowSquareIndex += 8
 			}
@@ -96,7 +104,6 @@
 			if (yellowSquareIndex > initBoardEnd) {
 				yellowSquareIndex = yellowSquareIndex - initBoardEnd - 1
 			}
-
 
 			boardStart = initBoardStart
 			boardEnd = initBoardEnd
@@ -119,6 +126,13 @@
 			drawPattern(boardStart)
 			mainDiv.innerHTML += highlightSquare;
 			drawPattern((boardEnd));
+			updatePosition()
+		}
+
+		function updatePosition() {
+			rowCordinate = Math.floor(yellowSquareIndex / 8) + 1
+			columnCordinate = (yellowSquareIndex % 8) + 1
+			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
 		}
 
 		// Tegner et gitt antall tomme ruter
