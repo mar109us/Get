@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rutenett</title>
+	<style>
+		.selected {
+			background-color: yellow;
+		}
+
+		#app {
+			display: grid;
+			grid-template-columns: repeat(8, 100px);
+			grid-template-rows: repeat(8, 100px);
+		}
+
+		#app>div {
+			border: 1px solid lightblue;
+		}
+
+		.dpad {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 5px;
+			margin: 20px 150px;
+			width: 500px;
+		}
+
+		.dpad-middle {
+			display: flex;
+			justify-content: center;
+			gap: 5px;
+		}
+
+		.dpad button {
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			background-color: #eee;
+			border: 2px solid #999;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+
+		.dpad button:hover {
+			background-color: #ccc;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app"></div>
+
+	<div class="dpad">
+		<button class="up">⬆️</button>
+		<div class="dpad-middle">
+			<button class="left">⬅️</button>
+			<button class="down">⬇️</button>
+			<button class="right">➡️</button>
+		</div>
+	</div>
+
+	<script>
+		// ----- DISSE ER GITT — IKKE ENDRE DEM -----
+
+		const size = 64;
+		const pattern = `<div></div>`;
+		const highlightSquare = `<div class="selected"></div>`;
+		const mainDiv = document.getElementById("app");
+
+		// Tegner brettet på nytt basert på squareIndex
+		function showBoard() {
+			mainDiv.innerHTML = ``;
+			drawPattern(0);//endre her
+			mainDiv.innerHTML += highlightSquare;
+			drawPattern((63));//endre her
+		}
+
+		// Tegner et gitt antall tomme ruter
+		function drawPattern(amount) {
+			mainDiv.innerHTML += pattern.repeat(amount);
+		}
+
+		//Før du skriver kode, les gjennom koden og forstå hva den gjør
+
+		// ----- DIN KODE STARTER HER -----
+
+		// Brettet er 8x8 = 64 ruter.
+		// 0 er øverst til venstre. 63 er nederst til høyre.
+		// Kall showBoard() for å tegne brettet.
+
+		// 1. Lag en variabel yellowSquareIndex som holder posisjonen til den gule ruten.
+
+		//Lag disse funksjoner og koble dem til knappene
+
+		// 2. moveRight()
+		//    Den gule ruten flytter seg én rute til høyre.
+		//    Ved høyre kant skal den hoppe til venstre kant.
+
+		// 3. moveLeft()
+		//    Den gule ruten flytter seg én rute til venstre.
+		//    Ved venstre kant skal den hoppe til høyre kant.
+
+		// 4. moveDown()
+		//    Den gule ruten flytter seg én rad ned.
+		//    Ved nederste rad skal den hoppe til øverste rad.
+
+		// 5. moveUp()
+		//    Den gule ruten flytter seg én rad opp.
+		//    Ved øverste rad skal den hoppe til nederste rad.
+
+		// BONUS:
+		// Vis hvilken rad og kolonne den gule ruten er på.
+		// Tips: rad = Math.floor(squareIndex / 8) + 1
+		//       kolonne = (squareIndex % 8) + 1
+
+		showBoard();
+	</script>
+</body>
+
+</html>
