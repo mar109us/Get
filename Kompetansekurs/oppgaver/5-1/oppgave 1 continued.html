@@ -44,6 +44,8 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+			justify-items: center;
+			justify-content: center;
 			gap: 5px;
 			margin: 20px 150px;
 			width: 500px;
@@ -82,24 +84,37 @@
 			font-family: monospace;
 			font-size: 2em;
 		}
+
+		.pageElements {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+
+
+
+		}
 	</style>
 </head>
 
 <body>
 
-	<div id="currentPosition" class="cordinates"></div>
 
-	<div id="app"></div>
 
-	<div class="dpad">
-		<button class="up" onclick="moveUp()">▴</button>
-		<div class="dpad-middle">
-			<button class="left" onclick="moveLeft()">◂</button>
-			<button class="down" onclick="moveDown()">▾</button>
-			<button class="right" onclick="moveRight()">▸</button>
+	<div class="pageElements">
+		<div class="dpad">
+			<button class="up" onclick="moveUp()">▴</button>
+			<div class="dpad-middle">
+				<button class="left" onclick="moveLeft()">◂</button>
+				<button class="down"></button>
+				<button class="right" onclick="moveRight()">▸</button>
+			</div>
+			<button class="up" onclick="moveDown()">▾</button>
 		</div>
-	</div>
 
+
+		<div id="app"></div>
+
+		<div id="currentPosition" class="cordinates"></div>
+	</div>
 	<script>
 
 		const size = 64;
