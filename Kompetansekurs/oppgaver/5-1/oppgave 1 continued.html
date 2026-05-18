@@ -5,8 +5,28 @@
 	<meta charset="UTF-8" />
 	<title>Rutenett</title>
 	<style>
+		:root {
+			user-select: none;
+
+			--background: #1d2021;
+			--highlight: #665c54;
+			--gray: #928374;
+			--bright_red: #fb4934;
+			--bright_green: #b8bb26;
+			--bright_yellow: #fabd2f;
+			--bright_blue: #83a598;
+			--bright_purple: #d3869b;
+			--bright_aqua: #8ec07c;
+			--bright_orange: #fe8019;
+		}
+
+		body {
+			background-color: var(--background);
+			color: var(--gray);
+		}
+
 		.selected {
-			background-color: yellow;
+			background-color: var(--bright_yellow);
 		}
 
 		#app {
@@ -16,7 +36,7 @@
 		}
 
 		#app>div {
-			border: 1px solid lightblue;
+			border: 1px solid var(--highlight);
 		}
 
 		.dpad {
@@ -35,23 +55,29 @@
 		}
 
 		.dpad button {
-			width: 50px;
-			height: 50px;
-			font-size: 24px;
-			background-color: #eee;
-			border: 2px solid #999;
-			border-radius: 10px;
-			cursor: pointer;
-			transition: background-color 0.2s;
+			width: 70px;
+			height: 70px;
+
 		}
 
 		.dpad button:hover {
-			background-color: #ccc;
+			background-color: var(--highlight);
+			color: var(--gray);
 		}
 
 		.cordinates {
 			font-family: monospace;
 			font-size: 2em;
+		}
+
+		button {
+			font-family: 'Arial Unicode MS', 'Consolas';
+			font-size: 3.5em;
+			background-color: var(--gray);
+			border: 2px solid var(--highlight);
+			border-radius: 10px;
+			cursor: pointer;
+			transition: background-color 0.2s;
 		}
 	</style>
 </head>
@@ -62,11 +88,11 @@
 	<div id="app"></div>
 
 	<div class="dpad">
-		<button class="up" onclick="moveUp()">⬆️</button>
+		<button class="up" onclick="moveUp()">▴</button>
 		<div class="dpad-middle">
-			<button class="left" onclick="moveLeft()">⬅️</button>
-			<button class="down" onclick="moveDown()">⬇️</button>
-			<button class="right" onclick="moveRight()">➡️</button>
+			<button class="left" onclick="moveLeft()">◂</button>
+			<button class="down" onclick="moveDown()">▾</button>
+			<button class="right" onclick="moveRight()">▸</button>
 		</div>
 	</div>
 	<div id="currentPosition" class="cordinates">test</div>
