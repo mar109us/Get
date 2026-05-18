@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="no">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Rutenett</title>
+	<style>
+		.selected {
+			background-color: yellow;
+		}
+
+		#app {
+			display: grid;
+			grid-template-columns: repeat(8, 100px);
+			grid-template-rows: repeat(8, 100px);
+		}
+
+		#app>div {
+			border: 1px solid lightblue;
+		}
+
+		.dpad {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 5px;
+			margin: 20px 150px;
+			width: 500px;
+		}
+
+		.dpad-middle {
+			display: flex;
+			justify-content: center;
+			gap: 5px;
+		}
+
+		.dpad button {
+			width: 50px;
+			height: 50px;
+			font-size: 24px;
+			background-color: #eee;
+			border: 2px solid #999;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+
+		.dpad button:hover {
+			background-color: #ccc;
+		}
+
+		.cordinates {
+			font-family: monospace;
+			font-size: 2em;
+		}
+	</style>
+</head>
+
+<body>
+
+
+	<div id="app"></div>
+
+	<div class="dpad">
+		<button class="up" onclick="moveUp()">⬆️</button>
+		<div class="dpad-middle">
+			<button class="left" onclick="moveLeft()">⬅️</button>
+			<button class="down" onclick="moveDown()">⬇️</button>
+			<button class="right" onclick="moveRight()">➡️</button>
+		</div>
+	</div>
+	<div id="currentPosition" class="cordinates">test</div>
+	<script>
+		// ----- DISSE ER GITT — IKKE ENDRE DEM -----
+
+		const size = 64;
+		const pattern = `<div></div>`;
+		const highlightSquare = `<div class="selected"></div>`;
+		const mainDiv = document.getElementById("app");
+		const printPosition = document.getElementById("currentPosition");
+
+		const initBoardStart = 0
+		const initBoardEnd = 63
+
+		let boardStart = 0
+		let yellowSquareIndex = 0
+		let boardEnd = 63
+
+		let rowCordinate
+		let columnCordinate
+
+		function calculatePosition(action) {
+			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
+				yellowSquareIndex -= 8
+			}
+
+			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
+				yellowSquareIndex += 8
+			}
+
+			if (yellowSquareIndex < initBoardStart) {
+				yellowSquareIndex = initBoardEnd + yellowSquareIndex + 1
+			}
+			if (yellowSquareIndex > initBoardEnd) {
+				yellowSquareIndex = yellowSquareIndex - initBoardEnd - 1
+			}
+
+			boardStart = initBoardStart
+			boardEnd = initBoardEnd
+
+			boardStart = boardStart + yellowSquareIndex
+			boardEnd = boardEnd - yellowSquareIndex
+		}
+
+		// Tegner brettet på nytt basert på squareIndex
+
+		// Martinius: 
+		// hvordan koden fungerer:
+		// call 1: drawPattern(0) = lag ingen squares til main div
+		// call 2: mainDiv.innerHTML += highlightSquare; = lag en highlighted square
+		// call 3: drawPattern(63) = tegn resterende empty squares
+		// drawPattern(): parameter = antall squares som skal repeate
+		function showBoard(action) {
+			calculatePosition(action)
+			mainDiv.innerHTML = ``;
+			drawPattern(boardStart)
+			mainDiv.innerHTML += highlightSquare;
+			drawPattern((boardEnd));
+			updateCordinates()
+		}
+
+		function updateCordinates() {
+			rowCordinate = Math.floor(yellowSquareIndex / 8) + 1
+			columnCordinate = (yellowSquareIndex % 8) + 1
+			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
+		}
+
+		// Tegner et gitt antall tomme ruter
+		// Martinius:
+		// Jeg må løse oppgaven ved å endre på drawpattern call 1 og drawpattern call 2
+		// de må utregnes slik at grid ikke blir mindre eller større, slik at grid alltid har 64 squares
+		function drawPattern(amount) {
+			mainDiv.innerHTML += pattern.repeat(amount);
+		}
+
+		function moveRight() {
+			yellowSquareIndex += 1
+			showBoard("moveRight")
+		}
+
+		function moveLeft() {
+			yellowSquareIndex -= 1
+			showBoard("moveLeft")
+		}
+
+		function moveDown() {
+			yellowSquareIndex += 8
+			showBoard("moveDown")
+		}
+
+		function moveUp() {
+			yellowSquareIndex -= 8
+			showBoard("moveUp")
+		}
+
+		//Før du skriver kode, les gjennom koden og forstå hva den gjør
+
+		// ----- DIN KODE STARTER HER -----
+
+		// Brettet er 8x8 = 64 ruter.
+		// 0 er øverst til venstre. 63 er nederst til høyre.
+		// Kall showBoard() for å tegne brettet.
+
+		// 1. Lag en variabel yellowSquareIndex som holder posisjonen til den gule ruten.
+
+		//Lag disse funksjoner og koble dem til knappene
+
+		// 2. moveRight()
+		//    Den gule ruten flytter seg én rute til høyre.
+		//    Ved høyre kant skal den hoppe til venstre kant.
+
+		// 3. moveLeft()
+		//    Den gule ruten flytter seg én rute til venstre.
+		//    Ved venstre kant skal den hoppe til høyre kant.
+
+		// 4. moveDown()
+		//    Den gule ruten flytter seg én rad ned.
+		//    Ved nederste rad skal den hoppe til øverste rad.
+
+		// 5. moveUp()
+		//    Den gule ruten flytter seg én rad opp.
+		//    Ved øverste rad skal den hoppe til nederste rad.
+
+		// BONUS:
+		// Vis hvilken rad og kolonne den gule ruten er på.
+		// Tips: rad = Math.floor(squareIndex / 8) + 1
+		//       kolonne = (squareIndex % 8) + 1
+
+		showBoard();
+	</script>
+</body>
+
+</html>
