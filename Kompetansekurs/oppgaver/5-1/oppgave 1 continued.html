@@ -51,28 +51,29 @@
 			width: 500px;
 		}
 
-		.dpad-middle {
+		.dpad-row {
 			display: flex;
 			justify-content: center;
 			gap: 5px;
 		}
 
 		.dpad button {
-			width: 70px;
-			height: 70px;
+			width: 80px;
+			height: 80px;
 
 		}
 
 		.dpad button:hover {
 			background-color: var(--highlight);
-			color: var(--gray);
+			color: var(--background);
 		}
 
 		button {
 			font-family: 'Arial Unicode MS', 'Consolas';
-			font-size: 3.5em;
+			font-size: 3em;
 			background-color: var(--gray);
-			border: 2px solid var(--highlight);
+			color: var(--highlight);
+			border: 2px solid var(--background);
 			border-radius: 10px;
 			cursor: pointer;
 			transition: background-color 0.2s;
@@ -88,9 +89,6 @@
 		.pageElements {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
-
-
-
 		}
 	</style>
 </head>
@@ -99,7 +97,7 @@
 
 
 
-	<div class="pageElements">
+	<!-- 	<div class="pageElements">
 		<div class="dpad">
 			<button class="up" onclick="moveUp()">▴</button>
 			<div class="dpad-middle">
@@ -108,6 +106,38 @@
 				<button class="right" onclick="moveRight()">▸</button>
 			</div>
 			<button class="up" onclick="moveDown()">▾</button>
+		</div>
+
+
+		<div id="app"></div>
+
+		<div id="currentPosition" class="cordinates"></div>
+	</div> -->
+
+	<div class="pageElements">
+		<div class="dpad">
+
+
+			<div class="dpad-row">
+				<button class="left" onclick="moveLeft()">🡬</button>
+				<button class="up" onclick="moveUp()">🢁</button>
+				<button class="right" onclick="moveRight()">🡭</button>
+			</div>
+
+			<div class="dpad-row">
+				<button class="left" onclick="moveLeft()">🢀</button>
+				<button class="down"></button>
+				<button class="right" onclick="moveRight()">🢂</button>
+			</div>
+
+			<div class="dpad-row">
+				<button class="left" onclick="moveLeft()">🡯</button>
+				<button class="up" onclick="moveDown()">🢃</button>
+				<button class="right" onclick="moveRight()">🡮</button>
+			</div>
+
+
+			
 		</div>
 
 
