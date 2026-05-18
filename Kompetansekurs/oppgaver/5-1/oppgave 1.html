@@ -72,14 +72,24 @@
 		const mainDiv = document.getElementById("app");
 
 		// Tegner brettet på nytt basert på squareIndex
+
+		// Martinius: 
+		// hvordan koden fungerer:
+		// call 1: drawPattern(0) = lag ingen squares til main div
+		// call 2: mainDiv.innerHTML += highlightSquare; = lag en highlighted square
+		// call 3: drawPattern(63) = tegn resterende empty squares
+		// drawPattern(): parameter = antall squares som skal repeate
 		function showBoard() {
 			mainDiv.innerHTML = ``;
 			drawPattern(0);//endre her
 			mainDiv.innerHTML += highlightSquare;
-			drawPattern((63));//endre her
+			drawPattern(63);//endre her
 		}
 
 		// Tegner et gitt antall tomme ruter
+		// Martinius:
+		// Jeg må løse oppgaven ved å endre på drawpattern call 1 og drawpattern call 2
+		// de må utregnes slik at grid ikke blir mindre eller større, slik at grid alltid har 64 squares
 		function drawPattern(amount) {
 			mainDiv.innerHTML += pattern.repeat(amount);
 		}
