@@ -158,48 +158,29 @@
 		let columnCordinate
 
 		function calculatePosition(action) {
-			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
-				yellowSquareIndex -= 8
-			}
 
 			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
 				yellowSquareIndex += 8
 			}
 
-			if (action === "moveTopLeft") {
-				if (yellowSquareIndex + 1 % 8 === 0) {
-					yellowSquareIndex -= 16
-				}
-				else {
-					yellowSquareIndex -= 9
-				}
+			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
+				yellowSquareIndex -= 8
 			}
 
-			if (action === "moveTopRight") {
-				if (yellowSquareIndex % 8 === 0) {
-					yellowSquareIndex -= 14
-				}
-				else {
-					yellowSquareIndex -= 7
-				}
+			if (action === "moveTopLeft" && (yellowSquareIndex + 1) % 8 === 0) {
+				// no additional calulation needed to skip line apparently
 			}
 
-			if (action === "moveBotLeft") {
-				if (yellowSquareIndex + 1 % 8 === 0) {
-					yellowSquareIndex += 14
-				}
-				else {
-					yellowSquareIndex += 7
-				}
+			if (action === "moveBotLeft" && (yellowSquareIndex + 1) % 8 === 0) {
+				yellowSquareIndex += 16
 			}
 
-			if (action === "moveBotRight") {
-				if (yellowSquareIndex + 1 % 8 === 0) {
-					yellowSquareIndex += 16
-				}
-				else {
-					yellowSquareIndex += 9
-				}
+			if (action === "moveTopRight" && yellowSquareIndex % 8 === 0) {
+				yellowSquareIndex -= 16
+			}
+
+			if (action === "moveBotRight" && yellowSquareIndex % 8 === 0) {
+				// no additional calulation needed to skip line apparently
 			}
 
 			if (yellowSquareIndex < initBoardStart) {
@@ -256,18 +237,22 @@
 		}
 
 		function moveTopLeft() {
+			yellowSquareIndex -= 9
 			showBoard("moveTopLeft")
 		}
 
 		function moveTopRight() {
+			yellowSquareIndex -= 7
 			showBoard("moveTopRight")
 		}
 
 		function moveBotLeft() {
+			yellowSquareIndex += 7
 			showBoard("moveBotLeft")
 		}
 
 		function moveBotRight() {
+			yellowSquareIndex += 9
 			showBoard("moveBotRight")
 		}
 
