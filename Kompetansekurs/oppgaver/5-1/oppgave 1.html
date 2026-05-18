@@ -97,9 +97,9 @@
 		function showBoard() {
 			calculatePosition()
 			mainDiv.innerHTML = ``;
-			drawPattern(boardStart, "before")
+			drawPattern(boardStart)
 			mainDiv.innerHTML += highlightSquare;
-			drawPattern((boardEnd), ("after"));
+			drawPattern((boardEnd));
 		}
 
 		// Tegner et gitt antall tomme ruter
@@ -108,6 +108,22 @@
 		// de må utregnes slik at grid ikke blir mindre eller større, slik at grid alltid har 64 squares
 		function drawPattern(amount) {
 			mainDiv.innerHTML += pattern.repeat(amount);
+		}
+
+		function moveRight() {
+
+		}
+
+		function moveLeft() {
+
+		}
+
+		function moveDown() {
+
+		}
+
+		function moveUp() {
+
 		}
 
 		//Før du skriver kode, les gjennom koden og forstå hva den gjør
