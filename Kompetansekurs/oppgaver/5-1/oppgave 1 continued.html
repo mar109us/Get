@@ -168,19 +168,19 @@
 			}
 
 			if (action === "moveTopLeft" && (yellowSquareIndex + 1) % 8 === 0) {
-				// no additional calulation needed to skip line apparently
+				yellowSquareIndex += 8
 			}
 
 			if (action === "moveBotLeft" && (yellowSquareIndex + 1) % 8 === 0) {
-				yellowSquareIndex += 16
+				yellowSquareIndex += 8
 			}
 
 			if (action === "moveTopRight" && yellowSquareIndex % 8 === 0) {
-				yellowSquareIndex -= 16
+				yellowSquareIndex -= 8
 			}
 
 			if (action === "moveBotRight" && yellowSquareIndex % 8 === 0) {
-				// no additional calulation needed to skip line apparently
+				yellowSquareIndex -= 8
 			}
 
 			if (yellowSquareIndex < initBoardStart) {
