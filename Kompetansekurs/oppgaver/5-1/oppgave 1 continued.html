@@ -138,7 +138,7 @@
 		let rowCordinate = Math.floor(selectedSquare / 8) + 1
 		let columnCordinate = (selectedSquare % 8) + 1
 
-		function calculatePosition(action) {
+		function updateBoard(action) {
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
 				if ((selectedSquare + 1) % 8 === 0) {
 					selectedSquare += 8
@@ -171,22 +171,32 @@
 		}
 
 		//view
-		function updateView(action) {
-			calculatePosition(action)
-			mainDiv.innerHTML = ``;
-			drawPattern(boardStart)
-			mainDiv.innerHTML += highlightSquare;
-			drawPattern((boardEnd));
-
-			updateCordinates()
-			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
+		function drawBoard(start, select, end) {
+			mainDiv.innerHTML = `
+				${start}
+				${select}
+				${end}`
 		}
 
-		function drawPattern(amount) {
-			mainDiv.innerHTML += pattern.repeat(amount);
+		function drawCordinates(row, column) {
+			printPosition.innerHTML = `
+			Row: ${row}<br>
+			Column: ${column}`
 		}
 
 		//controller
+		function updateView(action) {
+			updateBoard(action)
+			drawBoard(
+				pattern.repeat(boardStart),
+				highlightSquare,
+				pattern.repeat(boardEnd))
+			updateCordinates()
+			drawCordinates(
+				rowCordinate,
+				columnCordinate)
+		}
+
 		function moveRight() {
 			selectedSquare += 1
 			updateView("moveRight")
