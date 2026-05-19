@@ -123,17 +123,18 @@
 
 		//model
 
-		const pattern = `<div></div>`;
-		const highlightSquare = `<div class="selected"></div>`;
-		const mainDiv = document.getElementById("app");
-		const printPosition = document.getElementById("currentPosition");
+		const pattern = `<div></div>`
+		const highlightSquare = `<div class="selected"></div>`
+		const mainDiv = document.getElementById("app")
+		const printPosition = document.getElementById("currentPosition")
+		const boardStyle = document.getElementById("app")
 
-		let setSize = 10
+		let setSize = 4
 		
 		let row = setSize
 		let column = setSize
 
-		const size = row * column;
+		const size = row * column
 
 		const initBoardStart = 0
 		const initBoardEnd = size - 1
@@ -145,12 +146,8 @@
 		let rowCordinate = Math.floor(selectedSquare / setSize) + 1
 		let columnCordinate = (selectedSquare % setSize) + 1
 
-		// dynamic board testing //
-
-		document.getElementById("app").style.gridTemplateColumns = `repeat(${setSize}, 100px)`
-		document.getElementById("app").style.gridTemplateRows = `repeat(${setSize}, 100px)`
-
-		// dynamic board testing //
+		boardStyle.style.gridTemplateColumns = `repeat(${setSize}, 100px)`
+		boardStyle.style.gridTemplateRows = `repeat(${setSize}, 100px)`
 
 		function updateBoard(action) {
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
