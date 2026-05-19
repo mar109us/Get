@@ -151,7 +151,6 @@
 	<script>
 
 		//model
-
 		const pattern = `<div></div>`
 		const highlightSquare = `<div class="selected"></div>`
 		const mainDiv = document.getElementById("app")
@@ -159,6 +158,8 @@
 		const boardStyle = document.getElementById("app")
 
 		let setSize = 10
+
+		let squareSize = 1000 / setSize
 
 		let row = setSize
 		let column = setSize
@@ -175,8 +176,8 @@
 		let rowCordinate = Math.floor(selectedSquare / setSize) + 1
 		let columnCordinate = (selectedSquare % setSize) + 1
 
-		boardStyle.style.gridTemplateColumns = `repeat(${setSize}, 100px)`
-		boardStyle.style.gridTemplateRows = `repeat(${setSize}, 100px)`
+		boardStyle.style.gridTemplateColumns = `repeat(${setSize}, ${squareSize}px)`
+		boardStyle.style.gridTemplateRows = `repeat(${setSize}, ${squareSize}px)`
 
 		function updateBoard(action) {
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
