@@ -165,7 +165,7 @@
 		const printPosition = document.getElementById("currentPosition")
 		const boardStyle = document.getElementById("app")
 
-		let setSize = 3
+		let setSize = 2
 
 		let squareSize = 1000 / setSize
 
@@ -182,7 +182,6 @@
 		let columnCordinate = (selectedSquare % setSize) + 1
 
 		function changeBoard(action) {
-
 			boardStart = initBoardStart
 			boardEnd = size - 1
 
@@ -210,10 +209,34 @@
 		}
 
 		function changeBoardSize(newSize) {
-			setSize = setSize + newSize
-			squareSize = 1000 / setSize
-			size = setSize * setSize
-			selectedSquare = 0
+			if (newSize === 0) { return }
+
+			setSize += newSize
+
+			if (setSize < 2) {
+				setSize = 2
+			}
+			else if (setSize > 60) {
+				setSize = 60
+			}
+			else {
+				squareSize = 1000 / setSize
+				size = setSize * setSize
+			}
+
+			if (newSize > 0) {
+				selectedSquare += newSize * 2 /* selectedSquare + newSize * newSize */
+			}
+
+			if (newSize < 0) {
+				selectedSquare -= 1 /* selectedSquare - newSize / newSize */
+			}
+
+			/* selectedSquare = selectedSquare * size */
+
+			/* 			if (selectedSquare > boardEnd + 1) {
+							selectedSquare = boardEnd - 1
+						} */
 		}
 
 		function changeCordinates() {
@@ -300,10 +323,7 @@
 			updateView("moveBotRight")
 		}
 
-		/* updateSize(setSize) */
-		updateSize(null)
-		/* updateView() */
-
+		updateSize(0)
 	</script>
 </body>
 
