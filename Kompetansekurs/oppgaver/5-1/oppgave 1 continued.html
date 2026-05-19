@@ -94,26 +94,6 @@
 </head>
 
 <body>
-
-
-
-	<!-- 	<div class="pageElements">
-		<div class="dpad">
-			<button class="up" onclick="moveUp()">▴</button>
-			<div class="dpad-middle">
-				<button class="left" onclick="moveLeft()">◂</button>
-				<button class="down"></button>
-				<button class="right" onclick="moveRight()">▸</button>
-			</div>
-			<button class="up" onclick="moveDown()">▾</button>
-		</div>
-
-
-		<div id="app"></div>
-
-		<div id="currentPosition" class="cordinates"></div>
-	</div> -->
-
 	<div class="pageElements">
 		<div class="dpad">
 			<div class="dpad-row">
@@ -141,6 +121,7 @@
 	</div>
 	<script>
 
+		//model
 		const size = 64;
 		const pattern = `<div></div>`;
 		const highlightSquare = `<div class="selected"></div>`;
@@ -154,11 +135,10 @@
 		let selectedSquare = 0
 		let boardEnd = size - 1
 
-		let rowCordinate
-		let columnCordinate
+		let rowCordinate = Math.floor(selectedSquare / 8) + 1
+		let columnCordinate = (selectedSquare % 8) + 1
 
 		function calculatePosition(action) {
-
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
 				if ((selectedSquare + 1) % 8 === 0) {
 					selectedSquare += 8
@@ -185,18 +165,20 @@
 			boardEnd = boardEnd - selectedSquare
 		}
 
-		function showBoard(action) {
+		function updateCordinates() {
+			rowCordinate = Math.floor(selectedSquare / 8) + 1
+			columnCordinate = (selectedSquare % 8) + 1
+		}
+
+		//view
+		function updateView(action) {
 			calculatePosition(action)
 			mainDiv.innerHTML = ``;
 			drawPattern(boardStart)
 			mainDiv.innerHTML += highlightSquare;
 			drawPattern((boardEnd));
-			updateCordinates()
-		}
 
-		function updateCordinates() {
-			rowCordinate = Math.floor(selectedSquare / 8) + 1
-			columnCordinate = (selectedSquare % 8) + 1
+			updateCordinates()
 			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
 		}
 
@@ -204,47 +186,48 @@
 			mainDiv.innerHTML += pattern.repeat(amount);
 		}
 
+		//controller
 		function moveRight() {
 			selectedSquare += 1
-			showBoard("moveRight")
+			updateView("moveRight")
 		}
 
 		function moveLeft() {
 			selectedSquare -= 1
-			showBoard("moveLeft")
+			updateView("moveLeft")
 		}
 
 		function moveDown() {
 			selectedSquare += 8
-			showBoard("moveDown")
+			updateView("moveDown")
 		}
 
 		function moveUp() {
 			selectedSquare -= 8
-			showBoard("moveUp")
+			updateView("moveUp")
 		}
 
 		function moveTopLeft() {
 			selectedSquare -= 9
-			showBoard("moveTopLeft")
+			updateView("moveTopLeft")
 		}
 
 		function moveTopRight() {
 			selectedSquare -= 7
-			showBoard("moveTopRight")
+			updateView("moveTopRight")
 		}
 
 		function moveBotLeft() {
 			selectedSquare += 7
-			showBoard("moveBotLeft")
+			updateView("moveBotLeft")
 		}
 
 		function moveBotRight() {
 			selectedSquare += 9
-			showBoard("moveBotRight")
+			updateView("moveBotRight")
 		}
 
-		showBoard();
+		updateView();
 	</script>
 </body>
 
