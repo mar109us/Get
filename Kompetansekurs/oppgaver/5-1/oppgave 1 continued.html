@@ -133,11 +133,19 @@
 			</div>
 
 			<div>
-				<h1>Board size</h1>
+				<h1>Increase size</h1>
 				<div class="row">
-					<button>+1</button>
+					<button onclick="updateSize(1)">+1</button>
 					<button>+5</button>
 					<button>+10</button>
+				</div>
+			</div>
+			<div>
+				<h1>Decrease size</h1>
+				<div class="row">
+					<button>-1</button>
+					<button>-5</button>
+					<button>-10</button>
 				</div>
 			</div>
 		</div>
@@ -157,14 +165,11 @@
 		const printPosition = document.getElementById("currentPosition")
 		const boardStyle = document.getElementById("app")
 
-		let setSize = 10
+		let setSize = 3
 
 		let squareSize = 1000 / setSize
 
-		let row = setSize
-		let column = setSize
-
-		const size = row * column
+		let size = setSize * setSize
 
 		const initBoardStart = 0
 		const initBoardEnd = size - 1
@@ -176,10 +181,36 @@
 		let rowCordinate = Math.floor(selectedSquare / setSize) + 1
 		let columnCordinate = (selectedSquare % setSize) + 1
 
-		boardStyle.style.gridTemplateColumns = `repeat(${setSize}, ${squareSize}px)`
-		boardStyle.style.gridTemplateRows = `repeat(${setSize}, ${squareSize}px)`
+
 
 		function updateBoard(action) {
+
+			console.log(
+				"setSize",
+				setSize,
+				"\nsquareSize",
+				squareSize,
+				"\nsize",
+				size,
+				"\ninitBoardStart",
+				initBoardStart,
+				"\ninitBoardEnd",
+				initBoardEnd,
+				"\nboardStart",
+				boardStart,
+				"\nselectedSquare",
+				selectedSquare,
+				"\nboardEnd",
+				boardEnd,
+				"\nselectedSquare % setSize",
+				selectedSquare % setSize
+			)
+
+			boardStart = initBoardStart
+			boardEnd = size - 1
+
+
+
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
 				if ((selectedSquare + 1) % setSize === 0) {
 					selectedSquare += setSize
@@ -192,18 +223,19 @@
 				}
 			}
 
-			if (selectedSquare < initBoardStart) {
-				selectedSquare = initBoardEnd + selectedSquare + 1
+			if (selectedSquare < boardStart) {
+				selectedSquare = boardEnd + selectedSquare + 1
 			}
-			if (selectedSquare > initBoardEnd) {
-				selectedSquare = selectedSquare - initBoardEnd - 1
+			if (selectedSquare > boardEnd) {
+				selectedSquare = selectedSquare - boardEnd - 1
 			}
 
-			boardStart = initBoardStart
-			boardEnd = initBoardEnd
 
 			boardStart = boardStart + selectedSquare
-			boardEnd = boardEnd - selectedSquare
+			boardEnd = size - selectedSquare - 1
+
+
+
 		}
 
 		function updateCordinates() {
@@ -212,11 +244,14 @@
 		}
 
 		//view
-		function drawBoard(start, select, end) {
+
+
+		function drawSquares(start, select, end) {
 			mainDiv.innerHTML = `
 				${start}
 				${select}
 				${end}`
+
 		}
 
 		function drawCordinates(row, column) {
@@ -225,17 +260,36 @@
 			Column: ${column}`
 		}
 
+		function drawBoard(board, square) {
+			boardStyle.style.gridTemplateColumns = `repeat(${board}, ${square}px)`
+			boardStyle.style.gridTemplateRows = `repeat(${board}, ${square}px)`
+		}
+
 		//controller
 		function updateView(action) {
 			updateBoard(action)
-			drawBoard(
+			drawSquares(
 				pattern.repeat(boardStart),
 				highlightSquare,
-				pattern.repeat(boardEnd))
+				pattern.repeat(boardEnd)
+			)
 			updateCordinates()
 			drawCordinates(
 				rowCordinate,
 				columnCordinate)
+		}
+
+
+
+		function updateSize(newSize) {
+			setSize = setSize + newSize
+			squareSize = 1000 / setSize
+			size = setSize * setSize
+			selectedSquare = 0
+
+			drawBoard(setSize, squareSize)
+			updateView()
+
 		}
 
 		function moveRight() {
@@ -278,7 +332,10 @@
 			updateView("moveBotRight")
 		}
 
-		updateView();
+		/* updateSize(setSize) */
+		updateSize(null)
+		/* updateView() */
+
 	</script>
 </body>
 
