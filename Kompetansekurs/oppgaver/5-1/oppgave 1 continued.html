@@ -181,35 +181,10 @@
 		let rowCordinate = Math.floor(selectedSquare / setSize) + 1
 		let columnCordinate = (selectedSquare % setSize) + 1
 
-
-
-		function updateBoard(action) {
-
-			console.log(
-				"setSize",
-				setSize,
-				"\nsquareSize",
-				squareSize,
-				"\nsize",
-				size,
-				"\ninitBoardStart",
-				initBoardStart,
-				"\ninitBoardEnd",
-				initBoardEnd,
-				"\nboardStart",
-				boardStart,
-				"\nselectedSquare",
-				selectedSquare,
-				"\nboardEnd",
-				boardEnd,
-				"\nselectedSquare % setSize",
-				selectedSquare % setSize
-			)
+		function changeBoard(action) {
 
 			boardStart = initBoardStart
 			boardEnd = size - 1
-
-
 
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
 				if ((selectedSquare + 1) % setSize === 0) {
@@ -230,28 +205,28 @@
 				selectedSquare = selectedSquare - boardEnd - 1
 			}
 
-
 			boardStart = boardStart + selectedSquare
 			boardEnd = size - selectedSquare - 1
-
-
-
 		}
 
-		function updateCordinates() {
+		function changeBoardSize(newSize) {
+			setSize = setSize + newSize
+			squareSize = 1000 / setSize
+			size = setSize * setSize
+			selectedSquare = 0
+		}
+
+		function changeCordinates() {
 			rowCordinate = Math.floor(selectedSquare / setSize) + 1
 			columnCordinate = (selectedSquare % setSize) + 1
 		}
 
 		//view
-
-
 		function drawSquares(start, select, end) {
 			mainDiv.innerHTML = `
 				${start}
 				${select}
 				${end}`
-
 		}
 
 		function drawCordinates(row, column) {
@@ -267,29 +242,22 @@
 
 		//controller
 		function updateView(action) {
-			updateBoard(action)
+			changeBoard(action)
 			drawSquares(
 				pattern.repeat(boardStart),
 				highlightSquare,
 				pattern.repeat(boardEnd)
 			)
-			updateCordinates()
+			changeCordinates()
 			drawCordinates(
 				rowCordinate,
 				columnCordinate)
 		}
 
-
-
 		function updateSize(newSize) {
-			setSize = setSize + newSize
-			squareSize = 1000 / setSize
-			size = setSize * setSize
-			selectedSquare = 0
-
+			changeBoardSize(newSize)
 			drawBoard(setSize, squareSize)
 			updateView()
-
 		}
 
 		function moveRight() {
