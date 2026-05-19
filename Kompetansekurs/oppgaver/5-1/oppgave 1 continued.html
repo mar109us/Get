@@ -23,6 +23,7 @@
 		body {
 			background-color: var(--background);
 			color: var(--gray);
+			padding: 50px;
 		}
 
 		.selected {
@@ -31,9 +32,7 @@
 
 		#app {
 			display: grid;
-			/* grid-template-columns: repeat(8, 100px); */
-			/* grid-template-rows: repeat(8, 100px); */
-			justify-content: center;
+			/* justify-content: center; */
 		}
 
 		#app>div {
@@ -44,80 +43,110 @@
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-			justify-items: center;
 			justify-content: center;
 			gap: 5px;
-			margin: 20px 150px;
-			width: 500px;
+			margin: 50px 50px;
+			width: 150px;
+			height: 150px;
 		}
 
-		.dpad-row {
+		.row {
 			display: flex;
-			justify-content: center;
+			flex-direction: row;
+			/* justify-content: center; */
 			gap: 5px;
+		}
+
+		.column {
+			display: flex;
+			flex-direction: column;
+
 		}
 
 		.dpad button {
 			width: 80px;
 			height: 80px;
-
+			font-size: 3em;
 		}
 
-		.dpad button:hover {
+		button:hover {
 			background-color: var(--highlight);
 			color: var(--background);
 		}
 
 		button {
+			width: 80px;
+			height: 80px;
 			font-family: 'Arial Unicode MS', 'Consolas';
-			font-size: 3em;
+			font-size: 2em;
 			background-color: var(--gray);
 			color: var(--highlight);
 			border: 2px solid var(--background);
-			border-radius: 10px;
+			border-radius: 15px;
 			cursor: pointer;
 			transition: background-color 0.2s;
 		}
 
 		.cordinates {
-			display: flex;
-			justify-content: right;
-			font-family: monospace;
+			font-family: 'Arial Unicode MS', 'Consolas';
 			font-size: 2em;
 		}
 
 		.pageElements {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: 10fr 2fr 2fr;
+			justify-content: center;
+		}
+
+		h1 {
+			font-family: 'Arial Unicode MS', 'Consolas';
+			font-size: 2em;
 		}
 	</style>
 </head>
 
 <body>
+
 	<div class="pageElements">
-		<div class="dpad">
-			<div class="dpad-row">
-				<button class="left" onclick="moveTopLeft()">🡬</button>
-				<button class="up" onclick="moveUp()">🢁</button>
-				<button class="right" onclick="moveTopRight()">🡭</button>
-			</div>
-
-			<div class="dpad-row">
-				<button class="left" onclick="moveLeft()">🢀</button>
-				<button></button>
-				<button class="right" onclick="moveRight()">🢂</button>
-			</div>
-
-			<div class="dpad-row">
-				<button class="left" onclick="moveBotLeft()">🡯</button>
-				<button class="up" onclick="moveDown()">🢃</button>
-				<button class="right" onclick="moveBotRight()">🡮</button>
-			</div>
-		</div>
 
 		<div id="app"></div>
 
-		<div id="currentPosition" class="cordinates"></div>
+		<div class="column">
+
+			<h1>Control</h1>
+			<div class="dpad">
+				<div class="row">
+					<button class="left" onclick="moveTopLeft()">🡬</button>
+					<button class="up" onclick="moveUp()">🢁</button>
+					<button class="right" onclick="moveTopRight()">🡭</button>
+				</div>
+				<div class="row">
+					<button class="left" onclick="moveLeft()">🢀</button>
+					<button></button>
+					<button class="right" onclick="moveRight()">🢂</button>
+				</div>
+				<div class="row">
+					<button class="left" onclick="moveBotLeft()">🡯</button>
+					<button class="up" onclick="moveDown()">🢃</button>
+					<button class="right" onclick="moveBotRight()">🡮</button>
+				</div>
+			</div>
+
+			<div>
+				<h1>Board size</h1>
+				<div class="row">
+					<button>+1</button>
+					<button>+5</button>
+					<button>+10</button>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<h1>Stats</h1>
+			<div id="currentPosition" class="cordinates"></div>
+		</div>
+
 	</div>
 	<script>
 
@@ -129,8 +158,8 @@
 		const printPosition = document.getElementById("currentPosition")
 		const boardStyle = document.getElementById("app")
 
-		let setSize = 4
-		
+		let setSize = 10
+
 		let row = setSize
 		let column = setSize
 
