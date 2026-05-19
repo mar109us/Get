@@ -142,8 +142,8 @@
 		let selectedSquare = 0
 		let boardEnd = size - 1
 
-		let rowCordinate = Math.floor(selectedSquare / 8) + 1
-		let columnCordinate = (selectedSquare % 8) + 1
+		let rowCordinate = Math.floor(selectedSquare / setSize) + 1
+		let columnCordinate = (selectedSquare % setSize) + 1
 
 		// dynamic board testing //
 
@@ -154,14 +154,14 @@
 
 		function updateBoard(action) {
 			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
-				if ((selectedSquare + 1) % 8 === 0) {
-					selectedSquare += 8
+				if ((selectedSquare + 1) % setSize === 0) {
+					selectedSquare += setSize
 				}
 			}
 
 			if (action === "moveRight" || action === "moveTopRight" || action === "moveBotRight") {
-				if (selectedSquare % 8 === 0) {
-					selectedSquare -= 8
+				if (selectedSquare % setSize === 0) {
+					selectedSquare -= setSize
 				}
 			}
 
@@ -180,8 +180,8 @@
 		}
 
 		function updateCordinates() {
-			rowCordinate = Math.floor(selectedSquare / 8) + 1
-			columnCordinate = (selectedSquare % 8) + 1
+			rowCordinate = Math.floor(selectedSquare / setSize) + 1
+			columnCordinate = (selectedSquare % setSize) + 1
 		}
 
 		//view
@@ -222,32 +222,32 @@
 		}
 
 		function moveDown() {
-			selectedSquare += 8
+			selectedSquare += setSize
 			updateView("moveDown")
 		}
 
 		function moveUp() {
-			selectedSquare -= 8
+			selectedSquare -= setSize
 			updateView("moveUp")
 		}
 
 		function moveTopLeft() {
-			selectedSquare -= 9
+			selectedSquare -= setSize + 1
 			updateView("moveTopLeft")
 		}
 
 		function moveTopRight() {
-			selectedSquare -= 7
+			selectedSquare -= setSize - 1
 			updateView("moveTopRight")
 		}
 
 		function moveBotLeft() {
-			selectedSquare += 7
+			selectedSquare += setSize - 1
 			updateView("moveBotLeft")
 		}
 
 		function moveBotRight() {
-			selectedSquare += 9
+			selectedSquare += setSize + 1
 			updateView("moveBotRight")
 		}
 
