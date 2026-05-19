@@ -151,7 +151,7 @@
 		const initBoardEnd = 63
 
 		let boardStart = 0
-		let yellowSquareIndex = 0
+		let selectedSquare = 0
 		let boardEnd = 63
 
 		let rowCordinate
@@ -159,42 +159,30 @@
 
 		function calculatePosition(action) {
 
-			if (action === "moveLeft" && (yellowSquareIndex + 1) % 8 === 0) {
-				yellowSquareIndex += 8
+			if (action === "moveLeft" || action === "moveTopLeft" || action === "moveBotLeft") {
+				if ((selectedSquare + 1) % 8 === 0) {
+					selectedSquare += 8
+				}
 			}
 
-			if (action === "moveRight" && yellowSquareIndex % 8 === 0) {
-				yellowSquareIndex -= 8
+			if (action === "moveRight" || action === "moveTopRight" || action === "moveBotRight") {
+				if (selectedSquare % 8 === 0) {
+					selectedSquare -= 8
+				}
 			}
 
-			if (action === "moveTopLeft" && (yellowSquareIndex + 1) % 8 === 0) {
-				yellowSquareIndex += 8
+			if (selectedSquare < initBoardStart) {
+				selectedSquare = initBoardEnd + selectedSquare + 1
 			}
-
-			if (action === "moveBotLeft" && (yellowSquareIndex + 1) % 8 === 0) {
-				yellowSquareIndex += 8
-			}
-
-			if (action === "moveTopRight" && yellowSquareIndex % 8 === 0) {
-				yellowSquareIndex -= 8
-			}
-
-			if (action === "moveBotRight" && yellowSquareIndex % 8 === 0) {
-				yellowSquareIndex -= 8
-			}
-
-			if (yellowSquareIndex < initBoardStart) {
-				yellowSquareIndex = initBoardEnd + yellowSquareIndex + 1
-			}
-			if (yellowSquareIndex > initBoardEnd) {
-				yellowSquareIndex = yellowSquareIndex - initBoardEnd - 1
+			if (selectedSquare > initBoardEnd) {
+				selectedSquare = selectedSquare - initBoardEnd - 1
 			}
 
 			boardStart = initBoardStart
 			boardEnd = initBoardEnd
 
-			boardStart = boardStart + yellowSquareIndex
-			boardEnd = boardEnd - yellowSquareIndex
+			boardStart = boardStart + selectedSquare
+			boardEnd = boardEnd - selectedSquare
 		}
 
 		function showBoard(action) {
@@ -207,8 +195,8 @@
 		}
 
 		function updateCordinates() {
-			rowCordinate = Math.floor(yellowSquareIndex / 8) + 1
-			columnCordinate = (yellowSquareIndex % 8) + 1
+			rowCordinate = Math.floor(selectedSquare / 8) + 1
+			columnCordinate = (selectedSquare % 8) + 1
 			printPosition.innerHTML = `Row: ${rowCordinate}<br>Column: ${columnCordinate}`
 		}
 
@@ -217,42 +205,42 @@
 		}
 
 		function moveRight() {
-			yellowSquareIndex += 1
+			selectedSquare += 1
 			showBoard("moveRight")
 		}
 
 		function moveLeft() {
-			yellowSquareIndex -= 1
+			selectedSquare -= 1
 			showBoard("moveLeft")
 		}
 
 		function moveDown() {
-			yellowSquareIndex += 8
+			selectedSquare += 8
 			showBoard("moveDown")
 		}
 
 		function moveUp() {
-			yellowSquareIndex -= 8
+			selectedSquare -= 8
 			showBoard("moveUp")
 		}
 
 		function moveTopLeft() {
-			yellowSquareIndex -= 9
+			selectedSquare -= 9
 			showBoard("moveTopLeft")
 		}
 
 		function moveTopRight() {
-			yellowSquareIndex -= 7
+			selectedSquare -= 7
 			showBoard("moveTopRight")
 		}
 
 		function moveBotLeft() {
-			yellowSquareIndex += 7
+			selectedSquare += 7
 			showBoard("moveBotLeft")
 		}
 
 		function moveBotRight() {
-			yellowSquareIndex += 9
+			selectedSquare += 9
 			showBoard("moveBotRight")
 		}
 
