@@ -122,11 +122,18 @@
 	<script>
 
 		//model
-		const size = 64;
+
 		const pattern = `<div></div>`;
 		const highlightSquare = `<div class="selected"></div>`;
 		const mainDiv = document.getElementById("app");
 		const printPosition = document.getElementById("currentPosition");
+
+		let setSize = 10
+		
+		let row = setSize
+		let column = setSize
+
+		const size = row * column;
 
 		const initBoardStart = 0
 		const initBoardEnd = size - 1
@@ -140,8 +147,8 @@
 
 		// dynamic board testing //
 
-		document.getElementById("app").style.gridTemplateColumns = "repeat(8, 100px)"
-		document.getElementById("app").style.gridTemplateRows = "repeat(8, 100px)"
+		document.getElementById("app").style.gridTemplateColumns = `repeat(${setSize}, 100px)`
+		document.getElementById("app").style.gridTemplateRows = `repeat(${setSize}, 100px)`
 
 		// dynamic board testing //
 
